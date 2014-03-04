@@ -1,0 +1,9 @@
+<p>
+  <% if @bids.empty? %>
+    You haven't made any bids yet.
+  <% else %>
+    <% @bids.each do |bid| %>
+      <%= bid.amount %>
+    <% end %>
+  <% end %>
+</p>

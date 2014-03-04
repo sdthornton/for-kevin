@@ -1,0 +1,15 @@
+<h1>Haircuts#index</h1>
+<p>Find me in app/views/haircuts/index.html.erb</p>
+
+<div class="outer">
+<div class="wrap">
+<% @haircuts.each do |haircut| %>
+  <div class="item">
+    <%= image_tag(photo_url(haircut), width: "364", height: "364") %><br>
+    <p><strong><%= haircut.member %></strong><br><br>
+    <%= haircut.about %><br>
+    <%= link_to "Show", show_haircut_path(haircut.url) %></p>
+  </div>
+<% end %>
+</div>
+</div>

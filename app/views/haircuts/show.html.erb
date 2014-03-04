@@ -1,0 +1,33 @@
+<p><%= image_tag(photo_url(@haircut), width: "364", height: "364") %><br>
+<strong><%= @haircut.member %></strong><br>
+<%= @haircut.about %></p>
+
+<% if admin_signed_in? %>
+  <p>
+    <% if @bids.empty? %>
+      No bids yet
+    <% else %>
+    <table>
+      <% @bids.order('amount DESC').each do |bid| %>
+        <tr>
+          <td><%= number_to_currency(bid.amount) %></td>
+          <td><%= bid.user.name %></td>
+          <td><%= bid.user.email %></td>
+        </tr>
+      <% end %>
+    </table>
+    <% end %>
+  </p>
+<% elsif user_signed_in? %>
+  <% if @bids.empty? %>
+    No bids yet
+  <% else %>
+    <p>Current bid is: <%= number_to_currency(@haircut.bids.order('amount DESC').first.amount) %>
+    <p>
+      <%= simple_form_for([@haircut, @haircut.bids.build]) do |f| %>
+        <%= f.input :amount %>
+        <%= f.submit %>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
