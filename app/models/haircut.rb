@@ -9,13 +9,13 @@ class Haircut < ActiveRecord::Base
   has_attached_file :photo,
     styles: {
       retina: {
-        geometry: "728x728#",
+        geometry: "728x484#",
         paperclip_optimizer: {
           jpegoptim: { strip: "all", max_quality: 75 }
         }
       },
       normal: {
-        geometry: "364x364#",
+        geometry: "364x242#",
         paperclip_optimizer: {
           jpegoptim: { strip: "all", max_quality: 100 }
         }

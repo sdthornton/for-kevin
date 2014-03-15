@@ -42,7 +42,7 @@ class HaircutsController < ApplicationController
     @haircut = Haircut.find(params[:id])
     @haircut.destroy
 
-    redirect_to ''
+    redirect_to '/haircuts'
   end
 
 

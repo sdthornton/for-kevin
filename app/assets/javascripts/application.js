@@ -13,5 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require angular
+//= require nprogress
+//= require nprogress-turbolinks
+//= require nprogress-init
+//= require utilities
 //= require_tree .

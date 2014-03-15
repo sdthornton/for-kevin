@@ -1,12 +1,11 @@
-<p><%= image_tag(photo_url(@haircut), width: "364", height: "364") %><br>
+<p><%= image_tag(photo_url(@haircut), width: "364", height: "242") %><br>
 <strong><%= @haircut.member %></strong><br>
 <%= @haircut.about %></p>
 
 <% if admin_signed_in? %>
-  <p>
-    <% if @bids.empty? %>
-      No bids yet
-    <% else %>
+  <p>Current bid: <%= highest_bid(@haircut) %>
+
+  <% unless @bids.empty? %>
     <table>
       <% @bids.order('amount DESC').each do |bid| %>
         <tr>
@@ -16,18 +15,16 @@
         </tr>
       <% end %>
     </table>
+  <% end %>
+
+<% elsif user_signed_in? %>
+  <p>Current bid: <%= highest_bid(@haircut) %>
+
+  <p>
+    <%= simple_form_for([@haircut, @haircut.bids.build]) do |f| %>
+      <%= f.input :amount %>
+      <%= f.submit %>
     <% end %>
   </p>
-<% elsif user_signed_in? %>
-  <% if @bids.empty? %>
-    No bids yet
-  <% else %>
-    <p>Current bid is: <%= number_to_currency(@haircut.bids.order('amount DESC').first.amount) %>
-    <p>
-      <%= simple_form_for([@haircut, @haircut.bids.build]) do |f| %>
-        <%= f.input :amount %>
-        <%= f.submit %>
-      <% end %>
-    </p>
-  <% end %>
+
 <% end %>

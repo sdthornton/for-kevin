@@ -20,6 +20,7 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'nprogress-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -31,10 +32,15 @@ end
 
 gem 'mysql2'
 gem 'devise'
-gem 'angularjs-rails'
 gem 'simple_form'
-gem "paperclip", "~> 4.1"
+gem 'paperclip', '~> 4.1'
 gem 'paperclip-optimizer', git: 'git@github.com:sdthornton/paperclip-optimizer.git'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
+group :development do
+  gem 'better_errors'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

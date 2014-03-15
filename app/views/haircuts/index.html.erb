@@ -5,11 +5,17 @@
 <div class="wrap">
 <% @haircuts.each do |haircut| %>
   <div class="item">
-    <%= image_tag(photo_url(haircut), width: "364", height: "364") %><br>
+    <%= image_tag(photo_url(haircut), width: "364", height: "242") %><br>
     <p><strong><%= haircut.member %></strong><br><br>
     <%= haircut.about %><br>
-    <%= link_to "Show", show_haircut_path(haircut.url) %></p>
+    <%= link_to "Bid", show_haircut_path(haircut.url), class: 'make-a-bid' %>
+    <%= link_to "Edit", edit_haircut_path(haircut.url) %>
+    <%= link_to "Delete", haircut_path(haircut), method: "delete", confirm: "Are you sure?" %></p>
   </div>
 <% end %>
 </div>
 </div>
+
+<%= content_for :javascript do %>
+  <%= javascript_tag 'new Site.Haircut()' %>
+<% end %>
