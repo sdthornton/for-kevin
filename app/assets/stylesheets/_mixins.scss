@@ -8,6 +8,14 @@
   }
 }
 
+@mixin hover {
+  .hover & {
+    &:hover {
+      @content;
+    }
+  }
+}
+
 @mixin background-image($url, $size, $position:0 0, $color:transparent, $repeat:no-repeat) {
   background: $color url('#{$url}.png') $position $repeat;
   background-size: $size;
@@ -68,7 +76,7 @@
   zoom: 1;
 }
 
-@mixin transition($transition-property: all, $transition-time: 0.3s, $method: ease) {
+@mixin transition($transition-property: all, $transition-time: 0.2s, $method: ease) {
   -webkit-transition: $transition-property $transition-time $method;
      -moz-transition: $transition-property $transition-time $method;
       -ms-transition: $transition-property $transition-time $method;
@@ -129,8 +137,10 @@
 }
 
 %float-left { float: left; }
-
 %float-right { float: right; }
+
+%cursor-pointer { cursor: pointer; }
+%cursor-default { cursor: default; }
 
 %border-box {
   -webkit-box-sizing: border-box;

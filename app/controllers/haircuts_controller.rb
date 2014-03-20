@@ -2,7 +2,13 @@ class HaircutsController < ApplicationController
   before_filter :authenticate_admin!, except: [:index, :show]
 
   def index
-    @haircuts = Haircut.order('member ASC')
+    if params[:search]
+      @haircuts = Haircut.search(params[:search]).order('member ASC').page(params[:page]).per(20)
+      @search = true
+    else
+      @haircuts = Haircut.order('member ASC').page(params[:page]).per(20)
+      @search = false
+    end
   end
 
   def new

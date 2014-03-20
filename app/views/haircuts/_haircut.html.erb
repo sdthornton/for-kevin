@@ -1,0 +1,26 @@
+<div class="item" id="<%= haircut.url %>_haircut" data-haircut="<%= haircut.url %>">
+  <%= image_tag(photo_url(haircut), width: "364", height: "242") %><br>
+  <p><strong><%= haircut.member %></strong><br><br>
+  <%= haircut.about %><br>
+  <span class="current-bid"><%= highest_bid(haircut) %></span><br>
+
+  <% if user_signed_in? %>
+    <%= link_to "Bid", show_haircut_path(haircut.url), class: 'make-a-bid' %>
+  <% elsif admin_signed_in? %>
+    <%= link_to "Show", show_haircut_path(haircut.url) %>
+    <%= link_to "Edit", edit_haircut_path(haircut.url) %>
+    <%= link_to "Delete", haircut_path(haircut), method: "delete", confirm: "Are you sure?" %></p>
+  <% else %>
+    <%= link_to "Login to Bid", login_path, class: 'make-a-bid--login', data: { bid_on: haircut.url } %>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <div id="place_bid_on_<%= haircut.id %>_wrap" style="display: none;">
+      <%= simple_form_for [haircut, haircut.bids.build], html: { class: "place-bid place-bid-on-#{haircut.id}", data: { haircut: haircut.id } } do |f| %>
+        <%= f.input :amount %>
+        <span class="bid_terms">* By submitting this bid you agree to pay this amount in full on the day of the event.</span>
+        <%= f.submit 'Place Bid' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

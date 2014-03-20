@@ -28,7 +28,7 @@ module HaircutsHelper
   end
 
   def format_date(date)
-    date.in_time_zone('Mountain Time (US & Canada)').strftime('%B %d, %Y, %I:%M%P')
+    date.strftime('%B %d, %Y, %I:%M%P')
   end
 
   private

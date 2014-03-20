@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302062404) do
+ActiveRecord::Schema.define(version: 20140318225244) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140302062404) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "first_name"
+    t.text     "invite_code"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree

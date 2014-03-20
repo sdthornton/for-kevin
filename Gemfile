@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.3'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.2'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -35,11 +35,14 @@ gem 'devise'
 gem 'simple_form'
 gem 'paperclip', '~> 4.1'
 gem 'paperclip-optimizer', git: 'git@github.com:sdthornton/paperclip-optimizer.git'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'sitemap'
+gem 'kaminari', '~> 0.15.1'
+gem 'metamagic'
+gem 'figaro'
 
 group :development do
   gem 'better_errors'
+  gem 'brakeman', require: false
 end
 
 # Use ActiveModel has_secure_password

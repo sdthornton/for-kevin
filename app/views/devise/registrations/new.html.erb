@@ -12,6 +12,9 @@
     <%= f.input :email, :required => true %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
+    <% if resource_name.to_s == 'admin' %>
+      <%= f.input :invite_code, as: :string, :required => true %>
+    <% end %>
   </div>
 
   <div class="form-actions">

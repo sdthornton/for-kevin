@@ -3,6 +3,7 @@ haircut = {
   name: @haircut.member,
   hash: @haircut.url,
   url: haircut_route(@haircut.url),
+  post_path: haircut_bids_path(@haircut),
   photo: photo_url(@haircut),
   about_me: @haircut.about,
   highest_bid: highest_bid(@haircut)

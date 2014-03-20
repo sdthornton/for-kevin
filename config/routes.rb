@@ -3,11 +3,12 @@ ForKevin::Application.routes.draw do
 
   devise_for :admins, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
 
-  devise_for :users, path: 'user'
+  devise_for :users, path: 'user', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
+
   devise_scope :user do
-    get 'login', to: 'devise/sessions#new'
-    get 'logout', to: 'devise/sessions#destroy'
-    get 'register', to: 'devise/registrations#new'
+    get '/login' => 'devise/sessions#new', as: 'login'
+    get '/logout' => 'devise/sessions#destroy', as: 'logout'
+    get '/register' => 'devise/registrations#new', as: 'register'
   end
 
   resources :haircuts, except: [:show, :edit] do
@@ -17,6 +18,7 @@ ForKevin::Application.routes.draw do
   scope 'haircuts' do
     get ':url' => 'haircuts#show', as: 'show_haircut'
     get ':url/edit' => 'haircuts#edit', as: 'edit_haircut'
+    get 'page/:page' => 'haircuts#index'
   end
 
   # scope 'admin' do

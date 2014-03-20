@@ -29,4 +29,8 @@ class Haircut < ActiveRecord::Base
   def build_url
     self.url = self.member.parameterize.underscore.to_s unless self.member.blank?
   end
+
+  def self.search(query)
+    where("member LIKE ?", "%#{query}%")
+  end
 end

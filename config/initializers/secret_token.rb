@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-ForKevin::Application.config.secret_key_base = 'db4595a2d7ffcf05166477f98f477f7d9fe6b8e269fa0bcf8e3215bd785f872375a88ef07877505109ca45b98f4d9492e16b434c85fbde5a3733c4eae5fde4bd'
+ForKevin::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']

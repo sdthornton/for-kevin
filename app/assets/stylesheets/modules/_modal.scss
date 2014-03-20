@@ -11,6 +11,8 @@
 }
 
 .modal-background {
+  @extend %use-gpu;
+  @extend %cursor-pointer;
   background: #000;
   background: rgba(0,0,0,0.75);
   display: block;
@@ -24,13 +26,32 @@
 }
 
 .modal {
+  @extend %cursor-default;
   background: #fff;
   border-radius: 5px;
-  max-height: 96%;
-  max-width: 96%;
-  overflow: hidden;
+  max-height: 80%;
+  max-width: 80%;
+  overflow: auto;
   padding: 10px;
   position: absolute;
-  top: 30px;
+  top: 10%;
   z-index: 100;
+}
+
+.close-modal {
+  @extend %transition-all;
+  color: #aaa;
+  font-size: 1.5em;
+  height: 1.35em;
+  line-height: 1.35;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  width: 1.5em;
+
+  @include hover {
+    color: #111;
+  }
 }
