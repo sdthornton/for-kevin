@@ -1,3 +1,10 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 <p><strong><%= bid_total %> raised so far</strong></p>
+<p>Time Left: <%= time_left_to_bid[:days] %>:<%= time_left_to_bid[:hours] %>:<%= time_left_to_bid[:minutes] %></p>
+
+<p>
+  <% @haircuts.each do |haircut| %>
+    <%= render partial: "/haircuts/haircut", locals: { haircut: haircut } %>
+  <% end %>
+</p>

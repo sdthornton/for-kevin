@@ -7,11 +7,17 @@
 
   <% unless @bids.empty? %>
     <table>
+      <tr>
+        <th>Amount</th>
+        <th>Bidder Name</th>
+        <th>Bidder Email</th>
+        <th>Placed On</th>
       <% @bids.order('amount DESC').each do |bid| %>
         <tr>
-          <td><%= number_to_currency(bid.amount) %></td>
-          <td><%= bid.user.name %></td>
-          <td><%= bid.user.email %></td>
+          <td data-title="Amount"><%= number_to_currency(bid.amount) %></td>
+          <td data-title="Bidder Name"><%= bid.user.name %></td>
+          <td data-title="Bidder Email"><%= bid.user.email %></td>
+          <td data-title="Placed On"><%= format_date(bid.created_at) %></td>
         </tr>
       <% end %>
     </table>

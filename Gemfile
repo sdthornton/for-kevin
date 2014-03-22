@@ -43,6 +43,7 @@ gem 'figaro'
 group :development do
   gem 'better_errors'
   gem 'brakeman', require: false
+  gem 'bullet'
 end
 
 # Use ActiveModel has_secure_password

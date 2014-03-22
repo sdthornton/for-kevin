@@ -11,17 +11,17 @@ namespace 'CutTheChi', (exports) ->
     loginToBid: ->
       $('.make-a-bid--login').on 'click', (e) =>
         bidOn = $(e.target).data('bid-on')
-        document.cookie="afterLoginShow=#{bidOn}"
+        document.cookie = "after_login_show=#{bidOn};path=/"
 
     showAfterLogin: ->
-      if "; #{document.cookie}".indexOf('afterLoginShow=') > 0
-        parts = "; #{document.cookie}".split("; afterLoginShow=")
+      if "; #{document.cookie}".indexOf('after_login_show=') > 0
+        parts = "; #{document.cookie}".split("; after_login_show=")
         if parts.length == 2
           haircut = parts.pop().split(";").shift()
           url = "/haircuts/#{haircut}"
           @showHaircut(url)
 
-        document.cookie = "afterLoginShow=; expires=Thu, 01 Jan 1970 00:00:01 GMT;"
+      document.cookie = "after_login_show=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;"
 
     bindShowBid: ->
       $('.make-a-bid').on 'click.bindBidLink', (e) =>
@@ -91,6 +91,6 @@ namespace 'CutTheChi', (exports) ->
         e.preventDefault()
         Turbolinks.visit $('#haircut_search_link').attr('href')
       .find('#search').on 'keyup.watchSearchInput', (e) =>
-        $('#haircut_search_link').attr 'href', "/haircuts?search=#{$(e.target).val()}"
+        $('#haircut_search_link').attr 'href', "/haircuts?#{$('#search_haircuts').serialize()}"
 
 

@@ -12,7 +12,7 @@ ForKevin::Application.routes.draw do
   end
 
   resources :haircuts, except: [:show, :edit] do
-    resources :bids
+    resources :bids, except: [:edit, :update]
   end
 
   scope 'haircuts' do

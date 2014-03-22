@@ -1,6 +1,6 @@
 module HaircutsHelper
   def photo_url(haircut)
-    if cookies[:isRetina]
+    if cookies[:is_retina]
       haircut.photo(:retina)
     else
       haircut.photo(:normal)
@@ -25,10 +25,6 @@ module HaircutsHelper
 
   def highest_bidder_email(haircut)
     highest_bid_for(haircut).user.email
-  end
-
-  def format_date(date)
-    date.strftime('%B %d, %Y, %I:%M%P')
   end
 
   private

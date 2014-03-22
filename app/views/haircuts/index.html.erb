@@ -2,10 +2,10 @@
 <p>Find me in app/views/haircuts/index.html.erb</p>
 
 <p>
-  <form action="<%= haircuts_path %>" method="get" id="search_haircuts">
+  <%= simple_form_for :haircut, html: { id: "search_haircuts", method: "get" } do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Members by Name" %>
     <%= submit_tag "Search", id: "haircut_search_submit", name: nil %>
-  </form>
+  <% end %>
 </p>
 
 <div class="outer">

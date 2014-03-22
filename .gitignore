@@ -7,12 +7,15 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore bundler-generated bin-stubs
+bin/
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log/
 /tmp
 
 # Ignore haircut photo uploads
@@ -23,3 +26,6 @@ public/system
 
 # Ignore application configuration
 /config/application.yml
+
+# OSX crap
+.DS_Store
