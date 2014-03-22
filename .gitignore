@@ -29,3 +29,7 @@ public/system
 
 # OSX crap
 .DS_Store
+
+# Rbenv and rvm
+.ruby-gemset
+.ruby-version
