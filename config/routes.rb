@@ -1,6 +1,8 @@
 ForKevin::Application.routes.draw do
   root 'home#index'
 
+  get 'about' => 'home#about'
+
   devise_for :admins, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
 
   devise_for :users, path: 'user', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }

@@ -3,26 +3,20 @@
 <head>
   <%= metamagic title: "Cut the Chi" %>
   <script>0>("; "+document.cookie).indexOf("; is_retina=")&&(document.cookie="is_retina= "+(1.25<=window.devicePixelRatio)+";path=/;",1.25<=window.devicePixelRatio&&window.location.reload());</script>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Arvo&text=0123456789' rel='stylesheet' type='text/css'>
+  <!-- <link rel="stylesheet" href="http://basehold.it/16"> -->
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class="hover">
+  <%= render partial: "/shared/nav" %>
+  <%= yield %>
 
-<% if admin_signed_in? %>
-  Signed in as admin | <%= link_to "Log out", destroy_admin_session_path, method: :delete %>
-<% elsif user_signed_in? %>
-  Signed in as user | <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to "Log in", login_path %>
-<% end %>
-
-<%= yield %>
-
-<%= content_for :javascript do %>
-  <%= javascript_tag 'new CutTheChi.FasterPainting()' %>
-<% end %>
-<%= yield :javascript %>
-
+  <%= content_for :javascript do %>
+    <%= javascript_tag 'new CutTheChi.FasterPainting();' %>
+  <% end %>
+  <%= yield :javascript %>
 </body>
 </html>

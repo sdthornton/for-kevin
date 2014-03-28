@@ -24,14 +24,43 @@
   }
 }
 
-@function calculateRem($size) {
-  $remSize: $size / 16px;
-  @return $remSize * 1rem;
+@function calc-rem($size) {
+  @if $size == 0 {
+    @return 0;
+  } @else {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+  }
 }
 
 @mixin font-size($size) {
   font-size: $size;
-  font-size: calculateRem($size);
+  font-size: calc-rem($size);
+}
+
+@mixin line-height($size) {
+  line-height: $size;
+  line-height: calc-rem($size);
+}
+
+@mixin padding($top, $right: null, $bottom: null, $left: null) {
+  @if $right == null and $bottom == null and $left == null {
+    padding: $top;
+    padding: calc-rem($top); }
+  @if $right != null and $bottom == null and $left == null {
+    padding: $top $right;
+    padding: calc-rem($top) calc-rem($right); }
+  @if $right != null and $bottom != null and $left == null {
+    padding: $top $right $bottom;
+    padding: calc-rem($top) calc-rem($right) calc-rem($bottom); }
+  @if $right != null and $bottom != null and $left != null {
+    padding: $top $right $bottom $left;
+    padding: calc-rem($top) calc-rem($right) calc-rem($bottom) calc-rem($left); }
+}
+
+@mixin rem($property, $value) {
+  #{$property}: $value;
+  #{$property}: calc-rem($value);
 }
 
 @mixin keyframes($animation-name) {
@@ -126,7 +155,7 @@
 
 %display-block { display: block; }
 
-%display-inline { display: inline-block; }
+%display-inline-block { display: inline-block; }
 
 %display-flex {
   display: -webkit-box;
@@ -141,6 +170,18 @@
 
 %cursor-pointer { cursor: pointer; }
 %cursor-default { cursor: default; }
+
+%color-black { color: $black; }
+%color-white { color: $white; }
+
+%background-ltgray { background: $lt-gray; }
+%background-black { background: $black; }
+
+%text-align-center { text-align: center; }
+%text-align-left { text-align: left; }
+%text-align-right { text-align: right; }
+
+%bold { font-weight: bold; }
 
 %border-box {
   -webkit-box-sizing: border-box;

@@ -1,0 +1,17 @@
+.home-banner {
+  @extend %clearfix;
+  @extend %text-align-center;
+  @extend %color-white;
+  @include padding(135px, 0, 54px);
+  background: $red image-url('haircut_background.jpg') center center no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.home-banner__h1 {
+  margin-bottom: 0;
+}
+
+.home-banner__p {
+  margin-bottom: 0;
+}

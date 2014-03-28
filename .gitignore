@@ -33,3 +33,6 @@ public/system
 # Rbenv and rvm
 .ruby-gemset
 .ruby-version
+
+# Ignore Brakeman output
+output.*

@@ -1,0 +1,146 @@
+.main-header__home {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.main-nav {
+  @extend %clearfix;
+  @extend %text-align-center;
+}
+
+.main-nav__site-links {
+  @extend %float-left;
+  @extend %text-align-left;
+}
+
+.main-nav__user-links {
+  @extend %float-right;
+  @extend %text-align-right;
+}
+
+.main-nav__site-link,
+.main-nav__user-link {
+  @extend %color-black;
+  @include line-height(81px);
+  text-decoration: none;
+
+  .main-header__home & {
+    @extend %color-white;
+  }
+}
+
+.main-nav__site-link {
+  @include rem(margin-right, 24px);
+}
+
+.main-nav__user-link {
+  @include rem(margin-left, 24px);
+}
+
+.main-nav__site-link--logo {
+  @extend %bold;
+  @include font-size(30px);
+}
+
+.open-menu:before {
+  @extend %display-inline-block;
+  @include font-size(20px);
+  @include rem(margin-right, 4px);
+  content: '\2630';
+}
+
+.site-nav {
+  @extend %text-align-center;
+  background: $dk_blue;
+  display: table;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: all 0.3s ease-in-out;
+  visibility: hidden;
+  width: 100%;
+  -webkit-transform: scale(0.9) translate3d(0,-200px,0);
+
+  &.open {
+    opacity: 1.0;
+    visibility: visible;
+    -webkit-transform: scale(1) translate3d(0,0,0);
+  }
+}
+
+.site-nav__inner-wrap {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.site-nav__close {
+  @include rem(right, 36px);
+  @include rem(top, 12px);
+  @include font-size(81px);
+  color: darken($white, 30%);
+  line-height: 1;
+  position: absolute;
+  transition: color 0.2s linear;
+
+  &:hover {
+    @extend %color-white;
+    text-decoration: none;
+  }
+}
+
+.site-nav__link {
+  @extend %color-white;
+  @extend %display-block;
+  @include font-size(36px);
+  @include padding(16px);
+}
+
+// .bidding-info {
+//   @extend %background-ltgray;
+//   @include padding(16px, 0);
+// }
+
+// .bidding-total {
+//   float: left;
+// }
+
+// .bidding-time-left {
+//   float: right;
+// }
+
+// .time-left--days,
+// .time-left--hours,
+// .time-left--minutes {
+//   @extend %text-center;
+//   @include font-size(24px);
+//   display: inline-block;
+//   position: relative;
+//   vertical-align: top;
+
+//   &:after {
+//     display: block;
+//     @include font-size(13.318px);
+//   }
+// }
+
+// .time-left--days:after {
+//   content: "Days";
+// }
+
+// .time-left--hours:after {
+//   content: "Hours";
+// }
+
+// .time-left--minutes:after {
+//   content: "Mins";
+// }
+
+// .time-left-separator {
+//   @include padding(5px, 0);
+//   display: inline-block;
+//   vertical-align: top;
+// }
