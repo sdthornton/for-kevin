@@ -3,10 +3,11 @@
 
 /* Vendor Assets */
 @import "nprogress";
-// @import "ionicons";
+@import "ionicons";
 
 /* Vars and Mixins */
 @import "variables";
+@import "flex_mixins";
 @import "mixins";
 
 /* Stylesheets */
@@ -14,3 +15,5 @@
 @import "global";
 @import "modules/*";
 @import "views/*";
+@import "media/*";
+@import "print";

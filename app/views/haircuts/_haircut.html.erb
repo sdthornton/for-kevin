@@ -1,18 +1,22 @@
-<div class="item" id="<%= haircut.url %>_haircut" data-haircut="<%= haircut.url %>">
-  <%= image_tag(photo_url(haircut), width: "364", height: "242") %><br>
-  <p><strong><%= haircut.member %></strong><br><br>
-  <%= haircut.about %><br>
-  <span class="current-bid"><%= highest_bid(haircut) %></span><br>
+<div class="haircut-item" id="<%= haircut.url %>_haircut" data-haircut="<%= haircut.url %>">
+  <%= image_tag(photo_url(haircut), width: "364", height: "242", class: "haircut-item__img") %>
+  <div class="haircut-item__current-bid"><%= "Current Bid: " unless highest_bid(haircut) === "No bids yet" %><%= highest_bid(haircut) %></div>
+  <div class="haircut-item__body">
+    <h4><%= haircut.member %></h4>
+    <span><%= haircut.about %></span>
+  </div>
 
-  <% if user_signed_in? %>
-    <%= link_to "Bid", show_haircut_path(haircut.url), class: 'make-a-bid' %>
-  <% elsif admin_signed_in? %>
-    <%= link_to "Show", show_haircut_path(haircut.url) %>
-    <%= link_to "Edit", edit_haircut_path(haircut.url) %>
-    <%= link_to "Delete", haircut_path(haircut), method: "delete", confirm: "Are you sure?" %></p>
-  <% else %>
-    <%= link_to "Login to Bid", login_path, class: 'make-a-bid--login', data: { bid_on: haircut.url } %>
-  <% end %>
+  <div class="haircut-item__links">
+    <% if user_signed_in? %>
+      <%= link_to "Place a Bid", show_haircut_path(haircut.url), class: 'make-a-bid' %>
+    <% elsif admin_signed_in? %>
+      <%= link_to "Show", show_haircut_path(haircut.url) %>
+      <%= link_to "Edit", edit_haircut_path(haircut.url) %>
+      <%= link_to "Delete", haircut_path(haircut), method: "delete", confirm: "Are you sure?" %></p>
+    <% else %>
+      <%= link_to "Login to Bid", login_path, class: 'make-a-bid--login', data: { bid_on: haircut.url } %>
+    <% end %>
+  </div>
 
   <% if user_signed_in? %>
     <div id="place_bid_on_<%= haircut.id %>_wrap" style="display: none;">

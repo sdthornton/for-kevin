@@ -20,4 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  views:
+    pagination:
+      previous: "<i class='ion-ios7-arrow-left'></i>"
+      next: "<i class='ion-ios7-arrow-right'></i>"

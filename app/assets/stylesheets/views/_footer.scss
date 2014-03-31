@@ -1,0 +1,106 @@
+.main-footer {
+  @extend %text-align-center;
+  @extend %background-gray;
+}
+
+.bidding-info {
+  @extend %background-white;
+  background: $lt_gray_alt;
+}
+
+.bidding-info__icon {
+  @extend %display-inline-block;
+  @include font-size(36px);
+  @include rem(margin-right, 12px);
+  color: lighten($dk_blue, 20%);
+  vertical-align: top;
+}
+
+.bidding-count,
+.bidding-total,
+.bidding-time-remaining {
+  @extend %float-left;
+  @extend %text-align-center;
+  width: 33.33333333333333%;
+}
+
+.bidding-count__h5,
+.bidding-total__h5,
+.bidding-time-remaining__h5 {
+  @extend %display-block;
+  @include rem(margin-bottom, 8px);
+  color: #999;
+  vertical-align: top;
+}
+
+.bidding-count__sum,
+.bidding-total__sum {
+  @extend %display-block;
+  @include font-size(36px);
+  line-height: 1;
+}
+
+.bidding-time-remaining__time {
+  @extend %display-block;
+  line-height: 1;
+}
+
+.time-left--days,
+.time-left--hours,
+.time-left--minutes {
+  @include font-size(36px);
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+
+  &:after {
+    @include rem(padding-top, 4px);
+    @include font-size(13.318px);
+    display: block;
+  }
+}
+
+.time-left--days:after {
+  content: "Days";
+}
+
+.time-left--hours:after {
+  content: "Hours";
+}
+
+.time-left--minutes:after {
+  content: "Mins";
+}
+
+.time-left-separator {
+  @include padding(5px, 0);
+  display: inline-block;
+  vertical-align: top;
+}
+
+.footer-nav {
+  @extend %display-block;
+}
+
+.footer-nav__link {
+  @include rem(margin-right, 8px);
+  @include rem(margin-left, 8px);
+  color: $dk_blue;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.footer-nav__separator {
+  color: lighten($dk_blue, 20%);
+}
+
+.copyright {
+  @extend %display-block;
+  @include rem(margin-top, 16px);
+}

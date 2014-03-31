@@ -172,9 +172,14 @@
 %cursor-default { cursor: default; }
 
 %color-black { color: $black; }
+%color-dkblue { color: $dk_blue; }
 %color-white { color: $white; }
 
+%background-white { background: $white; }
 %background-ltgray { background: $lt-gray; }
+%background-gray { background: $gray; }
+%background-dkblue { background: $dk-blue; }
+%background-blue { background: $blue; }
 %background-black { background: $black; }
 
 %text-align-center { text-align: center; }

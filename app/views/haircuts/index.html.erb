@@ -1,27 +1,62 @@
-<h1>Haircuts#index</h1>
-<p>Find me in app/views/haircuts/index.html.erb</p>
+<section class="haircut-info">
+  <div class="container">
+    <%= image_tag "haircut_info_img.jpg", width: "300", height: "300",
+          class: "haircut-info__img" %>
+    <div class="haircut-info__inner-wrap">
+      <h1 class="heading">Make a bid. Make a difference.</h1>
+      <p>
+        Every dollar you give is another dollar we'll give to
+        <a href="http://www.ssbtr.org/" target="_blank">Students Supporting
+        Brain Tumor Research</a>. And winning a bid means you'll get to give a
+        member a haircut... any haircut. Make it crazy. Made it handsome. Make
+        it revolting. And we promise we'll keep it. Well, for at least a day.
+      </p>
+      <%= link_to "Learn more about the event", about_path,
+          class: "button haircut-info__learn-more-button" %>
+    </div>
+  </div>
+</section>
+<section class="haircut-search">
+  <div class="container container--short">
+    <%= simple_form_for :haircut,
+        html: { id: "search_haircuts", class: "haircut-form", method: "get",
+        role: "search" } do %>
+      <label for="search" class="search-label">Search For a Member</label>
+      <div class="search-wrapper">
+        <i class="ion-android-search icon search-icon"></i>
+        <%= text_field_tag :search, params[:search],
+            class: "text-input search-input", placeholder: "Member's name" %>
+      </div>
+      <%= submit_tag "Search", id: "haircut_search_submit",
+          class: "button search-button", name: nil %>
+    <% end %>
+  </div>
+</section>
+<section class="haircuts" id="haricuts">
+  <a name="haircuts"></a>
+  <div class="container">
+    <h1 class="heading haircuts__heading">
+      Our Members
+      <%= render partial: "filter_haircuts" %>
+    </h1>
 
-<p>
-  <%= simple_form_for :haircut, html: { id: "search_haircuts", method: "get" } do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Members by Name" %>
-    <%= submit_tag "Search", id: "haircut_search_submit", name: nil %>
-  <% end %>
-</p>
-
-<div class="outer">
-  <div class="wrap">
     <% if @haircuts.empty? %>
       <p>Sorry, no results found</p>
     <% end %>
 
+    <div class="haircut-items" id="haircuts-inner-wrapper">
+      <%= render @haircuts unless @haircuts.empty? %>
+    </div>
+
     <% if @search %>
-      <p><%= link_to "Show All", haircuts_path %></p>
+      <%= link_to "Show All", haircuts_path %>
     <% end %>
 
-    <%= render @haircuts unless @haircuts.empty? %>
-    <%= paginate @haircuts %>
+    <div class="paginate-wrapper" id="paginate-wrapper">
+      <%= paginate @haircuts %>
+    </div>
   </div>
-</div>
+</section>
 
 <%= content_for :javascript do %>
   <%= javascript_tag 'new CutTheChi.Haircut()' %>

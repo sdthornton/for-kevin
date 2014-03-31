@@ -1,0 +1,33 @@
+.text-input {
+  @include rem(padding, 8px);
+  border: solid 1px $gray;
+  color: $dk_blue;
+}
+
+.button-wrapper {
+  @extend %clearfix;
+  @extend %text-align-center;
+  display: block;
+}
+
+.button {
+  @extend %color-white;
+  @extend %background-blue;
+  @extend %text-align-center;
+  @include padding(8px, 16px);
+  border-radius: 4px;
+
+  transition: all 0.2s ease-in-out;
+
+  @include hover {
+    background: lighten($blue, 10%);
+    text-decoration: none;
+  }
+}
+
+.lg-button {
+  @extend .button;
+  @include padding(16px, 36px);
+  display: block;
+  margin: 0 auto;
+}

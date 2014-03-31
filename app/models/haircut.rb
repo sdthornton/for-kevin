@@ -34,6 +34,10 @@ class Haircut < ActiveRecord::Base
     where("member LIKE ?", "%#{query}%")
   end
 
+  def self.filter(letter)
+    where("member LIKE ?", "#{letter}%")
+  end
+
   def self.random(n)
     ids = Haircut.pluck(:id).sample(n)
     Haircut.where(id: ids)

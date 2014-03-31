@@ -1,8 +1,12 @@
-.main-header__home {
+.main-header--home {
   left: 0;
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.main-header {
+  border-bottom: solid 1px $lt_gray_alt;
 }
 
 .main-nav {
@@ -23,16 +27,18 @@
 .main-nav__site-link,
 .main-nav__user-link {
   @extend %color-black;
-  @include line-height(81px);
+  @include line-height(101.135px);
   text-decoration: none;
 
-  .main-header__home & {
+  .main-header--home & {
     @extend %color-white;
   }
 }
 
 .main-nav__site-link {
+  @extend %display-inline-block;
   @include rem(margin-right, 24px);
+  vertical-align: middle;
 }
 
 .main-nav__user-link {
@@ -41,14 +47,7 @@
 
 .main-nav__site-link--logo {
   @extend %bold;
-  @include font-size(30px);
-}
-
-.open-menu:before {
-  @extend %display-inline-block;
-  @include font-size(20px);
-  @include rem(margin-right, 4px);
-  content: '\2630';
+  @include font-size(32px);
 }
 
 .site-nav {
@@ -63,6 +62,8 @@
   transition: all 0.3s ease-in-out;
   visibility: hidden;
   width: 100%;
+  z-index: 1000;
+
   -webkit-transform: scale(0.9) translate3d(0,-200px,0);
 
   &.open {
@@ -79,68 +80,32 @@
 
 .site-nav__close {
   @include rem(right, 36px);
-  @include rem(top, 12px);
-  @include font-size(81px);
-  color: darken($white, 30%);
+  @include rem(top, 16px);
+  @include font-size(54px);
+  color: lighten($dk_blue, 50%);
   line-height: 1;
   position: absolute;
-  transition: color 0.2s linear;
+  transition: color 0.2s ease-in-out;
 
-  &:hover {
+  @include hover {
     @extend %color-white;
     text-decoration: none;
   }
 }
 
-.site-nav__link {
-  @extend %color-white;
+.site-nav__li {
   @extend %display-block;
-  @include font-size(36px);
-  @include padding(16px);
+  @include rem(margin-top, 32px);
+  @include rem(margin-bottom, 32px);
 }
 
-// .bidding-info {
-//   @extend %background-ltgray;
-//   @include padding(16px, 0);
-// }
+.site-nav__link {
+  @extend %color-white;
+  @include font-size(36px);
+  transition: color 0.2s ease-in-out;
 
-// .bidding-total {
-//   float: left;
-// }
-
-// .bidding-time-left {
-//   float: right;
-// }
-
-// .time-left--days,
-// .time-left--hours,
-// .time-left--minutes {
-//   @extend %text-center;
-//   @include font-size(24px);
-//   display: inline-block;
-//   position: relative;
-//   vertical-align: top;
-
-//   &:after {
-//     display: block;
-//     @include font-size(13.318px);
-//   }
-// }
-
-// .time-left--days:after {
-//   content: "Days";
-// }
-
-// .time-left--hours:after {
-//   content: "Hours";
-// }
-
-// .time-left--minutes:after {
-//   content: "Mins";
-// }
-
-// .time-left-separator {
-//   @include padding(5px, 0);
-//   display: inline-block;
-//   vertical-align: top;
-// }
+  @include hover {
+    color: lighten($dk_blue, 50%);
+    text-decoration: none;
+  }
+}

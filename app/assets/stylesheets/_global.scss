@@ -13,21 +13,56 @@ html {
 }
 
 body {
-  @extend %color-black;
+  @extend %color-dkblue;
+  background: $gray;
   -webkit-font-smoothing: antialiased;
   font: 300 100%/1.45 "Roboto", "Helvetica-Neue", Helvetica, Arial, sans-serif;
+}
+
+.main-content-wrapper {
+  @extend %background-white;
 }
 
 a {
   color: $red;
   text-decoration: none;
 
-  &:hover {
+  @include hover {
     text-decoration: underline;
   }
 }
 
 h1 {
   @include font-size(45px);
+  @include rem(margin-top, 36px);
+  @include rem(margin-bottom, 36px);
   font-weight: 300;
+}
+
+h2 {
+  @include font-size(36px);
+  @include rem(margin-top, 16px);
+  @include rem(margin-bottom, 16px);
+}
+
+h3 {
+  @include font-size(24px);
+  @include rem(margin-top, 16px);
+  @include rem(margin-bottom, 13px);
+}
+
+h4 {
+  @include font-size(16px);
+  @include rem(margin-top, 16px);
+  @include rem(margin-bottom, 8.879px);
+}
+
+h5 {
+  @include font-size(13px);
+  margin: 0;
+}
+
+p {
+  @include rem(margin-top, 16px);
+  @include rem(margin-bottom, 16px);
 }

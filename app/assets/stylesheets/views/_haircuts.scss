@@ -1,0 +1,116 @@
+.haircut-info {
+  @extend %background-white;
+}
+
+.haircut-info__learn-more-button {
+  @extend %float-left;
+  @include rem(margin-top, 24px);
+}
+
+.haircut-info__inner-wrap {
+  @extend %clearfix;
+}
+
+.haircut-info__img {
+  @extend %float-right;
+  @include rem(margin-left, 81px);
+  border-radius: 150px;
+}
+
+.haircut-search {
+  @extend %background-dkblue;
+  @extend %text-align-right;
+  @extend %color-white;
+}
+
+.search-wrapper {
+  @include rem(margin-left, 16px);
+  @include rem(margin-right, 16px);
+}
+
+.search-label {
+  @include rem(line-height, 39px);
+}
+
+.search-icon {
+  @include rem(margin-right, -30px);
+  @include rem(margin-left, 10px);
+  color: lighten($dk_blue, 20%);
+  position: relative;
+}
+
+.haircuts {
+  @extend %background-ltgray;
+}
+
+.search-input {
+  @include rem(padding-left, 36px);
+  @include rem(width, 341.333px);
+}
+
+.show-haircut {
+  height: auto;
+  left: 50%;
+  margin-left: -384px;
+  width: 768px;
+}
+
+.search-label,
+.search-wrapper,
+.search-button {
+  @extend %display-inline-block;
+}
+
+.haircuts__heading {
+  // @extend %text-align-center;
+}
+
+.filter-text {
+  @include rem(margin-right, 8px);
+}
+
+.paginate-wrapper {
+  @extend %text-align-center;
+  @include rem(margin-top, 24px);
+}
+
+.pagination {
+  @extend %display-inline-block;
+  margin: 0 auto;
+}
+
+.pagination-link,
+.pagination-span.current,
+.pagination-span.no-link {
+  @extend %float-left;
+  @extend %background-dkblue;
+  @include padding(6px, 12px);
+}
+
+.pagination-link {
+  @extend %color-white;
+
+  @include hover {
+    background: $red;
+    text-decoration: none;
+  }
+}
+
+.pagination-span.next,
+.pagination-span.prev {
+  @extend %color-white;
+  @extend %float-left;
+}
+
+.pagination-span.current {
+  @extend %float-left;
+  color: lighten($dk_blue, 50%);
+}
+
+.pagination-span.prev {
+  margin-right: 1px;
+}
+
+.pagination-span.next {
+  margin-left: 1px;
+}

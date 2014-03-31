@@ -1,0 +1,2 @@
+$('#haircuts-inner-wrapper').html('<%= escape_javascript render(@haircuts) %>');
+$('#paginate-wrapper').html('<%= escape_javascript(paginate(@haircuts, :remote => true).to_s) %>')

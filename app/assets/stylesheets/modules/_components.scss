@@ -1,5 +1,6 @@
 .container {
   @extend %clearfix;
+  @include padding(68px, 0);
   margin: 0 auto;
   max-width: 1152px;
   width: 100%;
@@ -7,4 +8,27 @@
 
 .container--small {
   max-width: 768px;
+}
+
+.container--short {
+  @include padding(36px, 0);
+}
+
+.container--no-padding {
+  padding: 0;
+}
+
+.heading {
+  margin-top: 0;
+}
+
+.subheading {
+  @extend %display-block;
+  @include font-size(16px);
+}
+
+.subhead {
+  @include font-size(16px);
+  @include rem(margin-top, -8px);
+  display: block;
 }

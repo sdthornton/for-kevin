@@ -8,19 +8,24 @@
       Let's cut to the chase. It's U of A Theta Chi's annual philanthropy
       event. We provide the hair and you provide the cut... and the money too.
       But it all goes to a good cause. We're supporting brain tumor research,
-      and when you bid you'll be supporting it too. You'll be our 'mane'
-      associates in the fight against cancer. That's right, give a guy a funny
-      haircut and give cancer the ol' one, two. You don't have to be Sherlock
-      Combs to deduce that this is a great thing, so play your part.
+      and when you bid you'll be supporting it too. You'll be our
+      &ldquo;mane&rdquo; associates in the fight against cancer. That's right,
+      give a guy a funny haircut and give cancer the ol' one, two. You don't
+      have to be Sherlock Combs to deduce that this is a great thing,
+      so play your part.
     </p>
   </div>
 </section>
-
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-
-<p>
-  <% @haircuts.each do |haircut| %>
-    <%= render partial: "/haircuts/haircut", locals: { haircut: haircut } %>
-  <% end %>
-</p>
+<section class="home-haircuts">
+  <div class="container">
+    <div class="haircut-items">
+      <% @haircuts.each do |haircut| %>
+        <%= render partial: "/haircuts/haircut", locals: { haircut: haircut } %>
+      <% end %>
+    </div>
+    <div class="button-wrap">
+      <%= link_to "See All Members", haircuts_path,
+          class: "lg-button button--see-all-members" %>
+    </div>
+  </div>
+</section>

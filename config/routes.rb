@@ -20,6 +20,7 @@ ForKevin::Application.routes.draw do
   scope 'haircuts' do
     get ':url' => 'haircuts#show', as: 'show_haircut'
     get ':url/edit' => 'haircuts#edit', as: 'edit_haircut'
+    get 'filter/:letter' => 'haircuts#index', as: 'filter_haircuts'
     get 'page/:page' => 'haircuts#index'
   end
 

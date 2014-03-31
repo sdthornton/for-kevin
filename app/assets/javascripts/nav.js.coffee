@@ -8,12 +8,26 @@ namespace 'CutTheChi', (exports) ->
       @bindMenuLinks()
 
     bindMenuLinks: ->
-      @$open.on 'click', (e) =>
+      @$open.on 'click.openMenu', (e) =>
         e.preventDefault()
         e.stopPropagation()
-        @$menu.removeClass('closed').addClass('open')
+        @openMenu()
 
-      @$close.on 'click', (e) =>
+      @$close.on 'click.closeMenu', (e) =>
         e.preventDefault()
         e.stopPropagation()
-        @$menu.removeClass('open').addClass('closed')
+        @closeMenu()
+
+    bindEscKey: ->
+      $(window).on 'keyup.closeMenu', (e) =>
+        e.stopPropagation()
+        if e.keyCode == 27
+          @closeMenu()
+
+    closeMenu: ->
+      @$menu.removeClass('open').addClass('closed')
+      $(window).off('.closeMenu')
+
+    openMenu: ->
+      @$menu.removeClass('closed').addClass('open')
+      @bindEscKey()

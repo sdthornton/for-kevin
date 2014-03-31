@@ -3,10 +3,13 @@ class HaircutsController < ApplicationController
 
   def index
     if params[:search]
-      @haircuts = Haircut.search(params[:search]).order('member ASC').page(params[:page]).per(20)
+      @haircuts = Haircut.search(params[:search]).page(params[:page]).per(4)
+      @search = true
+    elsif params[:letter]
+      @haircuts = Haircut.filter(params[:letter]).order('member ASC').page(params[:page]).per(4)
       @search = true
     else
-      @haircuts = Haircut.order('member ASC').page(params[:page]).per(20)
+      @haircuts = Haircut.order('member ASC').page(params[:page]).per(4)
       @search = false
     end
   end

@@ -32,4 +32,8 @@ module ApplicationHelper
       #{sprintf('%02d',time_left_to_bid[:minutes])}
     </span>".html_safe
   end
+
+  def first_name(name)
+    name.split.first
+  end
 end

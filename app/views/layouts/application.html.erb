@@ -11,8 +11,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="hover">
-  <%= render partial: "/shared/nav" %>
-  <%= yield %>
+  <div class="main-content-wrapper">
+    <%= render partial: "/shared/nav" %>
+    <%= yield %>
+  </div>
+  <%= render partial: "/shared/footer" %>
 
   <%= content_for :javascript do %>
     <%= javascript_tag 'new CutTheChi.FasterPainting();' %>

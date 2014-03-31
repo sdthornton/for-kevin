@@ -1,0 +1,7 @@
+<span class="haircut-filters subheading">
+  <span class="filter-text">Filter:</span>
+  <% ('A'..'Z').to_a.each do |letter| %>
+    <%= link_to letter, filter_haircuts_path(letter),
+        class: "haircut-filter" %>
+  <% end %>
+</span>

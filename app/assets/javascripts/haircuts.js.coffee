@@ -53,7 +53,7 @@ namespace 'CutTheChi', (exports) ->
           dataType: 'json'
         .done (data) =>
           console.log data
-          $("##{data.haircut.hash}_haircut").find('.current-bid').text(data.haircut.highest_bid)
+          $("##{data.haircut.hash}_haircut").find('.haircut-item__current-bid').text("Current Bid: #{data.haircut.highest_bid}")
           @closeModal()
         .fail (jqXHR, textStatus) =>
           console.log "Request failed: #{textStatus}"
@@ -82,7 +82,7 @@ namespace 'CutTheChi', (exports) ->
 
     bindSearch: ->
       searchAnchor = """
-        <a href="/haircuts?search=" id="haircut_search_link" class="button">Search</a>
+        <a href="/haircuts?search=" id="haircut_search_link" class="button search-button">Search</a>
       """
 
       $('#haircut_search_submit').replaceWith(searchAnchor)

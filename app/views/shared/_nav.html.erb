@@ -1,46 +1,55 @@
-<header class="main-header<%= " main-header__home" if controller = "home" && action_name == "index" %>">
+<header class="<%= controller_name == "home" && action_name == "index" ? "main-header--home" : "main-header" %>">
   <nav class="main-nav" role="navigation">
-    <div class="container">
+    <div class="container container--no-padding">
       <div class="main-nav__site-links">
         <%= link_to "cutthechi", root_path, class: "main-nav__site-link main-nav__site-link--logo" %>
-        <a href="javascript:void(0)" class="main-nav__site-link open-menu" id="open_menu">Menu</a>
+        <a href="javascript:void(0)" class="main-nav__site-link open-menu" id="open_menu"><i class="ion-navicon icon-large icon"></i>Menu</a>
       </div>
       <div class="main-nav__user-links">
         <% if admin_signed_in? %>
           <%= link_to "Log out", destroy_admin_session_path, class: "main-nav__user-link", method: :delete %>
         <% elsif user_signed_in? %>
+          <strong class="main-nav__user-link">Welcome <%= first_name(current_user.name) %></strong>
           <%= link_to "Log out", destroy_user_session_path, class: "main-nav__user-link", method: :delete %>
         <% else %>
-          <%= link_to "Register", register_path, class: "main-nav__user-link" %>
-          <%= link_to "Log In", login_path, class: "main-nav__user-link" %>
+          <%= link_to "<i class='ion-person-add icon'></i>Register".html_safe, register_path, class: "main-nav__user-link" %>
+          <%= link_to "<i class='ion-person icon'></i>Log In".html_safe, login_path, class: "main-nav__user-link" %>
         <% end %>
       </div>
     </div>
   </nav>
 
   <nav class="site-nav" id="site_menu" role="navigation">
-    <a href="javascript:void(0)" id="close_menu" class="site-nav__close">&times;</a>
-    <div class="site-nav__inner-wrap">
-      <%= link_to "Home", root_path, class: "site-nav__link" %>
-      <%= link_to "Bidding", haircuts_path, class: "site-nav__link" %>
-      <%= link_to "Buy a Shirt", "#", class: "site-nav__link" %>
-      <%= link_to "The Event", about_path, class: "site-nav__link" %>
-      <%= link_to "The Charity", about_path, class: "site-nav__link" %>
-    </div>
+    <a href="javascript:void(0)" id="close_menu" class="site-nav__close">
+      <i class="ion-ios7-close-empty"></i>
+    </a>
+    <ul class="site-nav__inner-wrap">
+      <li class="site-nav__li">
+        <%= link_to "<i class='ion-home icon--spaced'></i>
+            Home".html_safe, root_path, class: "site-nav__link" %>
+      </li>
+      <li class="site-nav__li">
+        <%= link_to "<i class='ion-person-stalker icon--spaced'></i>
+            Bidding".html_safe, haircuts_path, class: "site-nav__link" %>
+      </li>
+      <li class="site-nav__li">
+        <%= link_to "<i class='ion-ios7-cart icon--spaced'></i>
+            Buy a Shirt".html_safe, "http://thesociallife.com/",
+            target: "_blank", class: "site-nav__link" %>
+      </li>
+      <li class="site-nav__li">
+        <%= link_to "<i class='ion-calendar icon--spaced'></i>
+            The Event".html_safe, about_path, class: "site-nav__link" %>
+      </li>
+      <li class="site-nav__li">
+        <%= link_to "<i class='ion-heart icon--spaced'></i>
+            The Charity".html_safe, "http://www.ssbtr.org/", target: "_blank",
+            class: "site-nav__link" %>
+      </li>
+    </ul>
   </nav>
 </header>
 
 <%= content_for :javascript do %>
   <%= javascript_tag 'new CutTheChi.Nav();' %>
 <% end %>
-
-<!--   <section class="bidding-info" role="complementary">
-    <div class="container">
-      <div class="bidding-total">
-        <%= bid_total %>
-      </div>
-      <div class="bidding-time-left">
-        <%= time_left_formatted %>
-      </div>
-    </div>
-  </section> -->
