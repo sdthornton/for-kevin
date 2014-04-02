@@ -1,5 +1,5 @@
 class HaircutsController < ApplicationController
-  before_filter :authenticate_admin!, except: [:index]
+  before_filter :authenticate_admin!, except: [:index, :show]
 
   def index
     if params[:search]
@@ -32,6 +32,27 @@ class HaircutsController < ApplicationController
   def show
     @haircut = Haircut.find_by!(url: params[:url])
     @bids = @haircut.bids.order('amount DESC')
+
+    if admin_signed_in?
+      respond_to :html, :json
+    elsif user_signed_in?
+      respond_to do |format|
+        format.html {
+          cookies[:show_haircut] = {
+            value: @haircut.url,
+            path: "/"
+          }
+          page = (Haircut.pluck('member').sort.index(@haircut.member) / 20) + 1
+          redirect_to haircuts_path(page: page)
+        }
+        format.json
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to haircuts_path }
+        format.json
+      end
+    end
   end
 
   def edit

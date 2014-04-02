@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-ForKevin::Application.load_tasks
+CutTheChi::Application.load_tasks

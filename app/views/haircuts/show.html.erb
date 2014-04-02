@@ -28,6 +28,7 @@
             <th class="admin-show-haircut__bid-column">Bidder Name</th>
             <th class="admin-show-haircut__bid-column">Bidder Email</th>
             <th class="admin-show-haircut__bid-column">Placed</th>
+            <th class="admin-show-haricut__bid_column"></th>
           </tr>
           <% @bids.each do |bid| %>
             <tr class="admin-show-haircut__bids-row<%= " is-top-bid" if bid == @bids.first %>">
@@ -35,6 +36,9 @@
               <td class="admin-show-haircut__bid-column" data-title="Bidder Name"><%= bid.user.name %></td>
               <td class="admin-show-haircut__bid-column" data-title="Bidder Email"><%= bid.user.email %></td>
               <td class="admin-show-haircut__bid-column" data-title="Placed"><%= format_date(bid.created_at) %></td>
+              <td class="admin-show-haircut__bid-column" data-title="">
+                <%= link_to "Delete", [@haircut, bid], method: "delete", confirm: "Are you sure you want to delete this bid? Once deleted it cannot be recovered.", class: "delete-bid" %>
+              </td>
             </tr>
           <% end %>
         </table>

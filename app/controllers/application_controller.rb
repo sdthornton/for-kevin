@@ -26,12 +26,13 @@ class ApplicationController < ActionController::Base
         request.fullpath != "/admin/password" &&
         request.fullpath != "/admin/logout" &&
         request.fullpath != "/admin" &&
+        request.fullpath != "/" &&
         !request.xhr?)
       session[:previous_url] = request.fullpath
     end
   end
 
   def after_sign_in_path_for(resource)
-    session[:previous_url] || root_path
+    session[:previous_url] || haircuts_path
   end
 end

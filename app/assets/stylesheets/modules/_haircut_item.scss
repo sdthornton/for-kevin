@@ -1,7 +1,7 @@
 .haircut-items {
   @extend %flexbox;
   @include flex-wrap(wrap);
-  @include justify-content(start);
+  @include justify-content(left);
   margin-left: -3%;
 }
 

@@ -171,7 +171,7 @@
 }
 
 .admin-show-haircut__bids {
-  @extend %float-right;
+  @extend %float-left;
 }
 
 .admin-show-haircut__table {
@@ -197,6 +197,10 @@
 
   &.is-top-bid {
     font-weight: bold;
+
+    & .delete-bid {
+      font-weight: 300;
+    }
   }
 }
 

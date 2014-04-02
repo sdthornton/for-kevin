@@ -11,17 +11,17 @@ namespace 'CutTheChi', (exports) ->
     loginToBid: ->
       $('.make-a-bid--login').on 'click', (e) =>
         bidOn = $(e.target).data('bid-on')
-        document.cookie = "after_login_show=#{bidOn};path=/"
+        document.cookie = "show_haircut=#{bidOn};path=/"
 
     showAfterLogin: ->
-      if "; #{document.cookie}".indexOf('after_login_show=') > 0
-        parts = "; #{document.cookie}".split("; after_login_show=")
+      if "; #{document.cookie}".indexOf('show_haircut=') > 0
+        parts = "; #{document.cookie}".split("; show_haircut=")
         if parts.length == 2
           haircut = parts.pop().split(";").shift()
           url = "/haircuts/#{haircut}"
           @showHaircut(url)
 
-      document.cookie = "after_login_show=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;"
+      document.cookie = "show_haircut=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;"
 
     bindShowBid: ->
       $('.make-a-bid').on 'click.bindBidLink', (e) =>

@@ -18,7 +18,6 @@ class BidsController < ApplicationController
   def destroy
   end
 
-
   private
     def bid_params
       params[:bid].permit(:amount)

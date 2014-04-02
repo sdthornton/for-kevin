@@ -1,4 +1,4 @@
-ForKevin::Application.routes.draw do
+CutTheChi::Application.routes.draw do
   root 'home#index'
 
   get 'about' => 'home#about'
