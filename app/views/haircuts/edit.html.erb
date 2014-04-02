@@ -1,6 +1,21 @@
-<%= simple_form_for @haircut do |f| %>
-  <%= f.input :member %>
-  <%= f.input :about %>
-  <%= f.file_field :photo %>
-  <%= f.submit %>
-<% end %>
+<section class="edit-haircut">
+  <div class="container">
+    <div class="edit-haircut__inner-wrapper">
+      <h1 class="heading">Edit <%= @haircut.member %></h1>
+      <%= simple_form_for @haircut do |f| %>
+        <%= f.input :member,
+            label: "Name", input_html: { class: "text-input" },
+            label_html: { class: "text-label" } %>
+        <%= f.input :about, input_html: { class: "text-input" },
+            label_html: { class: "text-label" } %>
+        <div class="upload-haircut-image">
+          <label for="haircut_photo" class="upload-haircut-image__label">
+            Upload a new photo
+          </label>
+          <%= f.file_field :photo, class: "upload-haircut-image__input" %>
+        </div>
+        <%= f.submit "Save Member", class: "button button--save-haircut" %>
+      <% end %>
+    </div>
+  </div>
+</section>

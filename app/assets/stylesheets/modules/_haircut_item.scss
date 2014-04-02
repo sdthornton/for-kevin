@@ -1,15 +1,14 @@
 .haircut-items {
   @extend %flexbox;
   @include flex-wrap(wrap);
-  @include justify-content(flex-start);
+  @include justify-content(start);
   margin-left: -3%;
 }
 
 .haircut-item {
   @extend %background-white;
   @include rem(padding-bottom, 45px);
-  @include rem(margin-top, 16px);
-  @include rem(margin-bottom, 16px);
+  @include rem(margin-bottom, 36px);
   border-bottom: solid 2px darken($lt_gray, 10%);
   box-shadow: 0 0 1px rgba(0,0,0,0.1);
   margin-left: 3%;
@@ -57,4 +56,9 @@
   bottom: 0;
   position: absolute;
   width: 100%;
+}
+
+.admin-haircut-link {
+  @extend %float-left;
+  width: 33.33333333333333%;
 }

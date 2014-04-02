@@ -37,7 +37,8 @@ namespace 'CutTheChi', (exports) ->
         dataType: 'json'
       .done (data) =>
         console.log data
-        @buildHaircutModal(data)
+        if !!data.logged_in
+          @buildHaircutModal(data)
       .fail (jqXHR, textStatus) =>
         console.log "Request failed: #{textStatus}"
 
@@ -53,8 +54,8 @@ namespace 'CutTheChi', (exports) ->
           dataType: 'json'
         .done (data) =>
           console.log data
-          $("##{data.haircut.hash}_haircut").find('.haircut-item__current-bid').text("Current Bid: #{data.haircut.highest_bid}")
-          @closeModal()
+          currentPage = "#{window.location.pathname}##{data.haircut.hash}_haircut"
+          Turbolinks.visit currentPage
         .fail (jqXHR, textStatus) =>
           console.log "Request failed: #{textStatus}"
 
@@ -67,12 +68,12 @@ namespace 'CutTheChi', (exports) ->
 
       haircutHtml = """
         <article class="show-haircut modal" id="show_#{haircut.hash}" data-url="#{haircut.url}">
-          <div class="show-haicut__info">
-            <img src="#{haircut.photo}" width="364" height="auto">
-            <p>#{haircut.name}</p>
+          <div class="show-haircut__info">
+            <img src="#{haircut.photo}" width="364" height="auto" class="show-haircut__img">
+            <div class="show-haircut__name"><strong>#{haircut.name}</strong></div>
           </div>
           <div class="show-haircut__bid-form">
-            <p>Current Bid: #{haircut.highest_bid}</p>
+            <p class="show-haircut__current-bid"><strong>Current Bid: #{haircut.highest_bid}</strong></p>
             #{bidForm}
           </div>
         </article>

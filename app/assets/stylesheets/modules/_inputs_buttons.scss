@@ -1,7 +1,8 @@
 .text-input {
   @include rem(padding, 8px);
-  border: solid 1px $gray;
+  border: solid 1px darken($lt_gray, 10%);
   color: $dk_blue;
+  min-width: 320px;
 }
 
 .button-wrapper {
@@ -15,6 +16,7 @@
   @extend %background-blue;
   @extend %text-align-center;
   @include padding(8px, 16px);
+  border: none;
   border-radius: 4px;
 
   transition: all 0.2s ease-in-out;

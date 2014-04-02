@@ -1,0 +1,64 @@
+.sign-in__inner-wrapper,
+.register__inner-wrapper {
+  @extend %display-inline-block;
+  @extend %clearfix;
+  @include padding(36px, 36px, 116px);
+  background: $white;
+  border-bottom: solid 2px darken($lt_gray, 10%);
+  box-shadow: 0 0 1px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.sign-in,
+.register {
+  @extend %background-ltgray;
+  @extend %text-align-center;
+
+  .text-input {
+    @include rem(margin-bottom, 16px);
+  }
+
+  .button {
+    max-width: 320px;
+    width: 100%;
+  }
+}
+
+.user_remember_me,
+.admin_remember_me {
+  @extend %float-right;
+  @include rem(margin-top, 16px);
+  clear: both;
+}
+
+input[name="user[remember_me]"],
+input[name="admin[remember_me]"] {
+  @include rem(margin-right, 8px);
+}
+
+.devise-links {
+  @extend %text-align-left;
+  @include rem(height, 80px);
+  @include rem(line-height, 16px);
+  @include padding(16px, 36px);
+  border-top: solid 1px $lt_gray_alt;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.devise-links__link {
+  @extend %display-inline-block;
+  @include rem(margin-bottom, 8px);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.registration-disclaimer {
+  @extend %text-align-left;
+  @include rem(margin-top, 24px);
+  max-width: 320px;
+}

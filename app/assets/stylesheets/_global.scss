@@ -14,7 +14,7 @@ html {
 
 body {
   @extend %color-dkblue;
-  background: $gray;
+  background: $lt_gray_alt;
   -webkit-font-smoothing: antialiased;
   font: 300 100%/1.45 "Roboto", "Helvetica-Neue", Helvetica, Arial, sans-serif;
 }

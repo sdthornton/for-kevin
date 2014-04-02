@@ -1,15 +1,16 @@
 class HaircutsController < ApplicationController
-  before_filter :authenticate_admin!, except: [:index, :show]
+  before_filter :authenticate_admin!, except: [:index]
 
   def index
     if params[:search]
-      @haircuts = Haircut.search(params[:search]).page(params[:page]).per(4)
+      @haircuts = Haircut.search(params[:search]).page(params[:page]).per(20)
       @search = true
     elsif params[:letter]
-      @haircuts = Haircut.filter(params[:letter]).order('member ASC').page(params[:page]).per(4)
+      @haircuts = Haircut.filter(params[:letter]).order('member ASC')
+                  .page(params[:page]).per(20)
       @search = true
     else
-      @haircuts = Haircut.order('member ASC').page(params[:page]).per(4)
+      @haircuts = Haircut.order('member ASC').page(params[:page]).per(20)
       @search = false
     end
   end
@@ -30,7 +31,7 @@ class HaircutsController < ApplicationController
 
   def show
     @haircut = Haircut.find_by!(url: params[:url])
-    @bids = @haircut.bids.order('amount ASC')
+    @bids = @haircut.bids.order('amount DESC')
   end
 
   def edit

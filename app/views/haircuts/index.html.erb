@@ -16,12 +16,12 @@
     </div>
   </div>
 </section>
-<section class="haircut-search">
-  <div class="container container--short">
+<section class="search-and-filter" id="search">
+  <div class="container">
+    <%= render partial: "filter_haircuts" %>
     <%= simple_form_for :haircut,
         html: { id: "search_haircuts", class: "haircut-form", method: "get",
         role: "search" } do %>
-      <label for="search" class="search-label">Search For a Member</label>
       <div class="search-wrapper">
         <i class="ion-android-search icon search-icon"></i>
         <%= text_field_tag :search, params[:search],
@@ -32,14 +32,8 @@
     <% end %>
   </div>
 </section>
-<section class="haircuts" id="haricuts">
-  <a name="haircuts"></a>
+<section class="haircuts" id="haircuts">
   <div class="container">
-    <h1 class="heading haircuts__heading">
-      Our Members
-      <%= render partial: "filter_haircuts" %>
-    </h1>
-
     <% if @haircuts.empty? %>
       <p>Sorry, no results found</p>
     <% end %>
@@ -49,7 +43,9 @@
     </div>
 
     <% if @search %>
-      <%= link_to "Show All", haircuts_path %>
+      <div class="haircuts__show-all">
+        <%= link_to "Show All", haircuts_path %>
+      </div>
     <% end %>
 
     <div class="paginate-wrapper" id="paginate-wrapper">

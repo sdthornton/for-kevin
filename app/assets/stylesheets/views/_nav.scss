@@ -26,8 +26,8 @@
 
 .main-nav__site-link,
 .main-nav__user-link {
-  @extend %color-black;
   @include line-height(101.135px);
+  color: $dk_blue;
   text-decoration: none;
 
   .main-header--home & {
@@ -62,7 +62,7 @@
   transition: all 0.3s ease-in-out;
   visibility: hidden;
   width: 100%;
-  z-index: 1000;
+  z-index: 99;
 
   -webkit-transform: scale(0.9) translate3d(0,-200px,0);
 

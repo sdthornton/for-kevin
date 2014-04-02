@@ -1,5 +1,5 @@
 .haircut-info {
-  @extend %background-white;
+  @extend %background-ltgray;
 }
 
 .haircut-info__learn-more-button {
@@ -17,14 +17,24 @@
   border-radius: 150px;
 }
 
-.haircut-search {
-  @extend %background-dkblue;
-  @extend %text-align-right;
-  @extend %color-white;
+.haircuts {
+  @extend %background-ltgray;
+}
+
+.search-and-filter {
+  @extend %background-white;
+  @extend %text-align-center;
+}
+
+.haircut-filters {
+  @include rem(margin-bottom, 24px);
+}
+
+.filter-text {
+  @include rem(margin-right, 8px);
 }
 
 .search-wrapper {
-  @include rem(margin-left, 16px);
   @include rem(margin-right, 16px);
 }
 
@@ -35,24 +45,13 @@
 .search-icon {
   @include rem(margin-right, -30px);
   @include rem(margin-left, 10px);
-  color: lighten($dk_blue, 20%);
+  color: darken($lt_gray, 20%);
   position: relative;
-}
-
-.haircuts {
-  @extend %background-ltgray;
 }
 
 .search-input {
   @include rem(padding-left, 36px);
-  @include rem(width, 341.333px);
-}
-
-.show-haircut {
-  height: auto;
-  left: 50%;
-  margin-left: -384px;
-  width: 768px;
+  width: 480px;
 }
 
 .search-label,
@@ -61,50 +60,32 @@
   @extend %display-inline-block;
 }
 
-.haircuts__heading {
-  // @extend %text-align-center;
-}
-
-.filter-text {
-  @include rem(margin-right, 8px);
-}
-
 .paginate-wrapper {
   @extend %text-align-center;
-  @include rem(margin-top, 24px);
 }
 
 .pagination {
   @extend %display-inline-block;
+  color: darken($gray, 10%);
   margin: 0 auto;
 }
 
 .pagination-link,
 .pagination-span.current,
-.pagination-span.no-link {
+.pagination-span.no-link,
+.pagination-span.gap {
   @extend %float-left;
-  @extend %background-dkblue;
   @include padding(6px, 12px);
-}
-
-.pagination-link {
-  @extend %color-white;
-
-  @include hover {
-    background: $red;
-    text-decoration: none;
-  }
 }
 
 .pagination-span.next,
 .pagination-span.prev {
-  @extend %color-white;
   @extend %float-left;
 }
 
-.pagination-span.current {
+.pagination-span.current,
+.pagination-span.gap {
   @extend %float-left;
-  color: lighten($dk_blue, 50%);
 }
 
 .pagination-span.prev {
@@ -113,4 +94,162 @@
 
 .pagination-span.next {
   margin-left: 1px;
+}
+
+.show-haircut {
+  height: auto;
+  left: 50%;
+  margin-left: -200px;
+  width: 400px;
+}
+
+.show-haircut__info,
+.show-haircut__bid-form {
+  @extend %float-left;
+  width: 100%;
+}
+
+.show-haircut__info {
+  @include rem(margin-bottom, 16px);
+  position: relative;
+}
+
+.show-haircut__img {
+  @extend %display-block;
+}
+
+.show-haircut__name {
+  @extend .haircut-item__current-bid;
+  @include rem(padding-left, 8px);
+  max-width: 364px;
+  text-align: left;
+}
+
+.show-haircut__bid-form {
+  .text-input {
+    @include rem(margin-bottom, 16px);
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+.show-haircut__name {
+  @extend %color-white;
+  bottom: 0;
+  height: 60px;
+  position: absolute;
+  width: 100%;
+}
+
+.show-haircut__current-bid {
+  margin-top: 0;
+}
+
+.haircuts__show-all {
+  @extend %display-block;
+  @extend %text-align-center;
+}
+
+
+// Admin show
+.admin-show-haircut {
+  @extend %background-ltgray;
+}
+
+.admin-show-haircut__info {
+  @extend %float-left;
+  max-width: 388px;
+  padding-right: 24px;
+}
+
+.admin-show-haircut__img {
+  height: auto;
+  max-width: 100%;
+}
+
+.admin-show-haircut__bids {
+  @extend %float-right;
+}
+
+.admin-show-haircut__table {
+  @extend %background-white;
+  @extend %text-align-left;
+  border-bottom: solid 2px darken($lt_gray, 10%);
+  box-shadow: 0 0 1px rgba(0,0,0,0.1);
+}
+
+.admin-show-haircut__bids-header {
+  @extend %background-dkblue;
+  @extend %color-white;
+}
+
+.admin-show-haircut__bids-row {
+  &:nth-child(2n) {
+    @extend %background-white;
+  }
+
+  &:nth-child(2n+1) {
+    background: $lt_gray;
+  }
+
+  &.is-top-bid {
+    font-weight: bold;
+  }
+}
+
+.admin-show-haircut__bid-column {
+  @include padding(16px);
+}
+
+
+// Admin edit & new
+.new-haircut,
+.edit-haircut {
+  @extend %background-ltgray;
+  @extend %text-align-center;
+}
+
+.edit-haircut__inner-wrapper,
+.new-haircut__inner-wrapper {
+  @extend .sign-in__inner-wrapper;
+  @include rem(padding-bottom, 36px);
+
+  .input {
+    @extend %float-left;
+    @include rem(margin-bottom, 16px);
+    clear: both;
+  }
+
+  .text-label {
+    @extend %display-block;
+    @extend %text-align-left;
+  }
+}
+
+.upload-haircut-image {
+  @extend %float-left;
+  @include rem(margin-bottom, 16px);
+  clear: both;
+  width: 320px;
+}
+
+.upload-haircut-image__label {
+  @extend %display-block;
+  @extend %text-align-left;
+  @include rem(margin-bottom, 6px);
+}
+
+.upload-haircut-image__input {
+  line-height: 1;
+}
+
+.button--save-haircut,
+.button--create-haircut {
+  @extend %float-left;
+  @include rem(margin-top, 16px);
+  clear: both;
+  width: 100%;
 }

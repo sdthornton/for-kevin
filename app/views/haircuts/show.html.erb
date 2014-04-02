@@ -1,36 +1,44 @@
-<p><%= image_tag(photo_url(@haircut), width: "364", height: "242") %><br>
-<strong><%= @haircut.member %></strong><br>
-<%= @haircut.about %></p>
-
-<% if admin_signed_in? %>
-  <p>Current bid: <%= highest_bid(@haircut) %>
-
-  <% unless @bids.empty? %>
-    <table>
-      <tr>
-        <th>Amount</th>
-        <th>Bidder Name</th>
-        <th>Bidder Email</th>
-        <th>Placed On</th>
-      <% @bids.order('amount DESC').each do |bid| %>
-        <tr>
-          <td data-title="Amount"><%= number_to_currency(bid.amount) %></td>
-          <td data-title="Bidder Name"><%= bid.user.name %></td>
-          <td data-title="Bidder Email"><%= bid.user.email %></td>
-          <td data-title="Placed On"><%= format_date(bid.created_at) %></td>
-        </tr>
+<section class="admin-show-haircut">
+  <div class="container">
+    <div class="admin-show-haircut__info">
+      <%= image_tag(photo_url(@haircut), width: "364", height: "242", class: "admin-show-haircut__img") %>
+      <p>
+        <strong><%= @haircut.member %></strong><br>
+        <%= @haircut.about %>
+      </p>
+      <p>
+        <%= link_to "Edit", edit_haircut_path(@haircut.url) %> |
+        <%= link_to "Delete", haircut_path(@haircut), method: "delete", confirm: "Are you sure?" %>
+      </p>
+      <% unless @bids.empty? %>
+        <p>
+          <strong>
+            Top bid: <%= highest_bid(@haircut) %> by <a href="mailto:<%= highest_bidder_email(@haircut) %>"><%= highest_bidder_name(@haircut) %></a>
+          </strong>
+        </p>
       <% end %>
-    </table>
-  <% end %>
-
-<% elsif user_signed_in? %>
-  <p>Current bid: <%= highest_bid(@haircut) %>
-
-  <p>
-    <%= simple_form_for([@haircut, @haircut.bids.build]) do |f| %>
-      <%= f.input :amount %>
-      <%= f.submit %>
-    <% end %>
-  </p>
-
-<% end %>
+    </div>
+    <div class="admin-show-haircut__bids">
+      <% if @bids.empty? %>
+        <strong>No bids have been placed yet.</strong>
+      <% else %>
+        <table class="admin-show-haircut__table">
+          <tr class="admin-show-haircut__bids-header">
+            <th class="admin-show-haircut__bid-column">Amount</th>
+            <th class="admin-show-haircut__bid-column">Bidder Name</th>
+            <th class="admin-show-haircut__bid-column">Bidder Email</th>
+            <th class="admin-show-haircut__bid-column">Placed</th>
+          </tr>
+          <% @bids.each do |bid| %>
+            <tr class="admin-show-haircut__bids-row<%= " is-top-bid" if bid == @bids.first %>">
+              <td class="admin-show-haircut__bid-column" data-title="Amount"><%= number_to_currency(bid.amount) %></td>
+              <td class="admin-show-haircut__bid-column" data-title="Bidder Name"><%= bid.user.name %></td>
+              <td class="admin-show-haircut__bid-column" data-title="Bidder Email"><%= bid.user.email %></td>
+              <td class="admin-show-haircut__bid-column" data-title="Placed"><%= format_date(bid.created_at) %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,11 +1,12 @@
 .main-footer {
   @extend %text-align-center;
-  @extend %background-gray;
+  background: $lt_gray_alt;
 }
 
 .bidding-info {
   @extend %background-white;
-  background: $lt_gray_alt;
+  @extend %color-white;
+  @extend %background-dkblue;
 }
 
 .bidding-info__icon {

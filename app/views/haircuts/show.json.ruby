@@ -43,11 +43,13 @@ admin = {
   highest_bid: highest_bid
 }
 
-has_bids = @haircut.bids.present?
-is_admin = admin_signed_in?
-
 if admin_signed_in?
-  { haircut: haircut, admin: admin, has_bids: has_bids, is_admin: is_admin }.to_json
+  { haircut: haircut,
+    admin: admin,
+    has_bids: @haircut.bids.present?,
+    logged_in: user_signed_in? }.to_json
 else
-  { haircut: haircut, has_bids: has_bids, is_admin: is_admin }.to_json
+  { haircut: haircut,
+    has_bids: @haircut.bids.present?,
+    logged_in: user_signed_in? }.to_json
 end
