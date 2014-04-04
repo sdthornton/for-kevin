@@ -43,7 +43,7 @@ output.*
 /config/database.yml
 
 # Ignore secrets
-/config/secrets.yml
+/config/initializers/secrets.yml
 
 # Ignore application configuration
 /config/application.yml
