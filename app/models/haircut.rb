@@ -9,20 +9,13 @@ class Haircut < ActiveRecord::Base
   has_attached_file :photo,
     styles: {
       retina: {
-        geometry: "728x484#",
-        paperclip_optimizer: {
-          jpegoptim: { strip: "all", max_quality: 75 }
-        }
+        geometry: "728x484#"
       },
       normal: {
-        geometry: "364x242#",
-        paperclip_optimizer: {
-          jpegoptim: { strip: "all", max_quality: 100 }
-        }
+        geometry: "364x242#"
       }
     },
     default_url: "/assets/missing.jpg",
-    processors: [:thumbnail, :paperclip_optimizer]
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 

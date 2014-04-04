@@ -37,7 +37,6 @@ end
 gem 'devise'
 gem 'simple_form'
 gem 'paperclip', '~> 4.1'
-gem 'paperclip-optimizer', git: 'git@github.com:sdthornton/paperclip-optimizer.git'
 gem 'kaminari', '~> 0.15.1'
 gem 'metamagic'
 gem 'figaro'

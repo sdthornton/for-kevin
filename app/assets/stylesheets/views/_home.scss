@@ -4,8 +4,9 @@
   @extend %color-white;
   @include rem(padding-top, 81px);
   background: $red image-url('haircut_background.jpg') center center no-repeat;
-  background-size: cover;
   width: 100%;
+
+  @include background-size(cover);
 
   .container--small {
     @include rem(padding-top, 24px);

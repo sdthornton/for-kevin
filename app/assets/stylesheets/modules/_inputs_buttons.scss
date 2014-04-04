@@ -24,11 +24,10 @@
   @extend %color-white;
   @extend %background-blue;
   @extend %text-align-center;
+  @extend %transition-all;
   @include padding(8px, 16px);
   border: none;
   border-radius: 4px;
-
-  transition: all 0.2s ease-in-out;
 
   @include hover {
     background: lighten($blue, 10%);
