@@ -27,10 +27,7 @@ CutTheChi::Application.configure do
   config.assets.css_compressor = :sass
 
   # Add fonts to precompile
-  config.assets.precompile += %w(*.svg)
-  config.assets.precompile += %w(*.ttf)
-  config.assets.precompile += %w(*.woff)
-  config.assets.precompile += %w(*.eot)
+  config.assets.precompile += %w(*.svg *.ttf *.woff *.eot)
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
