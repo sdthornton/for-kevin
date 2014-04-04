@@ -36,7 +36,7 @@ output.*
 
 
 ############################################
-# These files need to manually be deployed #
+# These files need to be manually deployed #
 ############################################
 
 # Ignore actual server info
