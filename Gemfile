@@ -29,9 +29,10 @@ end
 
 gem 'mysql2'
 
-# Uncomment on production
-# gem 'therubyracer', platforms: :ruby
-# gem 'fcgi'
+group :production do
+  gem 'therubyracer', platforms: :ruby
+  gem 'fcgi'
+end
 
 gem 'devise'
 gem 'simple_form'
@@ -54,7 +55,11 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
+group :development do
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails', '~> 1.1'
+end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

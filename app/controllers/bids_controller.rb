@@ -12,12 +12,12 @@ class BidsController < ApplicationController
 
     if @bid.save
       redirect_to show_haircut_path(@haircut.url),
-        successful_bid: "Thanks for you bid of
-                        <strong>$#{"%.2f" % @bid.amount}</strong>
-                        for <strong>#{@haircut.member}</strong>. If your bid
-                        ends up winning you'll receive an email letting you
-                        know. And either way, show up May 2nd to the Theta Chi
-                        house for a wonderful, haircuttingly-good time!".html_safe
+        successful_bid:
+          "Thanks for you bid of <strong>$#{"%.2f" % @bid.amount}</strong> for
+          <strong>#{@haircut.member}</strong>. If your bid ends up winning
+          you'll receive an email letting you know. And either way, show up May
+          2nd to the Theta Chi house for a wonderful, haircuttingly-good
+          time!".html_safe
     else
       redirect_to show_haircut_path(@haircut.url,
         bid_errors: @bid.errors.messages[:amount])
