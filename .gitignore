@@ -30,6 +30,10 @@ public/assets
 # Ignore Brakeman output
 output.*
 
+# Ignore specific ruby gem/version
+.ruby-gemset
+.ruby-version
+
 
 ############################################
 # These files need to manually be deployed #
