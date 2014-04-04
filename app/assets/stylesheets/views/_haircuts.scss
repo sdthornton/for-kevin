@@ -1,3 +1,7 @@
+@import "variables";
+@import "flex_mixins";
+@import "mixins";
+
 .haircut-info {
   @extend %background-ltgray;
 }

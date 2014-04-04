@@ -6,14 +6,14 @@
 @import "ionicons";
 
 /* Vars and Mixins */
-@import "globals/variables";
+@import "variables";
 @import "flex_mixins";
-@import "globals/mixins";
+@import "mixins";
 
 /* Stylesheets */
-@import "globals/normalize";
-@import "globals/global";
+@import "normalize";
+@import "global";
 @import "modules/*";
 @import "views/*";
 @import "media/*";
-@import "globals/print";
+@import "print";

@@ -1,3 +1,7 @@
+@import "variables";
+@import "flex_mixins";
+@import "mixins";
+
 .main-footer {
   @extend %text-align-center;
   background: $lt_gray_alt;

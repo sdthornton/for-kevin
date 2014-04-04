@@ -1,3 +1,7 @@
+@import "variables";
+@import "flex_mixins";
+@import "mixins";
+
 .modal-wrapper {
   @include opacity(0);
 

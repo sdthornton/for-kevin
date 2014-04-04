@@ -1,3 +1,7 @@
+@import "variables";
+@import "flex_mixins";
+@import "mixins";
+
 .haircut-items {
   @extend %flexbox;
   @extend %text-align-left;
