@@ -3,6 +3,15 @@
   border: solid 1px darken($lt_gray, 10%);
   color: $dk_blue;
   min-width: 320px;
+
+  &:focus {
+    border-color: $blue;
+    outline: 0;
+  }
+
+  .field_with_errors & {
+    border: solid 1px $red;
+  }
 }
 
 .button-wrapper {
@@ -32,4 +41,21 @@
   @include padding(16px, 36px);
   display: block;
   margin: 0 auto;
+}
+
+.alert-error {
+  @include rem(margin-bottom, 16px);
+}
+
+.field_with_errors {
+  @include rem(padding-top, 24px);
+  position: relative;
+}
+
+.error {
+  @include font-size(14px);
+  color: $red;
+  left: 0;
+  position: absolute;
+  top: 0;
 }

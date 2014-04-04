@@ -1,3 +1,14 @@
+.session-info {
+  @extend %display-block;
+  @extend %text-align-center;
+  @include rem(margin-top, 24px);
+  max-width: 320px;
+}
+
+.session-info__extended {
+  display: none;
+}
+
 .sign-in__inner-wrapper,
 .register__inner-wrapper {
   @extend %display-inline-block;
@@ -21,6 +32,11 @@
   .button {
     max-width: 320px;
     width: 100%;
+  }
+
+  .input {
+    margin: 0 auto;
+    max-width: 320px;
   }
 }
 
@@ -61,4 +77,9 @@ input[name="admin[remember_me]"] {
   @extend %text-align-left;
   @include rem(margin-top, 24px);
   max-width: 320px;
+}
+
+.user_remember_me,
+.admin_remember_me {
+  @include rem(margin-top, 16px);
 }

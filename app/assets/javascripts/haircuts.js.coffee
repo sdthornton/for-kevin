@@ -36,11 +36,10 @@ namespace 'CutTheChi', (exports) ->
         url: url
         dataType: 'json'
       .done (data) =>
-        console.log data
         if !!data.logged_in
           @buildHaircutModal(data)
       .fail (jqXHR, textStatus) =>
-        console.log "Request failed: #{textStatus}"
+        alert "Request failed: #{textStatus}"
 
     bindPostBid: ->
       $('body').on 'submit.postBid', "form.place-bid", (e) =>
@@ -53,11 +52,16 @@ namespace 'CutTheChi', (exports) ->
           data: $postBid.serialize()
           dataType: 'json'
         .done (data) =>
-          console.log data
-          currentPage = "#{window.location.pathname}##{data.haircut.hash}_haircut"
-          Turbolinks.visit currentPage
+          if !!data.bid_errors
+            bidErrors    = data.bid_errors
+            $bidErrorDiv = $('body').find(".bid-errors__#{data.haircut.hash}")
+            $bidErrorDiv.html('').show()
+            for error in bidErrors
+              $bidErrorDiv.append("<div class='bid-error'>Bid #{error}</div>")
+          else
+            Turbolinks.visit "#{window.location.pathname}#haircuts"
         .fail (jqXHR, textStatus) =>
-          console.log "Request failed: #{textStatus}"
+          alert "Request failed: #{textStatus}"
 
     buildHaircutModal: (data) ->
       has_bids = data.has_bids

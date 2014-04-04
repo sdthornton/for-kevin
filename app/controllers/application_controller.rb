@@ -35,4 +35,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     session[:previous_url] || haircuts_path
   end
+
+  # Add custom flash types
+  add_flash_types :successful_bid
 end

@@ -19,6 +19,7 @@
 
 .haircuts {
   @extend %background-ltgray;
+  @extend %text-align-center;
 }
 
 .search-and-filter {
@@ -58,6 +59,15 @@
 .search-wrapper,
 .search-button {
   @extend %display-inline-block;
+}
+
+.successful-bid {
+  @extend %background-dkblue;
+  @extend %color-white;
+  @extend %display-inline-block;
+  @include padding(16px);
+  @include rem(margin-bottom, 36px);
+  max-width: 680px;
 }
 
 .paginate-wrapper {

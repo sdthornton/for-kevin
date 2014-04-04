@@ -34,6 +34,12 @@
 </section>
 <section class="haircuts" id="haircuts">
   <div class="container">
+    <% if successful_bid %>
+      <div class="successful-bid">
+        <%= successful_bid %>
+      </div>
+    <% end %>
+
     <% if @haircuts.empty? %>
       <p>Sorry, no results found</p>
     <% end %>

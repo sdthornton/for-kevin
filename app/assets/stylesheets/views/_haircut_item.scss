@@ -1,5 +1,6 @@
 .haircut-items {
   @extend %flexbox;
+  @extend %text-align-left;
   @include flex-wrap(wrap);
   @include justify-content(left);
   margin-left: -3%;
@@ -61,4 +62,24 @@
 .admin-haircut-link {
   @extend %float-left;
   width: 33.33333333333333%;
+}
+
+.dollar-symbol {
+  @include rem(line-height, 40px);
+  @include rem(left, 24px);
+  position: absolute;
+}
+
+.bid-amount {
+  @include rem(padding-left, 20px);
+}
+
+.bid-errors {
+  @extend %display-block;
+  @include rem(margin-bottom, 16px);
+  color: $red;
+}
+
+.bid-error {
+  @extend %display-block;
 }

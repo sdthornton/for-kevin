@@ -6,8 +6,15 @@ haircut = {
   post_path: haircut_bids_path(@haircut),
   photo: photo_url(@haircut),
   about_me: @haircut.about,
-  highest_bid: highest_bid(@haircut)
+  highest_bid: highest_bid(@haircut),
 }
+
+bid_errors =
+  if params[:bid_errors]
+    params[:bid_errors]
+  else
+    false
+  end
 
 bids =
   if @haircut.bids.empty?
@@ -47,9 +54,11 @@ if admin_signed_in?
   { haircut: haircut,
     admin: admin,
     has_bids: @haircut.bids.present?,
-    logged_in: user_signed_in? }.to_json
+    logged_in: user_signed_in?,
+    bid_errors: bid_errors }.to_json
 else
   { haircut: haircut,
     has_bids: @haircut.bids.present?,
-    logged_in: user_signed_in? }.to_json
+    logged_in: user_signed_in?,
+    bid_errors: bid_errors }.to_json
 end

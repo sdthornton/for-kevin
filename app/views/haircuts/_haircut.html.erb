@@ -20,8 +20,13 @@
 
   <% if user_signed_in? %>
     <div id="place_bid_on_<%= haircut.id %>_wrap" style="display: none;">
+      <div class="bid-errors__<%= haircut.url %> bid-errors" style="display:none;"></div>
       <%= simple_form_for [haircut, haircut.bids.build], html: { class: "place-bid place-bid-on-#{haircut.id}", data: { haircut: haircut.id } } do |f| %>
-        <%= f.input :amount, label: false, placeholder: "Your Bid", input_html: { class: "text-input" } %>
+        <% if @bid && @bid.errors.any? %>
+          <%= @bid.errors.inspect %>
+        <% end %>
+        <i class="dollar-symbol icon">$</i>
+        <%= f.input :amount, label: false, placeholder: "Your Bid", input_html: { class: "text-input bid-amount" } %>
         <%= f.submit 'Place Your Bid *', class: "button" %>
       <% end %>
       <p class="bid-terms">

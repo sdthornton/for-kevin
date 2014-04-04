@@ -19,7 +19,7 @@ class Admin < ActiveRecord::Base
 
   def validate_invite_code
     unless self.invite_code == ENV['ADMIN_INVITE_CODE']
-      errors.add(:invite_code, "Please enter a valid invite code")
+      errors.add(:invite_code, "Not a valid invite code")
     end
   end
 
