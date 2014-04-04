@@ -1,7 +1,3 @@
-@import "variables";
-@import "flex_mixins";
-@import "mixins";
-
 .home-banner {
   @extend %clearfix;
   @extend %text-align-center;

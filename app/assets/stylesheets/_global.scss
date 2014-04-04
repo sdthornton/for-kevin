@@ -1,7 +1,3 @@
-@import "variables";
-@import "flex_mixins";
-@import "mixins";
-
 *, *:before, *:after {
  @extend %border-box;
 }

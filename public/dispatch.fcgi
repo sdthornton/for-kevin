@@ -6,7 +6,7 @@ ENV['GEM_HOME'] = File.expand_path('~/.rvm/gems/ruby-2.0.0-p247')
 ENV['GEM_PATH'] = File.expand_path('~/.rvm/gems/ruby-2.0.0-p247') + ":" + File.expand_path('~/.rvm/gems/ruby-2.0.0-p247@global')
 
 require 'fcgi'
-require File.join(File.dirname(__FILE__), '../config/environment')
+require File.join(File.dirname(__FILE__), '../config/environment.rb')
 
 class Rack::PathInfoRewriter
   def initialize(app)
@@ -22,4 +22,4 @@ class Rack::PathInfoRewriter
   end
 end
 
-Rack::Handler::FastCGI.run  Rack::PathInfoRewriter.new(AzcutthechiCom::Application)
+Rack::Handler::FastCGI.run  Rack::PathInfoRewriter.new(CutTheChi::Application)

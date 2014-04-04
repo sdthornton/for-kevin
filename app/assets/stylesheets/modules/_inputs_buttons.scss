@@ -1,7 +1,3 @@
-@import "variables";
-@import "flex_mixins";
-@import "mixins";
-
 .text-input {
   @include rem(padding, 8px);
   border: solid 1px darken($lt_gray, 10%);
