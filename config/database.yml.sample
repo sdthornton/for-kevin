@@ -13,8 +13,8 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: ENV['DATABASE']
-  username: ENV['DB_USER']
-  password: ENV['DB_PASSWORD']
-  host: ENV['DB_HOST']
+  database: DATABASE
+  username: USERNAME
+  password: PASSWORD
+  host: HOST
   pool: 5

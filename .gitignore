@@ -21,6 +21,12 @@ bin/
 # Ignore haircut photo uploads
 public/system
 
+# Ignore compiled assets
+public/assets
+
+# Ignore actual server info
+/config/database.yml
+
 # Ignore secrets
 /config/secrets.yml
 
