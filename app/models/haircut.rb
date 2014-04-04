@@ -15,7 +15,7 @@ class Haircut < ActiveRecord::Base
         geometry: "364x242#"
       }
     },
-    default_url: "/assets/missing.jpg",
+    default_url: "/assets/missing.jpg"
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
