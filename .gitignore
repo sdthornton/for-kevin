@@ -39,6 +39,9 @@ output.*
 # These files need to be manually deployed #
 ############################################
 
+# Ignore sensitive fastcgi data
+/config/dispatch_fcgi.rb
+
 # Ignore actual server info
 /config/database.yml
 
