@@ -39,6 +39,9 @@ output.*
 # These files need to be manually deployed #
 ############################################
 
+# Ignore .htacess (just to keep things clean)
+/public/.htaccess
+
 # Ignore sensitive fastcgi data
 /public/dispatch.fcgi
 /config/dispatch_fcgi.rb
