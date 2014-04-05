@@ -1,3 +1,10 @@
+# Password protect site
+AuthType Basic
+AuthName "restricted area"
+AuthUserFile /home/cutthechi/.htpasswd
+require valid-user
+# End password protect
+
 <IfModule mod_fastcgi.c>
 AddHandler fastcgi-script .fcgi
 </IfModule>
