@@ -18,6 +18,9 @@
 </section>
 <section class="home-haircuts">
   <div class="container">
+    <% if @haircuts.empty? %>
+      <p class="center-text">No members yet to bid on</p>
+    <% end %>
     <div class="haircut-items">
       <% @haircuts.each do |haircut| %>
         <%= render partial: "/haircuts/haircut", locals: { haircut: haircut } %>

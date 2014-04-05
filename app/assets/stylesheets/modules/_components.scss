@@ -37,3 +37,7 @@
 .visually-hidden {
   @extend %visuallyhidden;
 }
+
+.center-text {
+  @extend %text-align-center;
+}

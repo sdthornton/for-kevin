@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%= metamagic title: "Cut the Chi" %>
+  <%= metamagic title: "Cut the Chi | Theta Chi at University of Arizona" %>
   <script>0>("; "+document.cookie).indexOf("; is_retina=")&&(document.cookie="is_retina= "+(1.25<=window.devicePixelRatio)+";path=/;",1.25<=window.devicePixelRatio&&window.location.reload());</script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Arvo&text=0123456789' rel='stylesheet' type='text/css'>
@@ -10,6 +10,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="hover">
+  <div class="no-js-warning">Hey friend, this site takes full advantage of javascript. We really recommend you explore it with <strong>javascript turned on</strong>.</div>
+  <!--[if lt IE 8]>
+  <div class="browsehappy">Hey friend, you're using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="warning-link">upgrade your browser</a> to improve your experience.</div>
+  <![endif]-->
+
   <div class="main-content-wrapper">
     <%= render partial: "/shared/nav" %>
     <%= yield %>
@@ -18,6 +23,7 @@
 
   <%= content_for :javascript do %>
     <%= javascript_tag 'new CutTheChi.FasterPainting();' %>
+    <%= javascript_tag 'new CutTheChi.BetterPlaceholders();' %>
   <% end %>
   <%= yield :javascript %>
 </body>

@@ -2,6 +2,7 @@
   @include rem(padding, 8px);
   border: solid 1px darken($lt_gray, 10%);
   color: $dk_blue;
+  max-width: 100%;
   min-width: 320px;
 
   &:focus {
@@ -11,6 +12,30 @@
 
   .field_with_errors & {
     border: solid 1px $red;
+  }
+}
+
+.input {
+  position: relative;
+}
+
+.better-placeholder {
+  @extend %background-blue;
+  @extend %color-white;
+  @extend %transition-all;
+  @include rem(right, 8px);
+  @include rem(top, 8px);
+  @include rem(line-height, 24px);
+  @include font-size(14px);
+  @include padding(0, 4px);
+  border-radius: 4px;
+  opacity: 1.0;
+  position: absolute;
+  visibility: visible;
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 

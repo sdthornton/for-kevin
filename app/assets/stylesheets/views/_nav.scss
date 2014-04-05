@@ -54,11 +54,11 @@
   @extend %text-align-center;
   @include transition(all, 0.3s, ease-in-out);
   @include transform(scale(0.9) translate3d(0,-200px,0));
+  @include opacity(0);
   background: $dk_blue;
   display: table;
   height: 100%;
   left: 0;
-  opacity: 0;
   position: fixed;
   top: 0;
   visibility: hidden;
@@ -67,6 +67,7 @@
 
   &.open {
     @include transform(scale(1) translate3d(0,0,0));
+    @include opacity(1.0);
     opacity: 1.0;
     visibility: visible;
   }

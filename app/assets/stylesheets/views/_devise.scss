@@ -38,6 +38,11 @@
     margin: 0 auto;
     max-width: 320px;
   }
+
+  .user_remember_me,
+  .admin_remember_me {
+    @include rem(margin-top, 16px);
+  }
 }
 
 .user_remember_me,
@@ -77,9 +82,4 @@ input[name="admin[remember_me]"] {
   @extend %text-align-left;
   @include rem(margin-top, 24px);
   max-width: 320px;
-}
-
-.user_remember_me,
-.admin_remember_me {
-  @include rem(margin-top, 16px);
 }
