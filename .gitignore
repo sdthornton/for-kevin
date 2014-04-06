@@ -34,6 +34,10 @@ output.*
 .ruby-gemset
 .ruby-version
 
+# Ignore pow configs
+.powenv
+.powrc
+
 
 ############################################
 # These files need to be manually deployed #
