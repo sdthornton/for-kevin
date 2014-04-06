@@ -1,4 +1,5 @@
-.text-input {
+.text-input,
+.text-input--no-placeholder {
   @include rem(padding, 8px);
   border: solid 1px darken($lt_gray, 10%);
   color: $dk_blue;
@@ -17,6 +18,36 @@
 
 .input {
   position: relative;
+}
+
+[required] {
+  &::-webkit-input-placeholder:after {
+    content: " *";
+    color: lighten($red, 25%);
+    font-size: 0.9em;
+    padding-left: 2px;
+  }
+
+  &:-moz-placeholder:after {
+    content: "*";
+    color: lighten($red, 25%);
+    font-size: 0.9em;
+    padding-left: 2px;
+  }
+
+  &::-moz-placeholder:after {
+    content: "*";
+    color: lighten($red, 25%);
+    font-size: 0.9em;
+    padding-left: 2px;
+  }
+
+  &:-ms-input-placeholder:after {
+    content: "*";
+    color: lighten($red, 25%);
+    font-size: 0.9em;
+    padding-left: 2px;
+  }
 }
 
 .better-placeholder {

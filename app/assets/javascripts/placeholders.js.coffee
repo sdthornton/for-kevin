@@ -10,6 +10,7 @@ namespace 'CutTheChi', (exports) ->
         unless $input.hasClass('has-better-placeholder')
           $input[0].classList.add('has-better-placeholder')
           placeholderVal = $input.attr('placeholder')
+          if placeholderVal == "Password Confirmation" then placeholderVal = "Confirm"
           $wrap = $input.parent('.input')
           inputVal = $input.val()
 

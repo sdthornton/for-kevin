@@ -1,0 +1,15 @@
+<% meta title: "All Bids | Cut the Chi | Theta Chi at University of Arizona" %>
+
+<section class="all-bids">
+  <div class="container">
+    <% if admin_signed_in? %>
+      <% @haircuts.each do |haircut| %>
+        <%= haircut.member %>: <%= highest_bid(haircut) %><br>
+      <% end %>
+    <% elsif user_signed_in? %>
+      <% @bids.each do |bid| %>
+        <%= bid.haircut.member %>: <%= number_to_currency(bid.amount) %><br>
+      <% end %>
+    <% end %>
+  </div>
+</section>

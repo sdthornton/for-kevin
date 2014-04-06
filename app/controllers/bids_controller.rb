@@ -1,9 +1,6 @@
 class BidsController < ApplicationController
-  before_filter :authenticate_user!
-
-  def index
-    @bids = Bid.all
-  end
+  before_filter :authenticate_user!, only: [:create]
+  before_filter :authenticate_admin!, only: [:destroy]
 
   def create
     @haircut = Haircut.find(params[:haircut_id])
@@ -22,9 +19,6 @@ class BidsController < ApplicationController
       redirect_to show_haircut_path(@haircut.url,
         bid_errors: @bid.errors.messages[:amount])
     end
-  end
-
-  def show
   end
 
   def destroy

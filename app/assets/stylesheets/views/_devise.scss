@@ -10,7 +10,8 @@
 }
 
 .sign-in__inner-wrapper,
-.register__inner-wrapper {
+.register__inner-wrapper,
+.forgotten-password__inner-wrapper {
   @extend %display-inline-block;
   @extend %clearfix;
   @include padding(36px, 36px, 116px);
@@ -21,7 +22,8 @@
 }
 
 .sign-in,
-.register {
+.register,
+.forgotten-password {
   @extend %background-ltgray;
   @extend %text-align-center;
 
@@ -35,6 +37,7 @@
   }
 
   .input {
+    clear: both;
     margin: 0 auto;
     max-width: 320px;
   }
@@ -43,6 +46,14 @@
   .admin_remember_me {
     @include rem(margin-top, 16px);
   }
+
+  .alert {
+    max-width: 320px;
+  }
+}
+
+.forgotten-password .heading {
+  max-width: 320px;
 }
 
 .user_remember_me,
@@ -81,5 +92,12 @@ input[name="admin[remember_me]"] {
 .registration-disclaimer {
   @extend %text-align-left;
   @include rem(margin-top, 24px);
+  max-width: 320px;
+}
+
+.hint {
+  @extend %float-left;
+  @extend %text-align-left;
+  margin-bottom: 4px;
   max-width: 320px;
 }

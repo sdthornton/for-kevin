@@ -3,13 +3,29 @@
     <div class="container container--no-padding">
       <div class="main-nav__site-links">
         <%= link_to "cutthechi", root_path, class: "main-nav__site-link main-nav__site-link--logo" %>
-        <a href="javascript:void(0)" class="main-nav__site-link open-menu" id="open_menu"><i class="ion-navicon icon-large icon"></i>Menu</a>
+        <a href="#" class="main-nav__site-link open-menu" id="open_menu"><i class="ion-navicon icon-large icon"></i>Menu</a>
       </div>
       <div class="main-nav__user-links">
         <% if admin_signed_in? %>
+          <strong>
+            <a class="main-nav__user-link" id="show_user_links" href="#">Welcome <%= first_name(current_admin.name) %>
+            <i class="icon--right ion-arrow-down-b"></i></a>
+          </strong>
+          <div class="user-nav" id="user_nav">
+            <%= link_to "All Bids", show_bids_path, class: "user-nav__link" %>
+            <%= link_to "Add Member", new_haircut_path, class: "user-nav__link" %>
+            <%= link_to "Edit Account", edit_admin_registration_path, class: "user-nav__link" %>
+          </div>
           <%= link_to "Log out", destroy_admin_session_path, class: "main-nav__user-link", method: :delete %>
         <% elsif user_signed_in? %>
-          <strong class="main-nav__user-link">Welcome <%= first_name(current_user.name) %></strong>
+          <strong class="main-nav__user-link">
+            <a class="main-nav__user-link" id="show_user_links" href="#">Welcome <%= first_name(current_user.name) %>
+            <i class="icon--right ion-arrow-down-b"></i></a>
+          </strong>
+          <div class="user-nav" id="user_nav">
+            <%= link_to "Your Bids", show_bids_path, class: "user-nav__link" %>
+            <%= link_to "Edit Account", edit_user_registration_path, class: "user-nav__link" %>
+          </div>
           <%= link_to "Log out", destroy_user_session_path, class: "main-nav__user-link", method: :delete %>
         <% else %>
           <%= link_to "<i class='ion-person-add icon'></i>Register".html_safe, register_path, class: "main-nav__user-link" %>
@@ -20,7 +36,7 @@
   </nav>
 
   <nav class="site-nav" id="site_menu" role="navigation">
-    <a href="javascript:void(0)" id="close_menu" class="site-nav__close">
+    <a href="#" id="close_menu" class="site-nav__close">
       <i class="ion-ios7-close-empty"></i>
     </a>
     <ul class="site-nav__inner-wrap">

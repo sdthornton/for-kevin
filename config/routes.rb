@@ -2,6 +2,7 @@ CutTheChi::Application.routes.draw do
   root 'home#index'
 
   get 'about' => 'home#about'
+  get 'bids' => 'home#bids', as: 'show_bids'
 
   devise_for :admins, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
 
@@ -14,7 +15,7 @@ CutTheChi::Application.routes.draw do
   end
 
   resources :haircuts, except: [:show, :edit] do
-    resources :bids, except: [:edit, :update]
+    resources :bids, except: [:edit, :update, :index, :show]
   end
 
   scope 'haircuts' do

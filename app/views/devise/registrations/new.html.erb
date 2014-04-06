@@ -2,8 +2,10 @@
 
 <section class="register">
   <div class="container">
-    <div class="sign-in__inner-wrapper">
-      <h1 class="heading devise-heading"><%= "Admin " if resource_name.to_s == "admin" %>Register</h1>
+    <div class="register__inner-wrapper">
+      <h1 class="heading devise-heading">
+        <%= "Admin " if resource_name.to_s == "admin" %>Register
+      </h1>
 
       <%= simple_form_for(resource, :as => resource_name,
           :url => registration_path(resource_name)) do |f| %>
@@ -17,25 +19,25 @@
                       input_html: { class: "visually-hidden" } %>
           <%= f.input :name, :required => true, :autofocus => true,
                       label: false, placeholder: "Your Name",
-                      input_html: { class: "text-input" } %>
+                      input_html: { class: "text-input", required: true } %>
           <%= f.input :email, :required => true, label: false,
                       placeholder: "Your Email",
-                      input_html: { class: "text-input" } %>
+                      input_html: { class: "text-input", required: true } %>
           <%= f.input :password, :required => true, label: false,
                       placeholder: "Password",
-                      input_html: { class: "text-input" } %>
+                      input_html: { class: "text-input", required: true } %>
           <%= f.input :password_confirmation, :required => true, label: false,
                       placeholder: "Confirm Password",
-                      input_html: { class: "text-input" } %>
+                      input_html: { class: "text-input", required: true } %>
           <% if resource_name.to_s == 'admin' %>
             <%= f.input :invite_code, as: :string, :required => true,
                         label: false, placeholder: "Registration Code",
-                        input_html: { class: "text-input" } %>
+                        input_html: { class: "text-input", required: true } %>
           <% end %>
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Register#{ " *" if resource_name.to_s == "user" }", class: "button" %>
+          <%= f.button :submit, "Register#{ " **" if resource_name.to_s == "user" }", class: "button" %>
         </div>
 
         <% if resource_name.to_s == "user" %>
@@ -44,7 +46,7 @@
             Why do I need to register?
             </a>
             <div class="session-info__extended">
-              Well, for your security and for our convenience we don't take any
+              For your security and for our convenience we don't take any
               credit card information on this site. As such, registering just
               allows us to ensure that each bid we receive is made by a
               real person.
@@ -53,7 +55,7 @@
 
           <div class="registration-disclaimer">
             <small>
-              * By registering you agree to pay Theta Chi, Beta Iota, for total
+              ** By registering you agree to pay Theta Chi, Beta Iota, for total
               amount of your winning bids, in full, by or on the date of the
               event, Fri, May 2, 2014.
             </small>
