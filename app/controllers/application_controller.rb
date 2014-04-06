@@ -14,19 +14,11 @@ class ApplicationController < ActionController::Base
 
   def store_location
     if (request.fullpath != "/login" &&
-        request.fullpath != "/user/login" &&
         request.fullpath != "/register" &&
-        request.fullpath != "/user/register" &&
-        request.fullpath != "/password" &&
         request.fullpath != "/logout" &&
-        request.fullpath != "/user/logout" &&
-        request.fullpath != "/user" &&
-        request.fullpath != "/admin/login" &&
-        request.fullpath != "/admin/register" &&
-        request.fullpath != "/admin/password" &&
-        request.fullpath != "/admin/logout" &&
-        request.fullpath != "/admin" &&
         request.fullpath != "/" &&
+        request.fullpath !~ /admin/i &&
+        request.fullpath !~ /user/i &&
         !request.xhr?)
       session[:previous_url] = request.fullpath
     end

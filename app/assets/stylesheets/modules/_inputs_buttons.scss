@@ -55,7 +55,7 @@
   @extend %color-white;
   @extend %transition-all;
   @include rem(right, 8px);
-  @include rem(top, 8px);
+  @include rem(bottom, 24px);
   @include rem(line-height, 24px);
   @include font-size(14px);
   @include padding(0, 4px);

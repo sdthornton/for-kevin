@@ -24,7 +24,7 @@
                       label: false, placeholder: "New Password",
                       input_html: { class: "text-input" } %>
           <%= f.input :password_confirmation, :required => false,
-                      label: false, placeholder: "Password Confirmation",
+                      label: false, placeholder: "Confirm Password",
                       input_html: { class: "text-input" } %>
           <small class="hint">Enter your current password to confirm changes.</small>
           <%= f.input :current_password, :required => true,
@@ -38,7 +38,7 @@
       <% end %>
 
       <div class="devise-links">
-        Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you you want to delete your account?#{ ' All of your bids will be lost if you do.' if resource_name.to_s == 'user' }" }, :method => :delete %>
+        Unhappy? <%= link_to "Delete my account", registration_path(resource_name), :data => { :confirm => "Are you you want to delete your account?#{ ' All of your bids will be lost if you do.' if resource_name.to_s == 'user' }" }, :method => :delete %>
       </div>
     </div>
   </div>
