@@ -4,7 +4,7 @@ class Bid < ActiveRecord::Base
   belongs_to :user, inverse_of: :bids
   belongs_to :haircut, inverse_of: :bids
 
-  before_validation :check_if_bidding_is_open
+  before_validation :check_if_bidding_is_open, :multiple_of_five
 
   validates_presence_of :user, :haircut
 
@@ -18,7 +18,13 @@ class Bid < ActiveRecord::Base
 
   def check_if_bidding_is_open
     unless Bid.open
-      errors.add(:base, "Sorry, it looks like bidding has closed for the year. But don't worry! We'll be doing this again next year!")
+      errors.add(:base, ": Sorry, it looks like bidding has closed for the year. But don't worry! We'll be doing this again next year!")
+    end
+  end
+
+  def multiple_of_five
+    if self.amount.present? && self.amount % 5 != 0
+      errors.add(:amount, "must be a multiple of five")
     end
   end
 

@@ -1,7 +1,7 @@
 <section class="forgotten-password">
   <div class="container">
     <div class="forgotten-password__inner-wrapper">
-      <h1 class="heading">Forgot your password?</h1>
+      <h1 class="heading heading--small">Forgot your password?</h1>
 
       <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
         <%= f.error_notification %>
