@@ -32,7 +32,13 @@ class Haircut < ActiveRecord::Base
   end
 
   def self.random(n)
-    ids = Haircut.pluck(:id).sample(n)
-    Haircut.where(id: ids)
+    primary_ids = Haircut.where(primary: true).pluck(:id).sample(n)
+    other_ids = Haircut.where(primary: false).pluck(:id).sample(n) if primary_ids.count < n
+    ids = primary_ids << other_ids
+    Haircut.where(id: ids).order(primary: :desc)
+  end
+
+  def self.ordered
+    Haircut.order(primary: :desc, member: :asc)
   end
 end

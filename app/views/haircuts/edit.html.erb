@@ -1,13 +1,15 @@
 <section class="edit-haircut">
   <div class="container">
     <div class="edit-haircut__inner-wrapper">
-      <h1 class="heading">Edit <%= @haircut.member %></h1>
+      <h1 class="heading heading--small">Edit <%= @haircut.member %></h1>
       <%= simple_form_for @haircut do |f| %>
         <%= f.input :member,
             label: "Name", input_html: { class: "text-input" },
             label_html: { class: "text-label" } %>
         <%= f.input :about, input_html: { class: "text-input" },
             label_html: { class: "text-label" } %>
+        <%= f.input :primary, label: "Display member at top",
+                    input_html: { class: "boolean-input" } %>
         <div class="upload-haircut-image">
           <label for="haircut_photo" class="upload-haircut-image__label">
             Upload a new photo

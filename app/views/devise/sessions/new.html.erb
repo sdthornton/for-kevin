@@ -3,7 +3,7 @@
 <section class="sign-in">
   <div class="container">
     <div class="sign-in__inner-wrapper">
-      <h1 class="heading"><%= "Admin " if resource_name.to_s == "admin" %>Login</h1>
+      <h1 class="heading heading--small"><%= "Admin " if resource_name.to_s == "admin" %>Login</h1>
 
       <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
         <% if flash[:alert] %>

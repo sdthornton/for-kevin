@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318225244) do
+ActiveRecord::Schema.define(version: 20140406233311) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140318225244) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.boolean  "primary",            default: false
   end
 
   add_index "haircuts", ["url"], name: "index_haircuts_on_url", unique: true, using: :btree

@@ -23,6 +23,10 @@
   margin-top: 0;
 }
 
+.heading--small {
+  max-width: 320px;
+}
+
 .subheading {
   @extend %display-block;
   @include font-size(16px);

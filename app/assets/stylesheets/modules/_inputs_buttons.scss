@@ -16,6 +16,10 @@
   }
 }
 
+.boolean-input {
+  @include rem(margin-right, 8px);
+}
+
 .input {
   position: relative;
 }

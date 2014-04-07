@@ -10,7 +10,7 @@ class HaircutsController < ApplicationController
                   .page(params[:page]).per(20)
       @search = true
     else
-      @haircuts = Haircut.order('member ASC').page(params[:page]).per(20)
+      @haircuts = Haircut.ordered.page(params[:page]).per(20)
       @search = false
     end
   end
@@ -42,7 +42,7 @@ class HaircutsController < ApplicationController
             value: @haircut.url,
             path: "/"
           }
-          page = (Haircut.pluck('member').sort.index(@haircut.member) / 20) + 1
+          page = (Haircut.ordered.pluck('member').sort.index(@haircut.member) / 20) + 1
           redirect_to haircuts_path(page: page)
         }
         format.json
@@ -79,7 +79,7 @@ class HaircutsController < ApplicationController
 
   private
     def haircut_params
-      params.require(:haircut).permit(:member, :about, :photo)
+      params.require(:haircut).permit(:member, :about, :photo, :primary)
     end
 
 end
