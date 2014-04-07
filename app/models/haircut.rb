@@ -33,7 +33,7 @@ class Haircut < ActiveRecord::Base
 
   def self.random(n)
     primary_ids = Haircut.where(primary: true).pluck(:id).sample(n)
-    other_ids = Haircut.where(primary: false).pluck(:id).sample(n) if primary_ids.count < n
+    other_ids = Haircut.where(primary: false).pluck(:id).sample(n - primary_ids.count) if primary_ids.count < n
     ids = primary_ids << other_ids
     Haircut.where(id: ids).order(primary: :desc)
   end
