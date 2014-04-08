@@ -164,7 +164,7 @@
 }
 
 
-// Admin show
+// Admin show and bids
 .admin-show-haircut {
   @extend %background-ltgray;
 }
@@ -185,19 +185,35 @@
   @extend %float-left;
 }
 
-.admin-show-haircut__table {
+.admin-bids,
+.user-bids {
+  @extend %text-align-center;
+}
+
+.admin-bids__table,
+.user-bids__table {
+  margin: 0 auto;
+}
+
+.admin-show-haircut__table,
+.admin-bids__table,
+.user-bids__table {
   @extend %background-white;
   @extend %text-align-left;
   border-bottom: solid 2px darken($lt_gray, 10%);
   box-shadow: 0 0 1px rgba(0,0,0,0.1);
 }
 
-.admin-show-haircut__bids-header {
+.admin-show-haircut__bids-header,
+.admin-bids__bids-header,
+.user-bids__bids-header {
   @extend %background-dkblue;
   @extend %color-white;
 }
 
-.admin-show-haircut__bids-row {
+.admin-show-haircut__bids-row,
+.admin-bids__bids-row,
+.user-bids__bids-row {
   &:nth-child(2n) {
     @extend %background-white;
   }
@@ -215,7 +231,9 @@
   }
 }
 
-.admin-show-haircut__bid-column {
+.admin-show-haircut__bid-column,
+.admin-bids__bid-column,
+.user-bids__bid-column {
   @include padding(16px);
 }
 

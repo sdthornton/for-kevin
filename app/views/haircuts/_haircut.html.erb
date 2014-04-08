@@ -8,7 +8,7 @@
 
   <div class="haircut-item__links">
     <% if user_signed_in? %>
-      <% if Bid.open %>
+      <% if bidding_is_open? %>
         <%= link_to "Place a Bid", show_haircut_path(haircut.url), class: 'make-a-bid' %>
       <% else %>
         <span>Bidding is now closed</span>

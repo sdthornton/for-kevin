@@ -20,16 +20,18 @@ module HaircutsHelper
   end
 
   def highest_bidder_name(haircut)
-    highest_bid_for(haircut).user.name
+    highest_bid_for(haircut) ? highest_bid_for(haircut).user.name : ""
   end
 
   def highest_bidder_email(haircut)
-    highest_bid_for(haircut).user.email
+    highest_bid_for(haircut) ? highest_bid_for(haircut).user.email : ""
   end
 
-  private
+  def highest_bidder_placed(haircut)
+    highest_bid_for(haircut) ? format_date_time(highest_bid_for(haircut).created_at) : ""
+  end
 
-    def highest_bid_for(haircut)
-      haircut.bids.order('amount DESC').first
-    end
+  def highest_bid_for(haircut)
+    haircut.bids.order('amount DESC').first
+  end
 end

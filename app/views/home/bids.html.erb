@@ -3,13 +3,9 @@
 <section class="all-bids">
   <div class="container">
     <% if admin_signed_in? %>
-      <% @haircuts.each do |haircut| %>
-        <%= haircut.member %>: <%= highest_bid(haircut) %><br>
-      <% end %>
+      <%= render partial: "admin_bids" %>
     <% elsif user_signed_in? %>
-      <% @bids.each do |bid| %>
-        <%= bid.haircut.member %>: <%= number_to_currency(bid.amount) %><br>
-      <% end %>
+      <%= render partial: "user_bids" %>
     <% end %>
   </div>
 </section>
