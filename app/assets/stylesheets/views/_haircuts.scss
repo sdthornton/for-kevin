@@ -176,6 +176,7 @@
 }
 
 .admin-show-haircut__img {
+  @extend %display-block;
   height: auto;
   max-width: 100%;
 }
@@ -266,4 +267,35 @@
   @include rem(margin-top, 16px);
   clear: both;
   width: 100%;
+}
+
+.edit-photo {
+  @extend %float-left;
+  @include rem(margin-bottom, 16px);
+  clear: both;
+  max-width: 320px;
+  width: 100%;
+}
+
+.current-photo {
+  max-width: 320px;
+  width: 100%;
+}
+
+.crop-photo,
+.upload-haircut-image,
+.edit-photo__cancel {
+  display: none;
+}
+
+.edit-photo__links {
+  @include rem(margin-top, 4px);
+}
+
+.edit-photo__new,
+.edit-photo__crop,
+.edit-photo__cancel {
+  @extend %display-block;
+  @extend %float-left;
+  clear: both;
 }

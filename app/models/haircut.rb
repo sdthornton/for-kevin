@@ -19,6 +19,8 @@ class Haircut < ActiveRecord::Base
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
+  crop_attached_file :photo, aspect: "3:2"
+
   def build_url
     self.url = self.member.parameterize.underscore.to_s unless self.member.blank?
   end

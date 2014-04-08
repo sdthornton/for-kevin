@@ -48,4 +48,7 @@ CutTheChi::Application.configure do
     Bullet.bullet_logger = true
     Bullet.console = true
   end
+
+  # Paperclip
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end

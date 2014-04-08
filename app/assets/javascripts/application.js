@@ -19,3 +19,5 @@
 //= require nprogress-init
 //= require utilities
 //= require_tree .
+//= require jquery.jcrop
+//= require papercrop

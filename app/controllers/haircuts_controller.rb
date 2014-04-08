@@ -79,7 +79,9 @@ class HaircutsController < ApplicationController
 
   private
     def haircut_params
-      params.require(:haircut).permit(:member, :about, :photo, :primary)
+      params.require(:haircut).permit(:member, :about, :photo, :primary,
+        :photo_original_w, :photo_original_h, :photo_box_w, :photo_crop_x,
+        :photo_crop_y, :photo_crop_w, :photo_crop_h, :photo_aspect)
     end
 
 end

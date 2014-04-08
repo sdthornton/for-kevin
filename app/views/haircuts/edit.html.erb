@@ -10,14 +10,30 @@
             label_html: { class: "text-label" } %>
         <%= f.input :primary, label: "Display member at top",
                     input_html: { class: "boolean-input" } %>
-        <div class="upload-haircut-image">
-          <label for="haircut_photo" class="upload-haircut-image__label">
-            Upload a new photo
-          </label>
-          <%= f.file_field :photo, class: "upload-haircut-image__input" %>
+        <div class="edit-photo">
+          <label class="photo-label text-label">Photo</label>
+          <%= image_tag photo_url(@haircut), class: "current-photo" %>
+          <div class="crop-photo">
+            <%= f.cropbox :photo, width: "320", disabled: true %>
+          </div>
+          <div class="upload-haircut-image">
+            <label for="haircut_photo" class="upload-haircut-image__label">
+              Upload a new photo
+            </label>
+            <%= f.file_field :photo, class: "upload-haircut-image__input" %>
+          </div>
+          <div class="edit-photo__links">
+            <a href="#" class="edit-photo__new">Upload a new photo</a>
+            <a href="#" class="edit-photo__crop">Adjust this photo</a>
+            <a href="#" class="edit-photo__cancel">Cancel</a>
+          </div>
         </div>
         <%= f.submit "Save Member", class: "button button--save-haircut" %>
       <% end %>
     </div>
   </div>
 </section>
+
+<%= content_for :javascript do %>
+  <% javascript_tag 'new CutTheChi.EditHaircut(); new Papercrop();' %>
+<% end %>

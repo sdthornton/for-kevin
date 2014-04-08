@@ -40,6 +40,7 @@ gem 'paperclip', '~> 4.1'
 gem 'kaminari', '~> 0.15.1'
 gem 'metamagic'
 gem 'figaro'
+gem 'papercrop', git: "git@github.com:sdthornton/papercrop.git"
 
 group :development do
   gem 'better_errors'

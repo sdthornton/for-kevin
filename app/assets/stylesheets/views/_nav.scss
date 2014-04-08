@@ -64,7 +64,7 @@
   top: 0;
   visibility: hidden;
   width: 100%;
-  z-index: 99;
+  z-index: 999;
 
   &.open {
     @include transform(scale(1) translate3d(0,0,0));
