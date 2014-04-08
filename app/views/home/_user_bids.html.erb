@@ -1,4 +1,9 @@
 <div class="user-bids">
+  <div class="user-bids__info">
+    Below, for your reference, are all the bids you've placed so far.<br>
+    If a bid is currently the top bid, a <span class="blue">blue line</span>
+    will be prepended to that row. Good luck!
+  </div>
   <% if @bids.empty? %>
     <strong>No bids placed yet</strong>
   <% else %>
@@ -11,7 +16,7 @@
       </tr>
       <% @bids.each do |bid| %>
         <tr class="user-bids__bids-row">
-          <td class="user-bids__bid-column">
+          <td class="user-bids__bid-column<%= " current-top-bid" if highest_bid_for(bid.haircut) == bid %>">
             <%= link_to bid.haircut.member, show_haircut_path(bid.haircut.url) %>
           </td>
           <td class="user-bids__bid-column"><%= number_to_currency(bid.amount) %></td>

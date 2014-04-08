@@ -237,6 +237,28 @@
   @include padding(16px);
 }
 
+.user-bids__bid-column {
+  position: relative;
+}
+
+.user-bids__bid-column.current-top-bid:before {
+  @extend %background-blue;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 4px;
+}
+
+.user-bids__info {
+  @include rem(padding-bottom, 36px);
+}
+
+.blue {
+  border-bottom: solid 2px $blue;
+}
+
 
 // Admin edit & new
 .new-haircut,
