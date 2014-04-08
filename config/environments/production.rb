@@ -96,6 +96,5 @@ CutTheChi::Application.configure do
   Paperclip.options[:command_path] = "/usr/bin/"
 
   # Eager load Simple Form to prevent NoMethod errors
-  config.thread_safe!
   SimpleForm.eager_load!
 end
