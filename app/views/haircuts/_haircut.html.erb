@@ -8,7 +8,11 @@
 
   <div class="haircut-item__links">
     <% if user_signed_in? %>
-      <%= link_to "Place a Bid", show_haircut_path(haircut.url), class: 'make-a-bid' %>
+      <% if Bid.open %>
+        <%= link_to "Place a Bid", show_haircut_path(haircut.url), class: 'make-a-bid' %>
+      <% else %>
+        <span>Bidding is now closed</span>
+      <% end %>
     <% elsif admin_signed_in? %>
       <%= link_to "Show", show_haircut_path(haircut.url), class: "admin-haircut-link" %>
       <%= link_to "Edit", edit_haircut_path(haircut.url), class: "admin-haircut-link" %>

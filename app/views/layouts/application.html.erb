@@ -11,7 +11,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="hover">
+<body class="hover<%= " bidding-over" unless Bid.open %>">
   <div class="no-js-warning">
     Hey friend, this site takes full advantage of javascript. We really
     recommend you explore it with <strong>javascript turned on</strong>.
@@ -23,6 +23,10 @@
     browser</a> to improve your experience.
   </div>
   <![endif]-->
+  <div class="bidding-over-alert">
+    Unfortunately, bidding is over for the year. We hope you enjoyed the event
+    though and we look forward to seeing you back next year!
+  </div>
 
   <div class="main-content-wrapper">
     <%= render partial: "/shared/nav" %>

@@ -3,6 +3,10 @@
   position: absolute;
   top: 0;
   width: 100%;
+
+  .bidding-over & {
+    @include rem(top, 56px);
+  }
 }
 
 .main-header {
