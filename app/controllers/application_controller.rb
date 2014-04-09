@@ -21,6 +21,9 @@ class ApplicationController < ActionController::Base
         request.fullpath !~ /user/i &&
         !request.xhr?)
       session[:previous_url] = request.fullpath
+
+      puts request.fullpath
+      puts session[:previous_url]
     end
   end
 

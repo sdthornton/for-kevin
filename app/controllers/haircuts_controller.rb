@@ -10,7 +10,7 @@ class HaircutsController < ApplicationController
                   .page(params[:page]).per(20)
       @search = true
     else
-      @haircuts = Haircut.ordered.page(params[:page]).per(20)
+      @haircuts = Haircut.ordered.page(params[:page]).per(2)
       @search = false
     end
   end
