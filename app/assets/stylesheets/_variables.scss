@@ -1,8 +1,9 @@
 $white: #ffffff;
 $lt_gray: #f7f7f7;
-$lt_gray_alt: #ededed;
+$lt_gray_alt: darken($lt_gray, 7%);
 $gray: darken($lt_gray_alt, 10%);
 $black: #333;
-$red: #e53c3b;
+// $red: #e53c3b;
+$red: #d33d3d;
 $blue: #3498db;
 $dk_blue: #212333;

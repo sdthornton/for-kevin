@@ -1,12 +1,11 @@
 .main-footer {
+  @extend %background-dkblue;
   @extend %text-align-center;
-  background: $lt_gray_alt;
+  @extend %color-white;
 }
 
 .bidding-info {
   @extend %background-white;
-  @extend %color-white;
-  @extend %background-dkblue;
 }
 
 .bidding-info__icon {
@@ -84,9 +83,9 @@
 }
 
 .footer-nav__link {
+  @extend %color-white;
   @include rem(margin-right, 8px);
   @include rem(margin-left, 8px);
-  color: $dk_blue;
 
   &:first-child {
     margin-left: 0;
@@ -98,7 +97,7 @@
 }
 
 .footer-nav__separator {
-  color: lighten($dk_blue, 20%);
+  color: lighten($dk_blue, 35%);
 }
 
 .copyright {

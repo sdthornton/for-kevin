@@ -19,12 +19,20 @@
   padding-bottom: 0;
 }
 
+.container--no-top-padding {
+  padding-top: 0;
+}
+
 .heading {
   margin-top: 0;
 }
 
 .heading--small {
   max-width: 320px;
+}
+
+.heading--center {
+  @extend %text-align-center;
 }
 
 .subheading {

@@ -1,32 +1,36 @@
 <div class="user-bids">
   <div class="user-bids__info">
     Below, for your reference, are all the bids you've placed so far.<br>
-    If a bid is currently the top bid, a <span class="blue">blue line</span>
+    If a bid is currently winning, a <span class="blue">blue line</span>
     will be prepended to that row. Good luck!
   </div>
   <% if @bids.empty? %>
     <strong>No bids placed yet</strong>
   <% else %>
     <table class="user-bids__table">
-      <tr class="user-bids__bids-header">
-        <th class="user-bids__bid-column">Member</th>
-        <th class="user-bids__bid-column">Your Bid</th>
-        <th class="user-bids__bid-column">Current Top Bid</th>
-        <th class="user-bids__bid-column">Placed</th>
-      </tr>
-      <% @bids.each do |bid| %>
-        <tr class="user-bids__bids-row">
-          <td class="user-bids__bid-column<%= " current-top-bid" if highest_bid_for(bid.haircut) == bid %>">
-            <%= link_to bid.haircut.member, show_haircut_path(bid.haircut.url) %>
-          </td>
-          <td class="user-bids__bid-column"><%= number_to_currency(bid.amount) %></td>
-          <td class="user-bids__bid-column">
-            <%= highest_bid(bid.haircut) %>
-            <%= "(yours)" if highest_bid_for(bid.haircut).user == current_user %>
-          </td>
-          <td class="user-bids__bid-column"><%= format_date_time(bid.created_at) %></td>
+      <thead>
+        <tr class="user-bids__bids-header">
+          <th class="user-bids__bid-column">Member</th>
+          <th class="user-bids__bid-column">Your Bid</th>
+          <th class="user-bids__bid-column">Current Top Bid</th>
+          <th class="user-bids__bid-column">Placed</th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @bids.each do |bid| %>
+          <tr class="user-bids__bids-row">
+            <td class="user-bids__bid-column<%= " current-top-bid" if highest_bid_for(bid.haircut) == bid %>">
+              <%= link_to bid.haircut.member, show_haircut_path(bid.haircut.url) %>
+            </td>
+            <td class="user-bids__bid-column"><%= number_to_currency(bid.amount) %></td>
+            <td class="user-bids__bid-column">
+              <%= highest_bid(bid.haircut) %>
+              <%= "(yours)" if highest_bid_for(bid.haircut).user == current_user %>
+            </td>
+            <td class="user-bids__bid-column"><%= format_date_time(bid.created_at) %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   <% end %>
 </div>

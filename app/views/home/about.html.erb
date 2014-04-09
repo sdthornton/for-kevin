@@ -2,13 +2,78 @@
 
 <section class="the-event">
   <div class="container">
-    <p>
-      The hair cutting will commence on <u>Friday, May 2nd</u> at
-      the <u>Theta Chi house</u> from <u>4&ndash;7pm</u>
-      and will feature a live DJ and hairstylists from <a
-      href="http://samhughes.toniguy.com/">Toni & Guy</a> for more intricate
-      haircutting help. Once you bid, you commit to showing up to the event
-      with cash, check, or credit card ready to pay for your bid.
+    <h1 class="heading heading--center">About Cut the Chi</h1>
+    <p class="about-top-p">
+      So you've <%= link_to "made your bids", haircuts_path %>. Now what?
+      Well don't you worry one little bit. Below is all the information you
+      need. And if there's still more you want to know, feel free to
+      <a href="mailto:mailto:philanthropy.betaiota.thetachi@gmail.com">Contact
+      Us</a>.
     </p>
+
+    <div class="about__dates">
+      <div class="about-column">
+        <%= image_tag "about_date_1.svg", class: "about-date-img-1",
+            onerror: "this.onerror=null; this.src='/assets/about_date_1.png'" %>
+        <h3 class="about-date">
+          April 30th
+          <span class="about-date__time">10am</span>
+        </h3>
+        <p class="about-date-p">Percentage day at Mama's Hawaiian Bar-B-Cue</p>
+      </div>
+      <div class="about-column">
+        <%= image_tag "about_date_2.svg", class: "about-date-img-2",
+            onerror: "this.onerror=null; this.src='/assets/about_date_2.png'" %>
+        <h3 class="about-date">
+          May 1st
+          <span class="about-date__time">6&mdash;8pm</span>
+        </h3>
+        <p class="about-date-p">Dance competition in Social Sciences Room 100</p>
+      </div>
+      <div class="about-column">
+        <%= image_tag "about_date_3.svg", class: "about-date-img-3",
+            onerror: "this.onerror=null; this.src='/assets/about_date_3.png'" %>
+        <h3 class="about-date">
+          May 2nd
+          <span class="about-date__time">4&mdash;7pm</span>
+        </h3>
+        <p class="about-date-p">Cut the Chi haircutting extravaganza</p>
+      </div>
+    </div>
+
+    <div class="container container--small container--no-padding">
+      <div class="about-section">
+        <%= image_tag "about_img_1.jpg", class: "about-image--right" %>
+        <p class="about__p-spaced">
+          <strong>Event info:</strong> This year's Cut the Chi event will take
+          place on Friday, May 2, at the Theta Chi house from 4&mdash;7pm. The
+          event will have a live DJ for your entertainment and there will be
+          professional stylists from
+          <a href="http://samhughes.toniguy.com/" target="_blank">Toni&amp;Guy</a>
+          on hand to help with some more intricate haircut designs.
+        </p>
+      </div>
+      <div class="about-section">
+        <%= image_tag "about_img_2.jpg", class: "about-image--left" %>
+        <p class="about__p-spaced">
+          <strong>Bidding info:</strong> All bids must be greater than $15 and be
+          a multiple of $5. Fraternity members will have the option to 'buy out' a
+          bid by paying $75 more than the highest bid at the day of the event. If
+          they buy out the bid you won't get to cut the hair, but we will raise
+          more for charity, so it's a good thing.
+        </p>
+      </div>
+      <div class="about-section">
+        <%= image_tag "about_img_3.jpg", class: "about-image--right" %>
+        <p class="about__p-spaced">
+          <strong>Philanthropy info:</strong> This year we are partnering with
+          <a href="http://www.ssbtr.org/" target="_blank">Students Supporting
+          Brain Tumor Research</a>. They are a wonderful organization we encourage
+          you to learn more about. You can be glad knowing that all the money
+          raised through this event is helping a great cause.
+        </p>
+      </div>
+    </div>
+
   </div>
 </section>

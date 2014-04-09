@@ -1,3 +1,89 @@
 .the-event {
   @extend %background-ltgray;
 }
+
+.about-image--right,
+.about-image--left {
+  border-radius: 100px;
+  width: 200px;
+}
+
+.about-image--right {
+  @extend %float-right;
+  @include rem(margin-left, 45px);
+}
+
+.about-image--left {
+  @extend %float-left;
+  @include rem(margin-right, 45px);
+  @include rem(margin-top, 16px);
+}
+
+.about-top-p {
+  @extend %text-align-center;
+  @include rem(padding-bottom, 16px);
+  margin: 0 auto;
+  max-width: 560px;
+}
+
+.about-section {
+  @extend %display-block;
+  clear: both;
+}
+
+.about__p-spaced {
+  @include rem(padding-top, 36px);
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.about__dates {
+  @extend %flexbox;
+  @extend %text-align-left;
+  @include flex-wrap(wrap);
+  @include justify-content(center);
+  @include padding(54px, 0);
+  @include rem(margin-bottom, 36px);
+  // border-top: solid 1px $gray;
+}
+
+.about-column {
+  @extend %background-white;
+  @extend %text-align-center;
+  @include rem(margin-left, 18px);
+  @include rem(margin-right, 18px);
+  border-bottom: solid 2px darken($lt_gray, 10%);
+  box-shadow: 0 0 1px rgba(0,0,0,0.1);
+  width: 280px;
+}
+
+.about-date-img-1,
+.about-date-img-2,
+.about-date-img-3 {
+  @extend %display-block;
+  height: auto;
+  width: 100%;
+}
+
+.about-date-img-1 {
+  @extend %background-dkblue;
+}
+
+.about-date-img-2 {
+  @extend %background-blue;
+}
+
+.about-date-img-3 {
+  background: $red;
+}
+
+.about-date__time {
+  @extend %display-block;
+  @include font-size(16px);
+}
+
+.about-date-p {
+  @include padding(0, 24px);
+}

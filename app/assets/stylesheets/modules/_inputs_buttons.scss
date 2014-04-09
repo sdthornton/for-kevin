@@ -97,7 +97,7 @@
 
 .lg-button {
   @extend .button;
-  @include padding(16px, 36px);
+  @include padding(16px, 24px);
   display: block;
   margin: 0 auto;
 }

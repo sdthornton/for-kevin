@@ -14,6 +14,7 @@
 .haircut-info__img {
   @extend %float-right;
   @include rem(margin-left, 81px);
+  @include rem(margin-bottom, 36px);
   border-radius: 150px;
 }
 
@@ -170,9 +171,11 @@
 }
 
 .admin-show-haircut__info {
-  @extend %float-left;
-  max-width: 320px;
-  padding-right: 24px;
+  @extend %display-inline-block;
+  @extend %text-align-left;
+  max-width: 356px;
+  padding-right: 45px;
+  vertical-align: top;
 }
 
 .admin-show-haircut__img {
@@ -182,7 +185,8 @@
 }
 
 .admin-show-haircut__bids {
-  @extend %float-left;
+  @extend %display-inline-block;
+  vertical-align: top;
 }
 
 .admin-bids,
@@ -248,7 +252,7 @@
   left: 0;
   position: absolute;
   top: 0;
-  width: 4px;
+  width: 3px;
 }
 
 .user-bids__info {
@@ -284,7 +288,8 @@
   }
 }
 
-.upload-haircut-image {
+.upload-haircut-image,
+.upload-haircut-image--edit {
   @extend %float-left;
   @include rem(margin-bottom, 16px);
   clear: both;
@@ -323,7 +328,7 @@
 }
 
 .crop-photo,
-.upload-haircut-image,
+.upload-haircut-image--edit,
 .edit-photo__cancel {
   display: none;
 }

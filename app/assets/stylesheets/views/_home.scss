@@ -25,7 +25,8 @@
   @extend %background-ltgray;
 }
 
-.button--see-all-members {
+.button--see-all-members,
+.button--about {
   @include rem(margin-top, 45px);
   max-width: 410px;
   width: 100%;

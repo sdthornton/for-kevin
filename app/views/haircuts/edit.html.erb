@@ -4,9 +4,9 @@
       <h1 class="heading heading--small">Edit <%= @haircut.member %></h1>
       <%= simple_form_for @haircut do |f| %>
         <%= f.input :member,
-            label: "Name", input_html: { class: "text-input" },
+            label: "Name", input_html: { class: "text-input--no-placeholder" },
             label_html: { class: "text-label" } %>
-        <%= f.input :about, input_html: { class: "text-input" },
+        <%= f.input :about, input_html: { class: "text-input--no-placeholder" },
             label_html: { class: "text-label" } %>
         <%= f.input :primary, label: "Display member at top",
                     input_html: { class: "boolean-input" } %>
@@ -16,7 +16,7 @@
           <div class="crop-photo">
             <%= f.cropbox :photo, width: "320", disabled: true %>
           </div>
-          <div class="upload-haircut-image">
+          <div class="upload-haircut-image--edit">
             <label for="haircut_photo" class="upload-haircut-image__label">
               Upload a new photo
             </label>
