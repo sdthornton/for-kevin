@@ -13,9 +13,11 @@
         <div class="edit-photo">
           <label class="photo-label text-label">Photo</label>
           <%= image_tag photo_url(@haircut), class: "current-photo" %>
-          <div class="crop-photo">
-            <%= f.cropbox :photo, width: "320", disabled: true %>
-          </div>
+          <% unless @haircut.photo.to_s == "/assets/no_photo.jpg" %>
+            <div class="crop-photo">
+              <%= f.cropbox :photo, width: "320", disabled: true %>
+            </div>
+          <% end %>
           <div class="upload-haircut-image--edit">
             <label for="haircut_photo" class="upload-haircut-image__label">
               Upload a new photo
@@ -24,7 +26,9 @@
           </div>
           <div class="edit-photo__links">
             <a href="#" class="edit-photo__new">Upload a new photo</a>
-            <a href="#" class="edit-photo__crop">Adjust this photo</a>
+            <% unless @haircut.photo.to_s == "/assets/no_photo.jpg" %>
+              <a href="#" class="edit-photo__crop">Adjust this photo</a>
+            <% end %>
             <a href="#" class="edit-photo__cancel">Cancel</a>
           </div>
         </div>
