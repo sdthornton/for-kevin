@@ -39,9 +39,5 @@
     <%= javascript_tag 'new CutTheChi.BetterPlaceholders();' %>
   <% end %>
   <%= yield :javascript %>
-
-  <% if current_admin && current_admin.email == "kevin.spangenberg@gmail.com" %>
-    <script>alert("Oh hey bro! Like, my real bro. Not a frat bro. Hope you're liking the site. I wonder if this will get annoying?")</script>
-  <% end %>
 </body>
 </html>
