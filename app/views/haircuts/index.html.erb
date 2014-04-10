@@ -37,9 +37,10 @@
 <section class="haircuts" id="haircuts">
   <div class="container">
     <% if successful_bid %>
-      <div class="successful-bid">
+      <input type="checkbox" id="close_successful_bid">
+      <label class="successful-bid" for="close_successful_bid">
         <%= successful_bid %>
-      </div>
+      </label>
     <% end %>
 
     <% if @haircuts.empty? %>

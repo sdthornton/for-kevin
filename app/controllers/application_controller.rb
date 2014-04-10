@@ -28,7 +28,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    session[:previous_url] || haircuts_path
+    if cookies[:show_haircut] && session[:previous_url] !~ /haircut/
+      haircut = Haircut.find_by(url: cookies[:show_haircut])
+      page = (Haircut.ordered.pluck('member').index(haircut.member) / 20) + 1
+      haircuts_path(page: page)
+    else
+      session[:previous_url] || haircuts_path
+    end
   end
 
   # Add custom flash types

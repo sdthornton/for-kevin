@@ -42,7 +42,7 @@ class HaircutsController < ApplicationController
             value: @haircut.url,
             path: "/"
           }
-          page = (Haircut.ordered.pluck('member').sort.index(@haircut.member) / 20) + 1
+          page = (Haircut.ordered.pluck('member').index(@haircut.member) / 20) + 1
           redirect_to haircuts_path(page: page)
         }
         format.json
