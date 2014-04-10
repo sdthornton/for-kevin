@@ -10,9 +10,9 @@ class BidsController < ApplicationController
     if @bid.save
       redirect_to show_haircut_path(@haircut.url),
         successful_bid:
-          "Thanks for you bid of <strong>$#{"%.2f" % @bid.amount}</strong> for
-          <strong>#{@haircut.member}</strong>. If your bid ends up winning
-          you'll receive an email letting you know. And either way, show up May
+          "Thanks for your <strong>$#{"%.2f" % @bid.amount}</strong>bid on
+          <strong>#{@haircut.member}</strong>. If your bid wins
+          we'll email you to let you know. Either way, show up May
           2nd to the Theta Chi house for a wonderful, haircuttingly-good
           time!".html_safe
     else

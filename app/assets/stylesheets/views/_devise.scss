@@ -5,8 +5,23 @@
   max-width: 320px;
 }
 
+.session-info__show-more {
+  color: $red;
+  cursor: pointer;
+}
+
 .session-info__extended {
+  @include rem(margin-top, 16px);
   display: none;
+  font-weight: bold;
+}
+
+#why_register {
+  @extend %visuallyhidden;
+
+  &:checked + .session-info__extended {
+    display: block;
+  }
 }
 
 .sign-in__inner-wrapper,
