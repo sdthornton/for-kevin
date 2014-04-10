@@ -1,0 +1,22 @@
+@media only screen and (max-width: 65.000em) {
+  .container {
+    max-width: 808px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .haircut-item {
+    width: 30.33333333333333%;
+  }
+}
+
+@media only screen and (max-width: 40.000em) {
+  .haircut-items {
+    margin-left: -5%;
+  }
+
+  .haircut-item {
+    margin-left: 5%;
+    width: 45%;
+  }
+}

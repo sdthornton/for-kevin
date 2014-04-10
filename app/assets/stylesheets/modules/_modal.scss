@@ -36,6 +36,20 @@
   position: absolute;
   top: 10%;
   z-index: 100;
+
+  @include transform(translate3d(35px,0,0));
+  @include transition(all 0.2s ease-in-out);
+  opacity: 0;
+
+  .fade-in & {
+    @include transition(all 0.2s 0.2s ease-in-out);
+    @include transform(translate3d(0,0,0));
+    opacity: 1.0;
+  }
+
+  .fade-out & {
+    @include transform(translate3d(0,0,0));
+  }
 }
 
 .close-modal {

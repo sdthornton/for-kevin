@@ -3,13 +3,45 @@
   @extend %text-align-center;
   @extend %color-white;
   @include rem(padding-top, 81px);
-  background: $red image-url('haircut_background.jpg') center center no-repeat;
+  background: $red;
+  position: relative;
   width: 100%;
+
+  .container {
+    @extend %use-gpu;
+    @extend %transition-all;
+    @include rem(padding-top, 24px);
+    @include transition(all 0.3s 0.5s ease-in-out);
+    @include transform(translate3d(35px,0,0));
+    opacity: 0;
+    visibility: hidden;
+
+    &.slide-in {
+      @include transform(translate3d(0,0,0));
+      opacity: 1.0;
+      visibility: visible;
+    }
+  }
+}
+
+.home-bg {
+  @extend %use-gpu;
+  @include transition(all 0.4s ease-in-out);
+  background: $red image-url('haircut_background.jpg') center center no-repeat;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 0;
 
   @include background-size(cover);
 
-  .container--small {
-    @include rem(padding-top, 24px);
+  &.visible {
+    opacity: 1.0;
+    visibility: visible;
   }
 }
 

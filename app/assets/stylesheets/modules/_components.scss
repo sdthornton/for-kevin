@@ -2,8 +2,15 @@
   @extend %clearfix;
   @include padding(68px, 0);
   margin: 0 auto;
-  max-width: 1152px;
+  max-width: 960px;
+  position: relative;
   width: 100%;
+}
+
+@media only screen and (min-width: 80.000em) {
+  .container {
+    max-width: 1152px;
+  }
 }
 
 .container--small {

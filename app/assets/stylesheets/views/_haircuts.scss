@@ -293,7 +293,8 @@
   @extend %float-left;
   @include rem(margin-bottom, 16px);
   clear: both;
-  width: 320px;
+  max-width: 320px;
+  width: 100%;
 }
 
 .upload-haircut-image__label {

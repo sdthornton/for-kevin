@@ -8,6 +8,7 @@
   position: absolute;
   top: 0;
   width: 100%;
+  z-index: 1;
 
   .bidding-over & {
     @include rem(top, 56px);
@@ -62,7 +63,7 @@
 
 .site-nav {
   @extend %text-align-center;
-  @include transition(all, 0.3s, ease-in-out);
+  @include transition(all 0.3s ease-in-out);
   @include transform(scale(0.95) translate3d(0,-5%,0));
   @include opacity(0);
   background: $dk_blue;

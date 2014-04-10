@@ -52,11 +52,11 @@
 .about-column {
   @extend %background-white;
   @extend %text-align-center;
-  @include rem(margin-left, 18px);
-  @include rem(margin-right, 18px);
   border-bottom: solid 2px darken($lt_gray, 10%);
   box-shadow: 0 0 1px rgba(0,0,0,0.1);
-  width: 280px;
+  margin: 0 1%;
+  max-width: 280px;
+  width: 31%;
 }
 
 .about-date-img-1,

@@ -103,12 +103,12 @@
   zoom: 1;
 }
 
-@mixin transition($transition-property: all, $transition-time: 0.2s, $method: ease) {
-  -webkit-transition: $transition-property $transition-time $method;
-     -moz-transition: $transition-property $transition-time $method;
-      -ms-transition: $transition-property $transition-time $method;
-       -o-transition: $transition-property $transition-time $method;
-          transition: $transition-property $transition-time $method;
+@mixin transition($args...) {
+  -webkit-transition: $args;
+     -moz-transition: $args;
+      -ms-transition: $args;
+       -o-transition: $args;
+          transition: $args;
 }
 
 @mixin transform($params) {
@@ -118,16 +118,16 @@
 }
 
 %transition-all {
-  @include transition();
+  @include transition(all 0.2s ease-in-out);
 }
 
 %fade-in {
-  @include transition(opacity, 0.5s);
+  @include transition(opacity 0.5s ease-in-out);
   @include opacity(1.0);
 }
 
 %fade-out {
-  @include transition(opacity, 0.5s);
+  @include transition(opacity 0.5s ease-in-out);
   @include opacity(0);
 }
 

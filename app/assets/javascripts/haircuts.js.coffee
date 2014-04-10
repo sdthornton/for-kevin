@@ -73,7 +73,7 @@ namespace 'CutTheChi', (exports) ->
       haircutHtml = """
         <article class="show-haircut modal" id="show_#{haircut.hash}" data-url="#{haircut.url}">
           <div class="show-haircut__info">
-            <img src="#{haircut.photo}" width="364" height="auto" class="show-haircut__img">
+            <img src="#{haircut.photo}" width="364" height="243" class="show-haircut__img">
             <div class="show-haircut__name"><strong>#{haircut.name}</strong></div>
           </div>
           <div class="show-haircut__bid-form">
