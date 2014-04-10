@@ -1,5 +1,6 @@
 .modal-wrapper {
-  @include opacity(0);
+  opacity: 0;
+  visibility: hidden;
 
   &.fade-in {
     @extend %fade-in;
@@ -42,7 +43,7 @@
   opacity: 0;
 
   .fade-in & {
-    @include transition(all 0.2s 0.2s ease-in-out);
+    @include transition(all 0.2s 0.1s ease-in-out);
     @include transform(translate3d(0,0,0));
     opacity: 1.0;
   }

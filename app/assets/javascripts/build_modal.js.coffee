@@ -18,7 +18,7 @@ namespace 'CutTheChi', (exports) ->
 
       $('.modal-wrapper').remove()
       $('body').append(modal)
-      $('.modal-wrapper').delayAddClass('fade-in', 1)
+      $('.modal-wrapper').delayAddClass('fade-in', 100)
       @bindCloseModal()
 
     bindCloseModal: ->

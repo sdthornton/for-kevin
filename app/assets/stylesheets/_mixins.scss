@@ -122,13 +122,15 @@
 }
 
 %fade-in {
-  @include transition(opacity 0.5s ease-in-out);
-  @include opacity(1.0);
+  @include transition(all 0.3s ease-in-out);
+  opacity: 1.0;
+  visibility: visible;
 }
 
 %fade-out {
-  @include transition(opacity 0.5s ease-in-out);
-  @include opacity(0);
+  @include transition(all 0.3s ease-in-out);
+  opacity: 0;
+  visibility: hidden;
 }
 
 %clearfix {
