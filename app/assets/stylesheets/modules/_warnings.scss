@@ -37,6 +37,10 @@ body.bidding-over {
   display: none;
 }
 
+.flexbox .browsehappy {
+  display: none;
+}
+
 .warning-link {
   @extend %color-white;
   text-decoration: underline;

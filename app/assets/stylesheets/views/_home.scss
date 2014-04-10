@@ -8,8 +8,8 @@
   width: 100%;
 
   .container {
-    @extend %use-gpu;
     @extend %transition-all;
+    @include use-gpu;
     @include rem(padding-top, 24px);
     @include transition(all 0.2s 0.4s ease-in-out);
     @include transform(translate3d(0,20px,0));
@@ -25,7 +25,7 @@
 }
 
 .home-bg {
-  @extend %use-gpu;
+  @include use-gpu;
   @include transition(all 0.3s ease-in-out);
   background: $red image-url('haircut_background.jpg') center center no-repeat;
   height: 100%;
