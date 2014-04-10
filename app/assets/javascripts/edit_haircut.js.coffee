@@ -4,7 +4,7 @@ namespace 'CutTheChi', (exports) ->
     constructor: ->
       @$currentPhoto = $('.current-photo')
       @$cropPhoto    = $('.crop-photo')
-      @$newPhoto     = $('.upload-haircut-image')
+      @$newPhoto     = $('.upload-haircut-image--edit')
       @$editNew      = $('.edit-photo__new')
       @$editCrop     = $('.edit-photo__crop')
       @$editCancel   = $('.edit-photo__cancel')
