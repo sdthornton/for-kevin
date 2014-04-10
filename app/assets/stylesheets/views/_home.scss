@@ -11,7 +11,7 @@
     @extend %use-gpu;
     @extend %transition-all;
     @include rem(padding-top, 24px);
-    @include transition(all 0.3s 0.5s ease-in-out);
+    @include transition(all 0.2s 0.4s ease-in-out);
     @include transform(translate3d(0,20px,0));
     opacity: 0;
     visibility: hidden;
@@ -26,7 +26,7 @@
 
 .home-bg {
   @extend %use-gpu;
-  @include transition(all 0.4s ease-in-out);
+  @include transition(all 0.3s ease-in-out);
   background: $red image-url('haircut_background.jpg') center center no-repeat;
   height: 100%;
   left: 0;
