@@ -1,5 +1,6 @@
 @media only screen and (max-width: 65.000em) {
-  .container {
+  .container,
+  .secondary-container {
     max-width: 808px;
     padding-left: 16px;
     padding-right: 16px;
@@ -7,6 +8,12 @@
 
   .haircut-item {
     width: 30.33333333333333%;
+
+    .home-haircuts & {
+      &:last-of-type {
+        display: none;
+      }
+    }
   }
 }
 
@@ -18,5 +25,11 @@
   .haircut-item {
     margin-left: 5%;
     width: 45%;
+
+    .home-haircuts & {
+      &:last-of-type {
+        display: block;
+      }
+    }
   }
 }
