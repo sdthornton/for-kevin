@@ -1,0 +1,32 @@
+<section class="all-users">
+  <div class="container">
+    <% if @users.empty? %>
+      <strong>No users created yet</strong>
+    <% else %>
+      <table class="all-users__table">
+        <thead>
+          <tr class="all-users__users-header">
+            <th class="all-users__user-column">User</th>
+            <th class="all-users__user-column">Email</th>
+            <th class="all-users__user-column">Bids</th>
+            <th class="all-users__user-column"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr class="all-users__users-row">
+              <td class="all-users__user-column"><%= user.name %></td>
+              <td class="all-users__user-column"><%= user.email %></td>
+              <td class="all-users__user-column"><%= user.bids.count %></td>
+              <td class="all-users__user-column">
+                <%= link_to "Delete", registration_path(user),
+                    :data => { confirm: "Are you you want to delete this user? All his or her bids will be lost." },
+                    method: :delete %>
+              </td>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</section>

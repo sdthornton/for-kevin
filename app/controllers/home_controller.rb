@@ -8,6 +8,7 @@ class HomeController < ApplicationController
   end
 
   before_filter :authenticate_session!, only: [:bids]
+  before_filter :authenticate_admin!, only: [:users]
 
   def index
     @haircuts = Haircut.random(4)
@@ -19,5 +20,9 @@ class HomeController < ApplicationController
   def bids
     @haircuts = Haircut.order('member ASC') if admin_signed_in?
     @bids = current_user.bids.order('amount DESC') if user_signed_in?
+  end
+
+  def users
+    @users = User.order('name ASC')
   end
 end

@@ -3,6 +3,7 @@ CutTheChi::Application.routes.draw do
 
   get 'about' => 'home#about'
   get 'bids' => 'home#bids', as: 'show_bids'
+  get 'users' => 'home#users', as: 'show_users'
 
   devise_for :admins, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
 
