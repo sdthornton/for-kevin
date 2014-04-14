@@ -374,3 +374,24 @@
   @extend %float-left;
   clear: both;
 }
+
+.new-haircut {
+  .photo-preview {
+    @include rem(margin-top, 16px);
+    display: none;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 2 / 3 * 100%;
+    width: 100%;
+  }
+
+  .photo-preview-img {
+    max-width: 100%;
+  }
+
+  .photo-preview-warning {
+    display: none;
+    @extend %text-align-left;
+    @include rem(margin-top, 8px);
+  }
+}

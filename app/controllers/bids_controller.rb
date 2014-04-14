@@ -22,6 +22,11 @@ class BidsController < ApplicationController
   end
 
   def destroy
+    @bid = Bid.find(params[:id])
+    @haircut = Haircut.find(@bid.haircut_id)
+    @bid.destroy
+
+    redirect_to show_haircut_path(@haircut.url)
   end
 
   private

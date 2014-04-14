@@ -104,3 +104,7 @@
   @extend %display-block;
   @include rem(margin-top, 16px);
 }
+
+.footer-nav__user-links {
+  @include rem(margin-top, 8px);
+}

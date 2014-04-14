@@ -8,12 +8,12 @@ class Haircut < ActiveRecord::Base
 
   has_attached_file :photo,
     styles: {
-      retina: {
-        geometry: "728x484#"
-      },
-      normal: {
-        geometry: "364x242#"
-      }
+      retina: "",
+      normal: ""
+    },
+    convert_options: {
+      retina: "-gravity north -thumbnail 768x484^ -extent 768x484",
+      normal: "-gravity north -thumbnail 364x242^ -extent 364x242"
     },
     default_url: "/assets/no_photo.jpg"
 

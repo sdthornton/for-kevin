@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:sdthornton/papercrop.git
-  revision: b01d83ee4c409399db9f95a237e1bf534737836e
+  revision: 326135a6be13737dacacd67f0d6ee6474af3c4f7
   specs:
     papercrop (0.2.0)
       jquery-rails

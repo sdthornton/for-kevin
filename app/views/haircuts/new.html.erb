@@ -1,7 +1,7 @@
 <section class="new-haircut">
   <div class="container">
     <div class="new-haircut__inner-wrapper">
-      <h1 class="heading heading--small">New Haircut</h1>
+      <h1 class="heading heading--small">New Member</h1>
       <%= simple_form_for @haircut do |f| %>
         <%= f.input :member,
             label: "Name", input_html: { class: "text-input--no-placeholder" },
@@ -15,9 +15,20 @@
             <abbr title="required">*</abbr> Photo
           </label>
           <%= f.file_field :photo, class: "upload-haircut-image__input" %>
+
+          <div id="photo_preview" class="photo-preview"></div>
+          <div class="photo-preview-warning" id="photo_preview_warning">
+            <small><em>If you need to adjust this photo you can do so later by
+            editting this member and clicking 'adjust photo'</em></small>
+          </div>
+
         </div>
         <%= f.submit "Add Member", class: "button button--create-haircut" %>
       <% end %>
     </div>
   </div>
 </section>
+
+<%= content_for :javascript do %>
+  <%= javascript_tag 'new CutTheChi.NewHaircut();' %>
+<% end %>

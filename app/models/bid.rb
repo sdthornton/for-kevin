@@ -1,5 +1,5 @@
 class Bid < ActiveRecord::Base
-  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 15 }
+  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 10 }
 
   belongs_to :user, inverse_of: :bids
   belongs_to :haircut, inverse_of: :bids

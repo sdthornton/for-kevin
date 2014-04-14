@@ -11,11 +11,19 @@ module HaircutsHelper
     "/haircuts/#{url}"
   end
 
-  def highest_bid(haircut)
-    if haircut.bids.empty?
-      "No bids yet"
+  def highest_bid(haircut, currency = true)
+    if currency == true
+      if haircut.bids.empty?
+        "No bids yet"
+      else
+        number_to_currency(highest_bid_for(haircut).amount)
+      end
     else
-      number_to_currency(highest_bid_for(haircut).amount)
+      if haircut.bids.empty?
+        0
+      else
+        highest_bid_for(haircut).amount.to_i
+      end
     end
   end
 
@@ -27,8 +35,12 @@ module HaircutsHelper
     highest_bid_for(haircut) ? highest_bid_for(haircut).user.email : ""
   end
 
-  def highest_bidder_placed(haircut)
-    highest_bid_for(haircut) ? format_date_time(highest_bid_for(haircut).created_at) : ""
+  def highest_bid_date(haircut, format = true)
+    if format == true
+      highest_bid_for(haircut) ? format_date_time(highest_bid_for(haircut).created_at) : ""
+    else
+      highest_bid_for(haircut) ? highest_bid_for(haircut).created_at.to_i : "0"
+    end
   end
 
   def highest_bid_for(haircut)

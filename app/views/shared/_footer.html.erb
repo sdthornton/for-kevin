@@ -28,6 +28,16 @@
       <%= link_to "The Charity".html_safe, "http://www.ssbtr.org/", target: "_blank", class: "footer-nav__link" %>
       <span class="footer-nav__separator">•</span>
       <%= link_to "Contact Us".html_safe, "mailto:philanthropy.betaiota.thetachi@gmail.com", class: "footer-nav__link" %>
+
+      <% if admin_signed_in? %>
+      <div class="footer-nav__user-links">
+        <%= link_to "All Bids", show_bids_path, class: "footer-nav__link" %>
+        <span class="footer-nav__separator">•</span>
+        <%= link_to "Add Member", new_haircut_path, class: "footer-nav__link" %>
+        <span class="footer-nav__separator">•</span>
+        <%= link_to "Edit Account", edit_admin_registration_path, class: "footer-nav__link" %>
+      </div>
+      <% end %>
     </nav>
     <small class="copyright" role="contentinfo">&copy; Copyright 2014, Theta Chi - Beta Iota Chapter</small>
   </div>

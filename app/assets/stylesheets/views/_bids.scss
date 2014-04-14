@@ -1,3 +1,28 @@
 .all-bids {
   @extend %background-ltgray;
 }
+
+.sorted-up,
+.sorted-down,
+.not-sorted {
+  cursor: pointer;
+
+  &:after {
+    @include rem(margin-left, 8px);
+    @include rem(width, 12px);
+    display: inline-block;
+    font-family: "Ionicons";
+  }
+}
+
+.sorted-up:after {
+  content: "\f10d";
+}
+
+.sorted-down:after {
+  content: "\f104";
+}
+
+.not-sorted:after {
+  content: "\f10a";
+}
