@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   end
 
   before_filter :authenticate_session!, only: [:bids]
-  before_filter :authenticate_admin!, only: [:users]
+  before_filter :authenticate_admin!, only: [:users, :delete_user]
 
   def index
     @haircuts = Haircut.random(4)
@@ -24,5 +24,11 @@ class HomeController < ApplicationController
 
   def users
     @users = User.order('name ASC')
+  end
+
+  def delete_user
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to show_users_path
   end
 end
