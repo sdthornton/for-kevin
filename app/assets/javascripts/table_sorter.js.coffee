@@ -23,7 +23,12 @@ namespace 'CutTheChi', (exports) ->
         datum = $(field).data(orderBy)
         data.push(datum)
 
-      data.sort()
+      isNumber = typeof(data[0]) == 'number'
+      if isNumber
+        data.sort((a,b) -> return a-b)
+      else
+        data.sort()
+
       if !!reverse
         data.reverse()
         $head.data('order-reverse', false)
@@ -35,5 +40,5 @@ namespace 'CutTheChi', (exports) ->
           .addClass('sorted-up')
 
       for datum in data
-        $row = $("[data-#{orderBy}='#{datum}']").parent().detach()
+        $row = $("[data-#{orderBy}=\"#{datum}\"]").parent().detach()
         $row.appendTo(@$tbody)

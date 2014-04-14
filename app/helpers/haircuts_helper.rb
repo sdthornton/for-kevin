@@ -19,11 +19,7 @@ module HaircutsHelper
         number_to_currency(highest_bid_for(haircut).amount)
       end
     else
-      if haircut.bids.empty?
-        0
-      else
-        highest_bid_for(haircut).amount.to_i
-      end
+      haircut.bids.empty? ? "0" : highest_bid_for(haircut).amount.to_i
     end
   end
 

@@ -6,9 +6,9 @@
       <thead>
         <tr class="admin-bids__bids-header">
           <th class="admin-bids__bid-column sorted-up" data-order="member" data-order-reverse="true">Member</th>
-          <th class="admin-bids__bid-column not-sorted" data-order="bid">Current Bid</th>
-          <th class="admin-bids__bid-column not-sorted" data-order="bidder">Bidder</th>
-          <th class="admin-bids__bid-column not-sorted" data-order="email">Bidder Email</th>
+          <th class="admin-bids__bid-column not-sorted" data-order="bid-amount">Current Bid</th>
+          <th class="admin-bids__bid-column not-sorted" data-order="bidder-name">Bidder</th>
+          <th class="admin-bids__bid-column not-sorted" data-order="bidder-email">Bidder Email</th>
           <th class="admin-bids__bid-column not-sorted" data-order="date">Placed</th>
         </tr>
       </thead>
@@ -18,13 +18,13 @@
             <td class="admin-bids__bid-column" data-member="<%= first_name(haircut.member) %>">
               <%= link_to haircut.member, show_haircut_path(haircut.url) %>
             </td>
-            <td class="admin-bids__bid-column" data-bid="<%= highest_bid(haircut, false) %>">
+            <td class="admin-bids__bid-column" data-bid-amount="<%= highest_bid(haircut, false) %>">
               <%= highest_bid(haircut) %>
             </td>
-            <td class="admin-bids__bid-column" data-bidder="<%= highest_bidder_name(haircut) %>">
+            <td class="admin-bids__bid-column" data-bidder-name="<%= highest_bidder_name(haircut) %>">
               <%= highest_bidder_name(haircut) %>
             </td>
-            <td class="admin-bids__bid-column" data-email="<%= highest_bidder_email(haircut) %>">
+            <td class="admin-bids__bid-column" data-bidder-email="<%= highest_bidder_email(haircut) %>">
               <%= highest_bidder_email(haircut) %>
             </td>
             <td class="admin-bids__bid-column" data-date="<%= highest_bid_date(haircut, false) %>">
