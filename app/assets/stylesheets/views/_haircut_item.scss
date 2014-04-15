@@ -17,9 +17,21 @@
   width: 22%;
 }
 
+.haircut-item__img_wrap {
+  @extend %background-dkblue;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 5 / 8 * 100%;
+  position: relative;
+  width: 100%;
+}
+
 .haircut-item__img {
   @extend %display-block;
   height: auto;
+  left: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 
