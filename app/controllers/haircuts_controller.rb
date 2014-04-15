@@ -49,7 +49,7 @@ class HaircutsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to haircuts_path }
+        format.html { redirect_to new_user_session_path }
         format.json
       end
     end

@@ -2,13 +2,7 @@ namespace 'CutTheChi', (exports) ->
   class exports.Home
 
     constructor: ->
-      @bindLoginToBid()
       @fadeInContent()
-
-    bindLoginToBid: ->
-      $('.make-a-bid--login').on 'click', (e) =>
-        bidOn = $(e.target).data('bid-on')
-        document.cookie = "show_haircut=#{bidOn};path=/"
 
     fadeInContent: ->
       imgUrl = "<%= asset_path('haircut_background.jpg') %>"

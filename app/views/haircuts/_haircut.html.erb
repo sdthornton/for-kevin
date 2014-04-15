@@ -20,7 +20,7 @@
       <%= link_to "Edit", edit_haircut_path(haircut.url), class: "admin-haircut-link" %>
       <%= link_to "Delete", haircut_path(haircut), method: "delete", confirm: "Are you sure?", class: "admin-haircut-link" %>
     <% else %>
-      <%= link_to "Login to Bid", login_path, class: 'make-a-bid--login', data: { bid_on: haircut.url } %>
+      <%= link_to "Login to Bid", show_haircut_path(haircut.url), class: 'make-a-bid--login', data: { bid_on: haircut.url } %>
     <% end %>
   </div>
 
