@@ -12,14 +12,14 @@ class Haircut < ActiveRecord::Base
       normal: ""
     },
     convert_options: {
-      retina: "-gravity north -thumbnail 768x480^ -extent 768x480",
-      normal: "-gravity north -thumbnail 384x240^ -extent 384x240"
+      retina: "-gravity north -thumbnail 768x512^ -extent 768x512",
+      normal: "-gravity north -thumbnail 384x256^ -extent 384x256"
     },
     default_url: "/assets/no_photo.jpg"
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
-  crop_attached_file :photo, aspect: "8:5"
+  crop_attached_file :photo, aspect: "3:2"
 
   def build_url
     self.url = self.member.parameterize.underscore.to_s unless self.member.blank?
