@@ -16,7 +16,7 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body class="hover<%= " bidding-over" unless bidding_is_open? %><%= " venue-notice" if user_signed_in? && !current_user.venue_notice %>">
+<body class="hover<%= " bidding-over" unless bidding_is_open? %><%= " venue-notice" if user_signed_in? && !current_user.venue_notice && !(controller_name == 'home' && action_name == 'index') %>">
   <div class="no-js-warning">
     Hey friend, this site takes full advantage of javascript. We really
     recommend you explore it with <strong>javascript turned on</strong>.
@@ -37,7 +37,7 @@
   </div>
   <%= render partial: "/shared/footer" %>
 
-  <% if user_signed_in? && !current_user.venue_notice %>
+  <% if user_signed_in? && !current_user.venue_notice && !(controller_name == 'home' && action_name == 'index') %>
     <%= render partial: "/shared/venue_change" %>
   <% end %>
 
