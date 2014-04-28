@@ -67,6 +67,7 @@
   @include transform(scale(0.95) translate3d(0,-5%,0));
   @include opacity(0);
   background: $dk_blue;
+  background: transparentize($dk_blue, 0.05);
   display: table;
   height: 100%;
   left: 0;

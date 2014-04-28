@@ -1,0 +1,21 @@
+.venue-notice {
+  @include rem(padding-top, 80px);
+}
+
+.venue-change {
+  @extend %background-blue;
+  @extend %color-white;
+  @extend %text-align-center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.close-venue-change {
+  @include font-size(24px);
+  color: $dk_blue;
+  position: absolute;
+  right: 16px;
+  top: 4px;
+}

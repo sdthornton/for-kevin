@@ -16,7 +16,7 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body class="hover<%= " bidding-over" unless bidding_is_open? %>">
+<body class="hover<%= " bidding-over" unless bidding_is_open? %><%= " venue-notice" if user_signed_in? && !current_user.venue_notice %>">
   <div class="no-js-warning">
     Hey friend, this site takes full advantage of javascript. We really
     recommend you explore it with <strong>javascript turned on</strong>.
@@ -36,6 +36,10 @@
     <%= yield %>
   </div>
   <%= render partial: "/shared/footer" %>
+
+  <% if user_signed_in? && !current_user.venue_notice %>
+    <%= render partial: "/shared/venue_change" %>
+  <% end %>
 
   <%= content_for :javascript do %>
     <%= javascript_tag 'new CutTheChi.FasterPainting();' %>

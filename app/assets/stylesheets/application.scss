@@ -14,7 +14,8 @@
 /* Stylesheets */
 @import "normalize";
 @import "global";
-@import "modules/*";
-@import "views/*";
-@import "media/*";
+@import "modules/**/*";
+@import "views/**/*";
+@import "venue_change";
+@import "media/**/*";
 @import "print";

@@ -31,4 +31,10 @@ class HomeController < ApplicationController
     @user.destroy
     redirect_to show_users_path
   end
+
+  def close_venue_notice
+    params.permit(:user)
+    User.find(params[:id]).update_attribute(:venue_notice, true)
+    head :no_content
+  end
 end
