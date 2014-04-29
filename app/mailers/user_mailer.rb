@@ -3,12 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def last_day_to_bid(user)
     @user = user
-    delivery_options = {
-      user_name: ENV['USER_MAILER_USER'],
-      password: ENV['USER_MAILER_PASS']
-    }
-    mail(to: @user.email, from: 'reminder@azcutthechi.com',
-        delivery_method_options: delivery_options,
+    mail(to: @user.email, from: 'admin@azcutthechi.com',
         subject: 'Only One More Day to Bid!')
   end
 end
