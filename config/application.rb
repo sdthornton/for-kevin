@@ -22,5 +22,8 @@ module CutTheChi
 
     # Add fonts to asset pipeline
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+    # Set host for action mailer
+    config.action_mailer.asset_host = 'http://azcutthechi.com'
   end
 end

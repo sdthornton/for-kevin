@@ -14,7 +14,7 @@
     <div class="about__dates">
       <div class="about-column">
         <%= image_tag "about_date_1.svg", class: "about-date-img-1",
-            onerror: "this.onerror=null; this.src='/assets/about_date_1.png'" %>
+            onerror: "this.onerror=null; this.src='#{asset_path('about_date_1.png')}'" %>
         <h3 class="about-date">
           April 30th
           <span class="about-date__time">10am</span>
@@ -23,7 +23,7 @@
       </div>
       <div class="about-column">
         <%= image_tag "about_date_2.svg", class: "about-date-img-2",
-            onerror: "this.onerror=null; this.src='/assets/about_date_2.png'" %>
+            onerror: "this.onerror=null; this.src='#{asset_path('about_date_2.png')}'" %>
         <h3 class="about-date">
           May 1st
           <span class="about-date__time">6&mdash;8pm</span>
@@ -32,7 +32,7 @@
       </div>
       <div class="about-column">
         <%= image_tag "about_date_3.svg", class: "about-date-img-3",
-            onerror: "this.onerror=null; this.src='/assets/about_date_3.png'" %>
+            onerror: "this.onerror=null; this.src='#{asset_path('about_date_3.png')}'" %>
         <h3 class="about-date">
           May 2nd
           <span class="about-date__time">4&mdash;7pm</span>

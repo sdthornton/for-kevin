@@ -2,7 +2,7 @@
   <div class="home-bg"></div>
   <div class="container container--small">
     <%= image_tag "cutthechi.svg", width: "341", height: "182",
-        onerror: "this.onerror=null; this.src='/assets/cutthechi.png'",
+        onerror: "this.onerror=null; this.src='#{asset_path('cutthechi.png')}'",
         alt: "Cut the Chi" %>
     <h1 class="home-banner__h1">It's time to Cut the Chi.</h1>
     <p class="home-banner__p">
@@ -19,7 +19,7 @@
   <div class="secondary-container sponsors">
     <h5 class="sponsor-heading">Sponsored by</h5>
     <%= image_tag "toniguy.svg", width: "220", class: "toniguy spnosor-logo",
-        onerror: "this.onerror=null; this.src='/assets/cutthechi.png'" %>
+        onerror: "this.onerror=null; this.src='#{asset_path('toniguy.png')}'" %>
   </div>
 </section>
 <section class="home-haircuts">
