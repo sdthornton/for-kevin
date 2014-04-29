@@ -1,8 +1,10 @@
 <div class="haircut-item" id="<%= haircut.url %>_haircut" data-haircut="<%= haircut.url %>">
-  <div class="haircut-item__img_wrap">
-    <%= image_tag(photo_url(haircut), width: "364", height: "242", class: "haircut-item__img") %>
-  </div>
-  <div class="haircut-item__current-bid"><%= "Top Bid: " unless highest_bid(haircut) === "No bids yet" %><%= highest_bid(haircut) %></div>
+  <a class="<%= show_haircut_class %>" href="<%= show_haircut_path(haircut.url) %>">
+    <span class="haircut-item__img-wrap">
+      <%= image_tag(photo_url(haircut), width: "364", height: "242", class: "haircut-item__img") %>
+    </span>
+    <span class="haircut-item__current-bid"><%= "Top Bid: " unless highest_bid(haircut) === "No bids yet" %><%= highest_bid(haircut) %></span>
+  </a>
   <div class="haircut-item__body">
     <h4><%= haircut.member %></h4>
     <span><%= haircut.about %></span>

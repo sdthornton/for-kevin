@@ -5,13 +5,7 @@ namespace 'CutTheChi', (exports) ->
       @bindShowBid()
       @bindPostBid()
       @bindSearch()
-      @loginToBid()
       @showAfterLogin()
-
-    loginToBid: ->
-      $('.make-a-bid--login').on 'click', (e) =>
-        bidOn = $(e.target).data('bid-on')
-        document.cookie = "show_haircut=#{bidOn};path=/"
 
     showAfterLogin: ->
       if "; #{document.cookie}".indexOf('show_haircut=') > 0
@@ -26,7 +20,7 @@ namespace 'CutTheChi', (exports) ->
     bindShowBid: ->
       $('.make-a-bid').on 'click.bindBidLink', (e) =>
         e.preventDefault()
-        $link = $(e.target)
+        $link = $(e.currentTarget)
         url = $link.attr('href')
         @showHaircut(url)
 
@@ -44,7 +38,7 @@ namespace 'CutTheChi', (exports) ->
     bindPostBid: ->
       $('body').on 'submit.postBid', "form.place-bid", (e) =>
         e.preventDefault()
-        $postBid = $(e.target)
+        $postBid = $(e.currentTarget)
 
         $.ajax
           type: 'POST'

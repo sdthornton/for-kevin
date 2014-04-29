@@ -17,8 +17,9 @@
   width: 22%;
 }
 
-.haircut-item__img_wrap {
+.haircut-item__img-wrap {
   @extend %background-dkblue;
+  display: block;
   height: 0;
   overflow: hidden;
   padding-bottom: 2 / 3 * 100%;

@@ -42,4 +42,14 @@ module HaircutsHelper
   def highest_bid_for(haircut)
     haircut.bids.order('amount DESC').first
   end
+
+  def show_haircut_class
+    if user_signed_in?
+      "make-a-bid"
+    elsif admin_signed_in?
+      "admin-show-link"
+    else
+      "make-a-bid--login"
+    end
+  end
 end
