@@ -13,7 +13,7 @@ class Bid < ActiveRecord::Base
   end
 
   def self.time_left
-    Time.new(2014, 5).change(offset: '-6') - Time.now
+    Time.new(2014, 5, 2).change(offset: '-6') - DateTime.now.in_time_zone('Mountain Time (US & Canada)')
   end
 
   def check_if_bidding_is_open
