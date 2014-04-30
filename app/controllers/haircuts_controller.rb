@@ -23,7 +23,7 @@ class HaircutsController < ApplicationController
     @haircut = Haircut.new(haircut_params)
 
     if @haircut.save
-      redirect_to "/haircuts/#{@haircut.url}"
+      redirect_to show_haircut_path(@haircut.url)
     else
       render 'new'
     end

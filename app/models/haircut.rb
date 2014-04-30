@@ -43,4 +43,12 @@ class Haircut < ActiveRecord::Base
   def self.ordered
     Haircut.order(primary: :desc, member: :asc)
   end
+
+  def self.winners
+    winner_ids = []
+    Haircut.find_each do |haircut|
+      winner_ids.push(haircut.bids.order('amount DESC').first.user.id) unless haircut.bids.empty?
+    end
+    User.where(id: winner_ids)
+  end
 end
