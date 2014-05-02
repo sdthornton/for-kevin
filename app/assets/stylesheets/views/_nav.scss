@@ -1,6 +1,15 @@
 #nprogress {
   position: relative;
   z-index: 1001;
+
+  .bar {
+    background: $red !important;
+  }
+
+  .spinner-icon {
+    border-top-color: $red !important;
+    border-left-color: $red !important;
+  }
 }
 
 .main-header--home {
