@@ -9,7 +9,7 @@ class Bid < ActiveRecord::Base
   validates_presence_of :user, :haircut
 
   def self.open
-    DateTime.now.in_time_zone('Mountain Time (US & Canada)') < DateTime.new(2014, 5, 2).change(offset: '-6')
+    DateTime.now.in_time_zone('Pacific Time (US & Canada)') < DateTime.new(2014, 5, 2).change(offset: '-7')
   end
 
   def self.time_left
