@@ -11,4 +11,11 @@ namespace :mailer do
       UserMailer.last_day_to_bid(user).deliver
     end
   end
+
+  task notify_winners: :environment do
+    @bids = Haircut.winners
+    @bids.each do |bid|
+      UserMailer.notify_winners(bid).deliver!
+    end
+  end
 end
