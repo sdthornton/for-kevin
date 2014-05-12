@@ -10,8 +10,8 @@
   .container {
     @include use-gpu;
     @include rem(padding-top, 24px);
-    @include transition(all 0.2s 0.4s ease-in-out);
-    @include transform(translate3d(0,10px,0));
+    @include transition(all 0.3s ease-in-out);
+    @include transform(translate3d(20px,0,0));
     opacity: 0;
     padding-bottom: 0;
     visibility: hidden;
@@ -75,4 +75,3 @@
   max-width: 410px;
   width: 100%;
 }
-
