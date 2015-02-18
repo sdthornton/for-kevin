@@ -1,4 +1,8 @@
-<%= simple_form_for @system_config, method: :put do |f| %>
-  <%= f.input :close_bidding_at %>
-  <%= f.submit 'Save' %>
-<% end %>
+<section class="system-config">
+  <div class="container">
+    <%= simple_form_for @system_config, method: :put do |f| %>
+      <%= f.input :close_bidding_at %>
+      <%= f.submit 'Save' %>
+    <% end %>
+  </div>
+</section>
