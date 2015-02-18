@@ -243,7 +243,7 @@
 .admin-bids__bids-header,
 .user-bids__bids-header,
 .all-users__users-header {
-  @extend %background-dkblue;
+  @extend %background-red;
   @extend %color-white;
 }
 
@@ -255,7 +255,7 @@
     @extend %background-white;
   }
 
-  &:nth-child(2n+1) {
+  &:nth-child(2n) {
     background: $lt_gray;
   }
 

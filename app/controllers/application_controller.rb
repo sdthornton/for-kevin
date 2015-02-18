@@ -37,6 +37,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def system_config
+    set_system_config
+  end
+  helper_method :system_config
+
+  def set_system_config
+    @system_config = SystemConfig.instance
+  end
+
   # Add custom flash types
   add_flash_types :successful_bid
 end

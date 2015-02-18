@@ -3,7 +3,7 @@ class BidsController < ApplicationController
   before_filter :authenticate_admin!, only: [:destroy]
 
   def create
-    @haircut = Haircut.find(params[:haircut_id])
+    @haircut = Haircut.includes(:bids).find(params[:haircut_id])
     @user = current_user
     @bid = @haircut.bids.create(bid_params.merge(user_id: @user.id))
 
@@ -23,7 +23,7 @@ class BidsController < ApplicationController
 
   def destroy
     @bid = Bid.find(params[:id])
-    @haircut = Haircut.find(@bid.haircut_id)
+    @haircut = Haircut.includes(:bids).find(@bid.haircut_id)
     @bid.destroy
 
     redirect_to show_haircut_path(@haircut.url)

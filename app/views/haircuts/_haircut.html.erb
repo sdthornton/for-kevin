@@ -35,7 +35,8 @@
           <%= @bid.errors.inspect %>
         <% end %>
         <i class="dollar-symbol icon">$</i>
-        <%= f.input :amount, label: false, placeholder: "Your Bid", input_html: { class: "text-input bid-amount" } %>
+        <%= f.input :amount, label: false, placeholder: "Your Bid",
+          input_html: { class: "text-input bid-amount", min: "10", step: "5" } %>
         <%= f.submit 'Place Your Bid **', class: "button" %>
       <% end %>
       <p class="bid-terms">

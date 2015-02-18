@@ -3,14 +3,14 @@ class HaircutsController < ApplicationController
 
   def index
     if params[:search]
-      @haircuts = Haircut.search(params[:search]).page(params[:page]).per(20)
+      @haircuts = Haircut.includes(:bids).search(params[:search]).page(params[:page]).per(20)
       @search = true
     elsif params[:letter]
-      @haircuts = Haircut.filter(params[:letter]).order('member ASC')
+      @haircuts = Haircut.includes(:bids).filter(params[:letter]).order('member ASC')
                   .page(params[:page]).per(20)
       @search = true
     else
-      @haircuts = Haircut.ordered.page(params[:page]).per(20)
+      @haircuts = Haircut.includes(:bids).ordered.page(params[:page]).per(20)
       @search = false
     end
   end
@@ -30,7 +30,7 @@ class HaircutsController < ApplicationController
   end
 
   def show
-    @haircut = Haircut.find_by!(url: params[:url])
+    @haircut = Haircut.includes(:bids).find_by!(url: params[:url])
     @bids = @haircut.bids.order('amount DESC')
 
     if admin_signed_in?

@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-CutTheChi::Application.config.session_store :cookie_store, key: '_cutthechi_session'
+Rails.application.config.session_store :cookie_store, key: '_cut_the_chi_session'

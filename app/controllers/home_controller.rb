@@ -7,34 +7,31 @@ class HomeController < ApplicationController
     end
   end
 
-  before_filter :authenticate_session!, only: [:bids]
-  before_filter :authenticate_admin!, only: [:users, :delete_user]
+  before_filter :authenticate_admin!, only: [:bids, :users, :delete_user]
+  before_filter :authenticate_user!, only: [:user_bids]
 
   def index
-    @haircuts = Haircut.random(4)
+    @haircuts = Haircut.includes(:bids).random(4)
   end
 
   def about
   end
 
+  def user_bids
+    @bids = current_user.includes(:bids).bids.order('amount DESC')
+  end
+
   def bids
-    @haircuts = Haircut.order('member ASC') if admin_signed_in?
-    @bids = current_user.bids.order('amount DESC') if user_signed_in?
+    @haircuts = Haircut.includes(:bids).order('member ASC')
   end
 
   def users
-    @users = User.order('name ASC')
+    @users = User.includes(:bids).order('name ASC')
   end
 
   def delete_user
     @user = User.find(params[:id])
     @user.destroy
     redirect_to show_users_path
-  end
-
-  def close_venue_notice
-    params.permit(:user)
-    User.find(params[:id]).update_attribute(:venue_notice, true)
-    head :no_content
   end
 end
