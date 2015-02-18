@@ -47,7 +47,7 @@
       <p>Sorry, no results found</p>
     <% end %>
 
-    <div class="haircut-items" id="haircuts-inner-wrapper">
+    <div class="haircut-items" id="haircuts_inner_wrapper">
       <%= render @haircuts unless @haircuts.empty? %>
     </div>
 
@@ -57,7 +57,7 @@
       </div>
     <% end %>
 
-    <div class="paginate-wrapper" id="paginate-wrapper">
+    <div class="paginate-wrapper" id="paginate_wrapper">
       <%= paginate @haircuts %>
     </div>
   </div>
