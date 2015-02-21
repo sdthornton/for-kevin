@@ -55,7 +55,6 @@
 }
 
 .close-modal {
-  @extend %transition-all;
   @extend %text-align-center;
   @extend %color-white;
   background: $dk_blue;
@@ -70,7 +69,11 @@
   width: 24px;
 
   @include hover {
-    background: $dk_blue;
-    text-decoration: none;
+    @extend %transition-all;
+
+    &:hover {
+      background: $dk_blue;
+      text-decoration: none;
+    }
   }
 }

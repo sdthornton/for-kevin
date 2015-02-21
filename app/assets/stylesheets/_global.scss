@@ -29,7 +29,9 @@ a {
   text-decoration: none;
 
   @include hover {
-    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

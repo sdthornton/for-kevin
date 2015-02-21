@@ -103,14 +103,17 @@
   @include rem(right, 36px);
   @include rem(top, 16px);
   @include font-size(54px);
-  @include transition(color, 0.2s, ease-in-out);
   color: lighten($dk_blue, 50%);
   line-height: 1;
   position: absolute;
 
   @include hover {
-    @extend %color-white;
-    text-decoration: none;
+    @include transition(color, 0.2s, ease-in-out);
+
+    &:hover {
+      @extend %color-white;
+      text-decoration: none;
+    }
   }
 }
 
@@ -123,11 +126,14 @@
 .site-nav__link {
   @extend %color-white;
   @include font-size(30px);
-  @include transition(color, 0.2s, ease-in-out);
 
   @include hover {
-    color: lighten($dk_blue, 50%);
-    text-decoration: none;
+    @include transition(color, 0.2s, ease-in-out);
+
+    &:hover {
+      color: lighten($dk_blue, 50%);
+      text-decoration: none;
+    }
   }
 }
 

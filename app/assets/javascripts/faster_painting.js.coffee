@@ -6,11 +6,12 @@ namespace 'CutTheChi', (exports) ->
       @bindScroll()
 
     bindScroll: ->
-      window.addEventListener 'scroll', =>
-        clearTimeout(@enableTimer)
-        @removeHoverClass()
-        @enableTimer = setTimeout(@addHoverClass, 250)
-      , false
+      $.requestScroll(@toggleHoverClass)
+
+    toggleHoverClass: =>
+      clearTimeout(@enableTimer)
+      @removeHoverClass()
+      @enableTimer = setTimeout(@addHoverClass, 250)
 
     removeHoverClass: ->
       document.body.classList.remove('hover')

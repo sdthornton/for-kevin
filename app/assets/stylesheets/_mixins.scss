@@ -10,9 +10,7 @@
 
 @mixin hover {
   .hover & {
-    &:hover {
-      @content;
-    }
+    @content;
   }
 }
 

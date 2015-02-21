@@ -51,5 +51,10 @@
     <% end %>
   <% end %>
   <%= yield :javascript %>
+  <script>
+    $.requestScroll(function(scrollPos) {
+      console.log(scrollPos);
+    });
+  </script>
 </body>
 </html>
