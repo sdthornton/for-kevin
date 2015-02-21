@@ -10,4 +10,8 @@ class SystemConfig < ActiveRecord::Base
       Time.zone.now
     end
   end
+
+  def self.current_bidding_year
+    instance.current_bidding_year || 2014
+  end
 end

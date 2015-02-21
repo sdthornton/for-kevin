@@ -4,7 +4,7 @@ class Bid < ActiveRecord::Base
   belongs_to :user, inverse_of: :bids
   belongs_to :haircut, inverse_of: :bids
 
-  before_validation :check_if_bidding_is_open, :multiple_of_five
+  before_validation :check_if_bidding_is_open, :multiple_of_five, :set_bidding_year
 
   validates_presence_of :user, :haircut
 
@@ -32,7 +32,13 @@ class Bid < ActiveRecord::Base
     end
   end
 
+  def set_bidding_year
+    self.bidding_year = bidding_year || SystemConfig.instance.current_bidding_year
+  end
+
   def self.total
-    Haircut.all.map { |haircut| haircut.bids.maximum("amount") }.compact.inject(:+)
+    Haircut.joins(:bids)
+      .where("bids.bidding_year = ?", SystemConfig.current_bidding_year)
+      .map { |haircut| haircut.bids.maximum("amount") }.compact.inject(:+)
   end
 end
