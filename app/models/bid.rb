@@ -1,10 +1,12 @@
 class Bid < ActiveRecord::Base
-  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 10 }
+  validates :amount, presence: true,
+    numericality: { greater_than_or_equal_to: 10 }
 
   belongs_to :user, inverse_of: :bids
   belongs_to :haircut, inverse_of: :bids
 
-  before_validation :check_if_bidding_is_open, :multiple_of_five, :set_bidding_year
+  before_validation :check_if_bidding_is_open, :multiple_of_five
+  before_save :set_bidding_year
 
   validates_presence_of :user, :haircut
 
@@ -22,7 +24,8 @@ class Bid < ActiveRecord::Base
 
   def check_if_bidding_is_open
     unless Bid.open
-      errors.add(:base, ": Sorry, it looks like bidding has closed for the year. But don't worry! We'll be doing this again next year!")
+      errors.add(:base, ": Sorry, it looks like bidding has closed for the year.
+        But don't worry! We'll be doing this again next year!")
     end
   end
 
@@ -33,7 +36,8 @@ class Bid < ActiveRecord::Base
   end
 
   def set_bidding_year
-    self.bidding_year = bidding_year || SystemConfig.instance.current_bidding_year
+    self.bidding_year = bidding_year ||
+      SystemConfig.instance.current_bidding_year
   end
 
   def self.total
