@@ -1,14 +1,7 @@
 class HomeController < ApplicationController
-  def authenticate_session!(opts = {})
-    if admin_signed_in?
-      authenticate_admin!
-    else
-      authenticate_user!
-    end
-  end
-
   before_filter :authenticate_admin!, only: [:bids, :users, :delete_user]
   before_filter :authenticate_user!, only: [:user_bids]
+  before_filter :set_system_config
 
   def index
     @haircuts = Haircut.includes(:bids).random(4)
@@ -18,7 +11,7 @@ class HomeController < ApplicationController
   end
 
   def user_bids
-    @bids = current_user.includes(:bids).bids.order('amount DESC')
+    @bids = current_user.bids.order('amount DESC')
   end
 
   def bids

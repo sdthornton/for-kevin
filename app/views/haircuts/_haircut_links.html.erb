@@ -1,0 +1,16 @@
+<div class="haircut-item__links">
+  <% if admin_signed_in? %>
+    <%= link_to "Show", show_haircut_path(haircut.url),
+        class: "admin-haircut-link" %>
+    <%= link_to "Edit", edit_haircut_path(haircut.url),
+        class: "admin-haircut-link" %>
+    <%= link_to "Delete", haircut_path(haircut), method: "delete",
+        confirm: "Are you sure?", class: "admin-haircut-link" %>
+  <% else %>
+    <div class="make-a-bid">
+      <span class="make-a-bid__user">Place a bid</span>
+      <span class="make-a-bid__anonymous">Login to Bid</span>
+    </div>
+    <div class="make-a-bid--over">Bidding is now closed</div>
+  <% end %>
+</div>

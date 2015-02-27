@@ -34,4 +34,6 @@ Rails.application.routes.draw do
 
   get '/admin/bids' => 'home#bids', as: 'show_bids'
   get '/admin/users' => 'home#users', as: 'show_users'
+
+  get '/bid_info' => 'bids#info', constraints: { format: 'json' }
 end

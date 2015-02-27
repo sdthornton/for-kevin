@@ -2,10 +2,47 @@
 
 <section class="all-bids">
   <div class="container">
-    <% if admin_signed_in? %>
-      <%= render partial: "admin_bids" %>
-    <% elsif user_signed_in? %>
-      <%= render partial: "user_bids" %>
-    <% end %>
+    <div class="admin-bids">
+      <% if @haircuts.empty? %>
+      <strong>No members created yet</strong>
+      <% else %>
+      <table class="admin-bids__table" id="admin_bids">
+        <thead>
+          <tr class="admin-bids__bids-header">
+            <th class="admin-bids__bid-column sorted-up" data-order="member" data-order-reverse="true">Member</th>
+            <th class="admin-bids__bid-column not-sorted" data-order="bid-amount">Current Bid</th>
+            <th class="admin-bids__bid-column not-sorted" data-order="bidder-name">Bidder</th>
+            <th class="admin-bids__bid-column not-sorted" data-order="bidder-email">Bidder Email</th>
+            <th class="admin-bids__bid-column not-sorted" data-order="date">Placed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @haircuts.each do |haircut| %>
+          <tr class="admin-bids__bids-row">
+            <td class="admin-bids__bid-column" data-member="<%= first_name(haircut.member) %>">
+              <%= link_to haircut.member, show_haircut_path(haircut.url) %>
+            </td>
+            <td class="admin-bids__bid-column" data-bid-amount="<%= highest_bid(haircut, false) %>">
+              <%= highest_bid(haircut) %>
+            </td>
+            <td class="admin-bids__bid-column" data-bidder-name="<%= highest_bidder_name(haircut) %>">
+              <%= highest_bidder_name(haircut) %>
+            </td>
+            <td class="admin-bids__bid-column" data-bidder-email="<%= highest_bidder_email(haircut) %>">
+              <%= highest_bidder_email(haircut) %>
+            </td>
+            <td class="admin-bids__bid-column" data-date="<%= highest_bid_date(haircut, false) %>">
+              <%= highest_bid_date(haircut) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
   </div>
 </section>
+
+<%= content_for :javascript do %>
+  <%= javascript_tag 'new CutTheChi.TableSorter("#admin_bids")' %>
+<% end %>

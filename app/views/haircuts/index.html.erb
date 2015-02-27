@@ -9,9 +9,9 @@
       <p>
         Every dollar you give is another dollar we'll give to
         <a href="http://www.ssbtr.org/" target="_blank">Students Supporting
-        Brain Tumor Research</a>. And winning a bid means you'll get to give a
-        member a haircut... any haircut. Make it crazy. Make it handsome. Make
-        it revolting. And we promise we'll keep it. Well, for at least a day.
+        Brain Tumor Research</a>. A winning bid means you'll get to give one of
+        us gentlemen a haircut... any haircut. Make it crazy. Make it handsome.
+        Make it revolting. And we promise we'll keep it. Well, for at least a day.
       </p>
       <%= link_to "Learn more about the event", about_path,
           class: "button haircut-info__learn-more-button" %>
@@ -43,17 +43,19 @@
       </label>
     <% end %>
 
-    <% if @haircuts.empty? %>
-      <p>Sorry, no results found</p>
+    <% cache([cache_key_for_haircuts, @search, @page, current_admin.present?]) do %>
+      <% if @haircuts.empty? %>
+        <p>Sorry, no results found</p>
+      <% else %>
+        <div class="haircut-items" id="haircuts_inner_wrapper">
+          <%= render @haircuts %>
+        </div>
+      <% end %>
     <% end %>
 
-    <div class="haircut-items" id="haircuts_inner_wrapper">
-      <%= render @haircuts unless @haircuts.empty? %>
-    </div>
-
-    <% if @search %>
+    <% if @search.present? %>
       <div class="haircuts__show-all">
-        <%= link_to "Show All", haircuts_path %>
+        <%= link_to "Show All", haircuts_path, class: 'button' %>
       </div>
     <% end %>
 

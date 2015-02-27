@@ -10,13 +10,13 @@
 
   <%= favicon_link_tag "/favicon.ico" %>
 
-  <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
-  <%= csrf_meta_tags %>
+  <%= csrf_meta_tags unless response.cache_control[:public] %>
 </head>
-<body class="hover<%= ' bidding-over' unless bidding_is_open? %>">
+<body class="hover <%= bidding_is_open? ? 'bidding-open' : 'bidding-over' %> <%= current_admin.present? ? 'authenticated-admin' : current_user.present? ? 'authenticated' : 'anonymous' %>">
   <div class="no-js-warning">
     Hey friend, this site takes full advantage of javascript. We really
     recommend you explore it with <strong>javascript turned on</strong>.

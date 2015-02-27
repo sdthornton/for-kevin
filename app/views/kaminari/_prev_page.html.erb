@@ -8,6 +8,6 @@
 -%>
 <span class="prev pagination-span<%= ' no-link' if current_page.first? %>">
   <%= link_to_unless current_page.first?,
-      t('views.pagination.previous').html_safe, url, :rel => 'prev',
+      t('views.pagination.previous').html_safe, "#{url}#haircuts", :rel => 'prev',
       :remote => remote, class: "pagination-link" %>
 </span>

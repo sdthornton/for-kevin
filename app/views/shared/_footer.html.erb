@@ -1,26 +1,4 @@
-<section class="bidding-info">
-  <div class="container">
-    <div class="bidding-total">
-      <h5 class="bidding-total__h5">Raised:</h5>
-      <div class="bidding-total__sum">
-        <i class="ion-medkit bidding-info__icon"></i><%= bid_total %>
-      </div>
-    </div>
-    <div class="bidding-time-remaining">
-      <h5 class="bidding-time-remaining__h5">Bidding Ends:</h5>
-      <div class="bidding-time-remaining__time">
-        <i class="ion-clock bidding-info__icon"></i><%= time_left_formatted %>
-      </div>
-    </div>
-    <div class="bidding-count">
-      <h5 class="bidding-count__h5">Unique Bids:</h5>
-      <div class="bidding-count__sum">
-        <i class="ion-earth bidding-info__icon"></i><%= bid_count %>
-      </div>
-    </div>
-  </div>
-</section>
-
+<%= render partial: '/shared/bidding_info' %>
 <footer class="main-footer">
   <div class="container container--short">
     <nav class="footer-nav" role="navigation">
@@ -60,3 +38,9 @@
     </small>
   </div>
 </footer>
+
+<% content_for :javascript do %>
+  <%= javascript_tag do %>
+    new CutTheChi.BiddingInfo()
+  <% end %>
+<% end %>

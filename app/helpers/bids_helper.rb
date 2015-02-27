@@ -4,6 +4,6 @@ module BidsHelper
   end
 
   def bid_count
-    Bid.where(bidding_year: SystemConfig.instance.current_bidding_year).count
+    Bid.where(bidding_year: @system_config.current_bidding_year).count
   end
 end

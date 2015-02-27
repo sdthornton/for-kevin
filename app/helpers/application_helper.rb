@@ -19,21 +19,15 @@ module ApplicationHelper
     { time: t, seconds: ss, minutes: mm, hours: hh, days: dd }
   end
 
-  def time_left_formatted
-    "<span class='time-left time-left--days'>
-      #{sprintf('%02d',time_left_to_bid[:days])}
-    </span>
-    <span class='time-left-separator'>:</span>
-    <span class='time-left time-left--hours'>
-      #{sprintf('%02d',time_left_to_bid[:hours])}
-    </span>
-    <span class='time-left-separator'>:</span>
-    <span class='time-left time-left--minutes'>
-      #{sprintf('%02d',time_left_to_bid[:minutes])}
-    </span>".html_safe
-  end
-
   def first_name(name)
     name.split.first
+  end
+
+  def event_date
+    @system_config.close_bidding_at.strftime("%a, %B%e")
+  end
+
+  def event_year
+    @system_config.close_bidding_at.year
   end
 end

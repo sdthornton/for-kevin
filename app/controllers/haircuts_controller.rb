@@ -1,19 +1,26 @@
 class HaircutsController < ApplicationController
+  etag do
+    {
+      current_user_id: current_user.present? && current_user.id,
+      current_admin_id: current_admin.present? && current_admin.id
+    }
+  end
   before_filter :authenticate_admin!, except: [:index, :show]
 
   def index
+    @search = params[:search] || params[:letter] || false
+    @page = params[:page]
     if params[:search]
       @haircuts = Haircut.includes(:bids).search(params[:search])
         .page(params[:page]).per(20)
-      @search = true
     elsif params[:letter]
       @haircuts = Haircut.includes(:bids).filter(params[:letter])
         .order('member ASC').page(params[:page]).per(20)
-      @search = true
     else
       @haircuts = Haircut.includes(:bids).ordered.page(params[:page]).per(20)
-      @search = false
     end
+
+    fresh_when(@haircuts.maximum(:updated_at), public: true)
   end
 
   def new
@@ -50,14 +57,18 @@ class HaircutsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to new_user_session_path }
+        format.html { redirect_to login_path }
         format.json
       end
     end
+
+    fresh_when(@haircut.updated_at, public: true)
   end
 
   def edit
     @haircut = Haircut.find_by!(url: params[:url])
+
+    fresh_when(@haircut.updated_at, public: true)
   end
 
   def update

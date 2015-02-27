@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_system_config
   after_filter :store_location
 
   protected
@@ -16,14 +17,12 @@ class ApplicationController < ActionController::Base
     if (request.fullpath != "/login" &&
         request.fullpath != "/register" &&
         request.fullpath != "/logout" &&
+        request.fullpath != "/bid_info" &&
         request.fullpath != "/" &&
         request.fullpath !~ /admin/i &&
         request.fullpath !~ /user/i &&
         !request.xhr?)
       session[:previous_url] = request.fullpath
-
-      puts request.fullpath
-      puts session[:previous_url]
     end
   end
 

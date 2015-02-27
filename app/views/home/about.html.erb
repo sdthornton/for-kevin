@@ -34,7 +34,7 @@
         <%= image_tag "about_date_3.svg", class: "about-date-img-3",
             onerror: "this.onerror=null; this.src='#{asset_path('about_date_3.png')}'" %>
         <h3 class="about-date">
-          May 2nd
+          <%= @system_config.close_bidding_at.strftime("%B%e") %>
           <span class="about-date__time">4&mdash;7pm</span>
         </h3>
         <p class="about-date-p">Cut the Chi haircutting extravaganza</p>

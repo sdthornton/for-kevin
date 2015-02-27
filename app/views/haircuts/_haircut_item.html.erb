@@ -1,0 +1,30 @@
+<% cache(haircut) do %>
+<%= render partial: '/haircuts/haircut_info', locals: { haircut: haircut } %>
+<% end %>
+
+<%= render partial: '/haircuts/haircut_links', locals: { haircut: haircut } %>
+
+<% if user_signed_in? %>
+  <div id="place_bid_on_<%= haircut.id %>_wrap" class="visually-hidden">
+    <div class="bid-errors__<%= haircut.url %> bid-errors"
+      style="display:none;"></div>
+    <small>Bids must be more than $10 and a multiple of $5</small>
+    <%= simple_form_for [haircut, haircut.bids.build],
+        html: { class: "place-bid place-bid-on-#{haircut.id}",
+        data: { haircut: haircut.id } } do |f| %>
+    <% if @bid && @bid.errors.any? %>
+      <%= @bid.errors.inspect %>
+    <% end %>
+    <i class="dollar-symbol icon">$</i>
+    <%= f.input :amount, label: false, placeholder: "Your Bid",
+        input_html: { class: "text-input bid-amount", min: "10", step: "5" } %>
+    <%= f.submit 'Place Your Bid **', class: "button" %>
+    <% end %>
+    <p class="bid-terms">
+      <small><em>
+        ** By submitting this bid you agree to pay the amount in full on the
+        day of the event should you win the bid.
+      </em></small>
+    </p>
+  </div>
+<% end %>

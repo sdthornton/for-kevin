@@ -1,4 +1,10 @@
 module HaircutsHelper
+  def cache_key_for_haircuts
+    count = Haircut.count
+    max_updated_at = Haircut.maximum(:updated_at).try(:utc).try(:to_s, :number)
+    "haircuts/all-#{count}-#{max_updated_at}"
+  end
+
   def photo_url(haircut)
     if cookies[:is_retina]
       haircut.photo(:retina)
@@ -41,15 +47,5 @@ module HaircutsHelper
 
   def highest_bid_for(haircut)
     haircut.bids.order('amount DESC').first
-  end
-
-  def show_haircut_class
-    if user_signed_in?
-      "make-a-bid"
-    elsif admin_signed_in?
-      "admin-show-link"
-    else
-      "make-a-bid--login"
-    end
   end
 end

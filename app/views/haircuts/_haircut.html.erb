@@ -1,47 +1,11 @@
-<div class="haircut-item" id="<%= haircut.url %>_haircut" data-haircut="<%= haircut.url %>">
-  <a class="<%= show_haircut_class %>" href="<%= show_haircut_path(haircut.url) %>">
-    <span class="haircut-item__img-wrap">
-      <%= image_tag(photo_url(haircut), width: "364", height: "242", class: "haircut-item__img") %>
-    </span>
-    <span class="haircut-item__current-bid"><%= "Top Bid: " unless highest_bid(haircut) === "No bids yet" %><%= highest_bid(haircut) %></span>
-  </a>
-  <div class="haircut-item__body">
-    <h4><%= haircut.member %></h4>
-    <span><%= haircut.about %></span>
-  </div>
-
-  <div class="haircut-item__links">
-    <% if user_signed_in? %>
-      <% if bidding_is_open? %>
-        <%= link_to "Place a Bid", show_haircut_path(haircut.url), class: 'make-a-bid' %>
-      <% else %>
-        <span>Bidding is now closed</span>
-      <% end %>
-    <% elsif admin_signed_in? %>
-      <%= link_to "Show", show_haircut_path(haircut.url), class: "admin-haircut-link" %>
-      <%= link_to "Edit", edit_haircut_path(haircut.url), class: "admin-haircut-link" %>
-      <%= link_to "Delete", haircut_path(haircut), method: "delete", confirm: "Are you sure?", class: "admin-haircut-link" %>
-    <% else %>
-      <%= link_to "Login to Bid", show_haircut_path(haircut.url), class: 'make-a-bid--login', data: { bid_on: haircut.url } %>
-    <% end %>
-  </div>
-
-  <% if user_signed_in? %>
-    <div id="place_bid_on_<%= haircut.id %>_wrap" class="visually-hidden">
-      <div class="bid-errors__<%= haircut.url %> bid-errors" style="display:none;"></div>
-      <small>Bids must be more than $10 and a multiple of $5</small>
-      <%= simple_form_for [haircut, haircut.bids.build], html: { class: "place-bid place-bid-on-#{haircut.id}", data: { haircut: haircut.id } } do |f| %>
-        <% if @bid && @bid.errors.any? %>
-          <%= @bid.errors.inspect %>
-        <% end %>
-        <i class="dollar-symbol icon">$</i>
-        <%= f.input :amount, label: false, placeholder: "Your Bid",
-          input_html: { class: "text-input bid-amount", min: "10", step: "5" } %>
-        <%= f.submit 'Place Your Bid **', class: "button" %>
-      <% end %>
-      <p class="bid-terms">
-        <small><em>** By submitting this bid you agree to pay the amount in full on the day of the event should you win the bid.</em></small>
-      </p>
-    </div>
+<% unless current_admin.present? %>
+  <%= link_to show_haircut_path(haircut.url), class: "haircut-item open-haircut",
+      id: "#{haircut.url}_haircut", data: { haircut: haircut.url } do %>
+    <%= render partial: "/haircuts/haircut_item", locals: { haircut: haircut } %>
   <% end %>
-</div>
+<% else %>
+  <div class="haircut-item" id="<%= haircut.url %>_haircut"
+    data-haircut="<%= haircut.url %>">
+    <%= render partial: "/haircuts/haircut_item", locals: { haircut: haircut } %>
+  </div>
+<% end %>

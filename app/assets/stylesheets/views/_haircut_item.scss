@@ -3,18 +3,38 @@
   @extend %text-align-left;
   @include flex-wrap(wrap);
   @include justify-content(left);
-  margin-left: -3%;
+  margin-left: -2%;
 }
 
 .haircut-item {
   @extend %background-white;
   @include rem(padding-bottom, 45px);
   @include rem(margin-bottom, 36px);
-  border-bottom: solid 2px darken($lt_gray, 10%);
-  box-shadow: 0 0 1px rgba(0,0,0,0.1);
-  margin-left: 3%;
+  @include material-shadow(1);
+  border-radius: 2px;
+  color: $black;
+  margin-left: 2%;
+  overflow: hidden;
   position: relative;
-  width: 22%;
+  text-decoration: none;
+  width: 23%;
+
+  @include hover {
+    @include transition(box-shadow 0.2s ease-in-out);
+
+    &:hover {
+      @include material-shadow(3);
+      text-decoration: none;
+    }
+  }
+
+  .authenticated-admin & {
+    @include transition(none);
+
+    &:hover {
+      @include material-shadow(1);
+    }
+  }
 }
 
 .haircut-item__img-wrap {
@@ -38,15 +58,15 @@
 
 .haircut-item__current-bid {
   @extend %color-white;
-  @extend %text-align-right;
+  @extend %text-align-left;
+  @include transform(translateY(-100%));
   background: asset-url('haircut_bid_gradient.png') 0 0 repeat-x;
   background-size: 2px 60px;
   font-weight: bold;
   height: 60px;
   left: 0;
-  margin-top: -60px;
-  padding-right: 8px;
-  padding-top: 30px;
+  line-height: 4.5;
+  padding-left: 1rem;
   position: absolute;
   top: auto;
   width: 100%;
@@ -57,8 +77,12 @@
 }
 
 .haircut-item__body {
-  @include padding(0, 8px, 20px);
+  @include padding(0, 16px, 20px);
   @include font-size(14px);
+}
+
+.haircut-item__name {
+  font-weight: 400;
 }
 
 .haircut-item__links {
@@ -75,6 +99,35 @@
 .admin-haircut-link {
   @extend %float-left;
   width: 33.33333333333333%;
+}
+
+.make-a-bid {
+  color: $red;
+
+  .bidding-over & {
+    display: none;
+  }
+}
+
+.make-a-bid--over {
+  display: none;
+
+  .bidding-over & {
+    display: block;
+  }
+}
+
+.make-a-bid__user,
+.make-a-bid__anonymous {
+  display: none;
+}
+
+.authenticated .make-a-bid__user {
+  display: block;
+}
+
+.anonymous .make-a-bid__anonymous {
+  display: block;
 }
 
 .dollar-symbol {

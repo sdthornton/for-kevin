@@ -18,7 +18,7 @@ namespace 'CutTheChi', (exports) ->
       document.cookie = "show_haircut=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;"
 
     bindShowBid: ->
-      $('.make-a-bid').on 'click.bindBidLink', (e) =>
+      $('.open-haircut').on 'click.bindBidLink', (e) =>
         e.preventDefault()
         $link = $(e.currentTarget)
         url = $link.attr('href')
@@ -33,7 +33,7 @@ namespace 'CutTheChi', (exports) ->
         if !!data.logged_in
           @buildHaircutModal(data)
       .fail (jqXHR, textStatus) =>
-        alert "Request failed: #{textStatus}"
+        console.log "Request failed: #{textStatus}"
 
     bindPostBid: ->
       $('body').on 'submit.postBid', "form.place-bid", (e) =>
@@ -55,7 +55,7 @@ namespace 'CutTheChi', (exports) ->
           else
             Turbolinks.visit "#{window.location.pathname}#haircuts"
         .fail (jqXHR, textStatus) =>
-          alert "Request failed: #{textStatus}"
+          console.log "Request failed: #{textStatus}"
 
     buildHaircutModal: (data) ->
       has_bids = data.has_bids
@@ -91,5 +91,3 @@ namespace 'CutTheChi', (exports) ->
         Turbolinks.visit $('#haircut_search_link').attr('href')
       .find('#search').on 'keyup.watchSearchInput', (e) =>
         $('#haircut_search_link').attr 'href', "/haircuts?#{$('#search_haircuts').serialize()}"
-
-

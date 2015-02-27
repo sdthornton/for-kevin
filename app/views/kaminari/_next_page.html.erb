@@ -8,6 +8,6 @@
 -%>
 <span class="next pagination-span<%= ' no-link' if current_page.last? %>">
   <%= link_to_unless current_page.last?,
-      t('views.pagination.next').html_safe, url, :rel => 'next',
+      t('views.pagination.next').html_safe, "#{url}#haircuts", :rel => 'next',
       :remote => remote, class: "pagination-link" %>
 </span>

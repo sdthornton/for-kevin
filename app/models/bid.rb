@@ -3,9 +3,9 @@ class Bid < ActiveRecord::Base
     numericality: { greater_than_or_equal_to: 10 }
 
   belongs_to :user, inverse_of: :bids
-  belongs_to :haircut, inverse_of: :bids
+  belongs_to :haircut, inverse_of: :bids, touch: true
 
-  before_validation :check_if_bidding_is_open, :multiple_of_five
+  before_validation :check_if_bidding_is_open, :is_multiple_of_five, :is_greater_bid
   before_save :set_bidding_year
 
   validates_presence_of :user, :haircut
@@ -29,9 +29,15 @@ class Bid < ActiveRecord::Base
     end
   end
 
-  def multiple_of_five
+  def is_multiple_of_five
     if self.amount.present? && self.amount % 5 != 0
       errors.add(:amount, "must be a multiple of five")
+    end
+  end
+
+  def is_greater_bid
+    if self.amount.present? && haircut.bids.count > 0 && self.amount <= haircut.bids.maximum("amount")
+      errors.add(:amount, "must be greater than previous bid")
     end
   end
 
