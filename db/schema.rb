@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221073332) do
+ActiveRecord::Schema.define(version: 20150304211815) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -49,16 +49,17 @@ ActiveRecord::Schema.define(version: 20150221073332) do
   add_index "bids", ["user_id"], name: "index_bids_on_user_id", using: :btree
 
   create_table "haircuts", force: :cascade do |t|
-    t.string   "member",             limit: 255
-    t.text     "about",              limit: 65535
-    t.string   "url",                limit: 255
+    t.string   "member",              limit: 255
+    t.text     "about",               limit: 65535
+    t.string   "url",                 limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo_file_name",    limit: 255
-    t.string   "photo_content_type", limit: 255
-    t.integer  "photo_file_size",    limit: 4
+    t.string   "photo_file_name",     limit: 255
+    t.string   "photo_content_type",  limit: 255
+    t.integer  "photo_file_size",     limit: 4
     t.datetime "photo_updated_at"
-    t.boolean  "primary",            limit: 1,     default: false
+    t.boolean  "primary",             limit: 1,     default: false
+    t.string   "primary_image_color", limit: 255
   end
 
   add_index "haircuts", ["url"], name: "index_haircuts_on_url", unique: true, using: :btree

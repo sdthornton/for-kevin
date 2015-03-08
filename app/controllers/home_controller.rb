@@ -25,6 +25,6 @@ class HomeController < ApplicationController
   def delete_user
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to show_users_path
+    redirect_to show_users_path, turbolinks: true
   end
 end

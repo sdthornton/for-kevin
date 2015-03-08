@@ -23,10 +23,11 @@ Rails.application.routes.draw do
   end
 
   scope 'haircuts' do
+    get 'search/:query' => 'haircuts#index', as: 'search_haircuts'
+    get 'filter/:letter' => 'haircuts#index', as: 'filter_haircuts'
+    get 'page/:page/' => 'haircuts#index'
     get ':url' => 'haircuts#show', as: 'show_haircut'
     get ':url/edit' => 'haircuts#edit', as: 'edit_haircut'
-    get 'filter/:letter' => 'haircuts#index', as: 'filter_haircuts'
-    get 'page/:page' => 'haircuts#index'
   end
 
   resources :system_config, only: [:update]

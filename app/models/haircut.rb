@@ -15,14 +15,28 @@ class Haircut < ActiveRecord::Base
       retina: "-gravity north -thumbnail 768x512^ -extent 768x512",
       normal: "-gravity north -thumbnail 384x256^ -extent 384x256"
     },
+    url: "/assets/haircuts/:id/:style/:basename.:extension",
+    path: ":rails_root/public/assets/haircuts/:id/:style/:basename.:extension",
     default_url: "/assets/no_photo.jpg"
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
   crop_attached_file :photo, aspect: "3:2"
 
+  before_save :set_primary_image_color
+
   def build_url
     self.url = self.member.parameterize.underscore.to_s unless self.member.blank?
+  end
+
+  def set_primary_image_color
+    if (changed & ["photo_updated_at"]).any? && self.photo.queued_for_write[:original].present?
+      image = File.new self.photo.queued_for_write[:original].path
+      colors = Miro::DominantColors.new(image)
+      min = colors.by_percentage.each_with_index.max[1]
+      hex_color = colors.to_hex[min]
+      self.primary_image_color = hex_color
+    end
   end
 
   def self.search(query)
@@ -42,6 +56,10 @@ class Haircut < ActiveRecord::Base
 
   def self.ordered
     Haircut.order(primary: :desc, member: :asc)
+  end
+
+  def self.ordered_ids
+    Hash[Haircut.ordered.pluck(:id).map.with_index.to_a]
   end
 
   def self.winners

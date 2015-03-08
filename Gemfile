@@ -36,11 +36,12 @@ end
 
 gem 'devise', '~> 3.4.1'
 gem 'simple_form', '~> 3.1.0'
-gem 'paperclip', '~> 4.2.1'
 gem 'kaminari'
 gem 'metamagic'
 gem 'figaro'
+gem 'paperclip', '~> 4.2.1'
 gem 'papercrop', git: "git@github.com:sdthornton/papercrop.git"
+gem 'miro'
 
 group :development do
   gem 'better_errors'

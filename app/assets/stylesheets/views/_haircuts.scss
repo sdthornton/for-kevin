@@ -97,6 +97,10 @@
       background: lighten($blue, 5%);
     }
   }
+
+  &.hidden {
+    display: none;
+  }
 }
 
 #close_successful_bid {

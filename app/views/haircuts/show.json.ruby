@@ -2,7 +2,7 @@ haircut = {
   id: @haircut.id,
   name: @haircut.member,
   hash: @haircut.url,
-  url: haircut_route(@haircut.url),
+  url: show_haircut_path(@haircut.url),
   post_path: haircut_bids_path(@haircut),
   photo: photo_url(@haircut),
   about_me: @haircut.about,

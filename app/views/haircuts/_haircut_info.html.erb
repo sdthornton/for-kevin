@@ -1,6 +1,6 @@
 <div>
-  <span class="haircut-item__img-wrap">
-    <%= image_tag(photo_url(haircut), width: "364", height: "242", class: "haircut-item__img") %>
+  <span class="haircut-item__img-wrap" style="background-color: <%= haircut_background(haircut) %>;">
+    <img class="haircut-image haircut-item__img" width="270" height="180" data-src="<%= haircut.photo(:normal) %>">
   </span>
   <span class="haircut-item__current-bid">
     <%= "Top Bid: " unless highest_bid(haircut) === "No bids yet" %>

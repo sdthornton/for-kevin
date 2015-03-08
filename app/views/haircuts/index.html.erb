@@ -21,33 +21,31 @@
 <section class="search-and-filter" id="search">
   <div class="container">
     <%= render partial: "filter_haircuts" %>
-    <%= simple_form_for :haircut,
-        html: { id: "search_haircuts", class: "haircut-form", method: "get",
-        role: "search" } do %>
+    <div class="haircut-form" id="search_haircuts">
       <div class="search-wrapper">
         <i class="ion-android-search icon search-icon"></i>
-        <%= text_field_tag :search, params[:search],
+        <%= text_field_tag :query, params[:query],
             class: "text-input search-input", placeholder: "Member's name" %>
       </div>
-      <%= submit_tag "Search", id: "haircut_search_submit",
-          class: "button search-button", name: nil %>
-    <% end %>
+      <%= link_to "Search", search_haircuts_path(:query),
+          id: "haircut_search_submit", class: "button search-button" %>
+    </div>
   </div>
 </section>
 <section class="haircuts" id="haircuts">
   <div class="container">
     <% if successful_bid %>
       <input type="checkbox" id="close_successful_bid">
-      <label class="successful-bid" for="close_successful_bid">
+      <label class="successful-bid hidden" for="close_successful_bid">
         <%= successful_bid %>
       </label>
     <% end %>
 
-    <% cache([cache_key_for_haircuts, @search, @page, current_admin.present?]) do %>
+    <% cache([cache_key_for_haircuts]) do %>
       <% if @haircuts.empty? %>
         <p>Sorry, no results found</p>
       <% else %>
-        <div class="haircut-items" id="haircuts_inner_wrapper">
+        <div class="haircut-items" id="haircuts_wrapper">
           <%= render @haircuts %>
         </div>
       <% end %>
@@ -59,12 +57,15 @@
       </div>
     <% end %>
 
-    <div class="paginate-wrapper" id="paginate_wrapper">
-      <%= paginate @haircuts %>
-    </div>
+    <% unless @search.present? %>
+      <div class="paginate-wrapper" id="paginate_wrapper">
+        <%= paginate @haircuts %>
+      </div>
+    <% end %>
   </div>
 </section>
 
 <%= content_for :javascript do %>
-  <%= javascript_tag 'new CutTheChi.Haircut()' %>
+  <%= javascript_tag "new CutTheChi.Haircut(#{@page})" if current_user.present? %>
+  <%= javascript_tag 'new CutTheChi.LazyLoadHaircutImages()' %>
 <% end %>

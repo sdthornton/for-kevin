@@ -8,7 +8,7 @@ class SystemConfigController < ApplicationController
   def update
     if @system_config.update_attributes(system_config_params)
       flash[:notice] = "Successfully updated system configuration."
-      redirect_to edit_system_config_path
+      redirect_to edit_system_config_path, turbolinks: true
     else
       flash[:alert] = "There was an error updating the system configuration."
       render :edit

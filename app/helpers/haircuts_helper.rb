@@ -2,7 +2,10 @@ module HaircutsHelper
   def cache_key_for_haircuts
     count = Haircut.count
     max_updated_at = Haircut.maximum(:updated_at).try(:utc).try(:to_s, :number)
-    "haircuts/all-#{count}-#{max_updated_at}"
+    page = @page.present? && @page
+    search = @search.present? && @search.downcase
+    admin = current_admin.present?
+    "haircuts/all-#{count}-#{max_updated_at}-page-#{page}-search-#{search}-admin-#{admin}"
   end
 
   def photo_url(haircut)
@@ -13,8 +16,12 @@ module HaircutsHelper
     end
   end
 
-  def haircut_route(url)
-    "/haircuts/#{url}"
+  def haircut_background(haircut)
+    if haircut.primary_image_color.present?
+      haircut.primary_image_color
+    else
+      "#212333"
+    end
   end
 
   def highest_bid(haircut, currency = true)

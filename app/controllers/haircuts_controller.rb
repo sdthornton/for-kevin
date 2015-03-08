@@ -7,17 +7,19 @@ class HaircutsController < ApplicationController
   end
   before_filter :authenticate_admin!, except: [:index, :show]
 
+  PER_PAGE = 20
+
   def index
-    @search = params[:search] || params[:letter] || false
+    @search = params[:query] || params[:letter] || false
     @page = params[:page]
-    if params[:search]
-      @haircuts = Haircut.includes(:bids).search(params[:search])
-        .page(params[:page]).per(20)
+    haircuts = Haircut.includes(:bids)
+
+    if params[:query]
+      @haircuts = haircuts.search(params[:query])
     elsif params[:letter]
-      @haircuts = Haircut.includes(:bids).filter(params[:letter])
-        .order('member ASC').page(params[:page]).per(20)
+      @haircuts = haircuts.filter(params[:letter]).order('member ASC')
     else
-      @haircuts = Haircut.includes(:bids).ordered.page(params[:page]).per(20)
+      @haircuts = haircuts.ordered.page(@page).per(PER_PAGE)
     end
 
     fresh_when(@haircuts.maximum(:updated_at), public: true)
@@ -31,14 +33,15 @@ class HaircutsController < ApplicationController
     @haircut = Haircut.new(haircut_params)
 
     if @haircut.save
-      redirect_to show_haircut_path(@haircut.url)
+      redirect_to show_haircut_path(@haircut.url), turbolinks: true
     else
       render 'new'
     end
   end
 
   def show
-    @haircut = Haircut.includes(:bids).find_by!(url: params[:url])
+    haircuts = Haircut.includes(:bids)
+    @haircut = haircuts.find_by!(url: params[:url])
     @bids = @haircut.bids.order('amount DESC')
 
     if admin_signed_in?
@@ -46,18 +49,15 @@ class HaircutsController < ApplicationController
     elsif user_signed_in?
       respond_to do |format|
         format.html {
-          cookies[:show_haircut] = {
-            value: @haircut.url,
-            path: "/"
-          }
-          page = (Haircut.ordered.pluck('member').index(@haircut.member) / 20) + 1
-          redirect_to haircuts_path(page: page)
+          page = haircut_page(@haircut.id)
+          @haircuts = haircuts.ordered.page(page).per(PER_PAGE)
+          render :index, params: { page: page }
         }
         format.json
       end
     else
       respond_to do |format|
-        format.html { redirect_to login_path }
+        format.html { redirect_to login_path, turbolinks: true }
         format.json
       end
     end
@@ -75,7 +75,7 @@ class HaircutsController < ApplicationController
     @haircut = Haircut.find(params[:id])
 
     if @haircut.update(haircut_params)
-      redirect_to show_haircut_path(@haircut.url)
+      redirect_to show_haircut_path(@haircut.url), turbolinks: true
     else
       render 'edit'
     end
@@ -85,7 +85,7 @@ class HaircutsController < ApplicationController
     @haircut = Haircut.find(params[:id])
     @haircut.destroy
 
-    redirect_to '/haircuts'
+    redirect_to '/haircuts', turbolinks: true
   end
 
 
@@ -96,4 +96,7 @@ class HaircutsController < ApplicationController
         :photo_crop_y, :photo_crop_w, :photo_crop_h, :photo_aspect)
     end
 
+    def haircut_page(id)
+      page = (Haircut.ordered_ids[id] / PER_PAGE) + 1
+    end
 end

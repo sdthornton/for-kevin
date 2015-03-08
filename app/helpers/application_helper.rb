@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def event_date
-    @system_config.close_bidding_at.strftime("%a, %B%e")
+    @system_config.close_bidding_at.strftime("%a, %B %e")
   end
 
   def event_year

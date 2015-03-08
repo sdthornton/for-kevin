@@ -1,5 +1,6 @@
 namespace 'CutTheChi', (exports) ->
   class exports.BuildModal
+    constructor: (@onClose) ->
 
     buildModal: (modalContent) ->
       closingTag = modalContent.lastIndexOf('</')
@@ -36,3 +37,4 @@ namespace 'CutTheChi', (exports) ->
       $('.modal-wrapper').removeClass('fade-in').addClass('fade-out').delayRemove(500)
       $(document).off('.closeModal')
       $('.modal-wrapper').off('.closeModal')
+      @onClose?()

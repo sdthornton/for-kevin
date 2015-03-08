@@ -30,9 +30,9 @@
   @extend %display-inline-block;
   @extend %clearfix;
   @include padding(36px, 36px, 116px);
+  @include material-shadow(0.5);
   background: $white;
-  border-bottom: solid 2px darken($lt_gray, 10%);
-  box-shadow: 0 0 1px rgba(0,0,0,0.1);
+  border-radius: 2px;
   position: relative;
 }
 
