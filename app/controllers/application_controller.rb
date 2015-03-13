@@ -4,10 +4,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :set_system_config
+  # before_filter :set_csrf_cookie
   after_filter :store_location
 
   protected
+
+  def set_csrf_cookie
+    cookies[:csrftoken] = {
+      value: form_authenticity_token,
+      expires: 1.day.from_now
+    }
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :name, :email, :password, :password_confirmation, :invite_code) }
@@ -40,10 +47,6 @@ class ApplicationController < ActionController::Base
     set_system_config
   end
   helper_method :system_config
-
-  def set_system_config
-    @system_config = SystemConfig.instance
-  end
 
   # Add custom flash types
   add_flash_types :successful_bid

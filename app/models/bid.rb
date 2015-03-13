@@ -11,7 +11,7 @@ class Bid < ActiveRecord::Base
   validates_presence_of :user, :haircut
 
   def self.open
-    Time.zone.now < SystemConfig.close_bidding_at
+    @bid_open ||= (Time.zone.now < SystemConfig.close_bidding_at)
   end
 
   def self.time_left
@@ -42,13 +42,14 @@ class Bid < ActiveRecord::Base
   end
 
   def set_bidding_year
-    self.bidding_year = bidding_year ||
-      SystemConfig.instance.current_bidding_year
+    self.bidding_year = bidding_year || SystemConfig.current_bidding_year
   end
 
   def self.total
-    Haircut.joins(:bids)
-      .where("bids.bidding_year = ?", SystemConfig.current_bidding_year)
-      .map { |haircut| haircut.bids.maximum("amount") }.compact.inject(:+)
+    @bid_total ||=
+      Bid.joins(:haircut)
+        .where('bids.bidding_year = ?', SystemConfig.current_bidding_year)
+        .where('bids.amount = (SELECT MAX(bids.amount) FROM bids WHERE bids.haircut_id = haircuts.id)')
+        .sum('amount')
   end
 end

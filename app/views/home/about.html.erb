@@ -5,10 +5,9 @@
     <h1 class="heading heading--center">About Cut the Chi</h1>
     <p class="about-top-p">
       So you've <%= link_to "made your bids", haircuts_path %>. Now what?
-      Well don't you worry one little bit. Below is all the information you
-      need. And if there's still more you want to know, feel free to
-      <a href="mailto:mailto:philanthropy.betaiota.thetachi@gmail.com">Contact
-      Us</a>.
+      Well don't you worry one little bit. All the information you need is found
+      below. And if there's still more you want to know, feel free to
+      <a href="mailto:philanthropy.betaiota.thetachi@gmail.com">Contact Us</a>.
     </p>
 
     <div class="about__dates">
@@ -34,7 +33,7 @@
         <%= image_tag "about_date_3.svg", class: "about-date-img-3",
             onerror: "this.onerror=null; this.src='#{asset_path('about_date_3.png')}'" %>
         <h3 class="about-date">
-          <%= @system_config.close_bidding_at.strftime("%B%e") %>
+          <%= SystemConfig.close_bidding_at.strftime("%B %e") %>
           <span class="about-date__time">4&mdash;7pm</span>
         </h3>
         <p class="about-date-p">Cut the Chi haircutting extravaganza</p>

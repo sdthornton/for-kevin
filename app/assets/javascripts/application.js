@@ -19,6 +19,7 @@
 //= require nprogress-init
 //= require utilities
 //= require_tree .
+//= stub set_csrf_token
 //= require jquery.jcrop
 //= require papercrop
 //= require selectivizr

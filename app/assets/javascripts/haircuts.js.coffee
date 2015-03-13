@@ -14,6 +14,7 @@ namespace 'CutTheChi', (exports) ->
     showBidNoticeIfFresh: ->
       if !!window.CutTheChi.freshBid
         document.querySelector('.successful-bid').classList.remove('hidden')
+        window.CutTheChi.freshBid = false
 
     showFromRoute: ->
       pathname = window.location.pathname
@@ -69,18 +70,10 @@ namespace 'CutTheChi', (exports) ->
             for error in bidErrors
               $bidErrorDiv.append("<div class='bid-error'>Bid #{error}</div>")
           else
-            # @$successfulBidAmount.text(data.haircut.highest_bid)
-            # @$successfulBidName.text(data.haircut.name)
-            # $("##{data.haircut.hash}_haircut")
-            #   .find('.haircut-item__current-bid')
-            #   .text("Top Bid: #{data.haircut.highest_bid}")
-            # @modal.closeModal()
-            # @$successfulBidInput.prop('checked', false)
-            # @$successfulBid.removeClass('hidden')
             page = if @page then "page/#{@page}" else ""
             url = "/haircuts/#{page}"
             window.CutTheChi.freshBid = true
-            Turbolinks.visit(url)
+            Turbolinks.visit(url, change: 'haircuts_wrapper')
         .fail (jqXHR, textStatus) =>
           console.log "Request failed: #{textStatus}"
 

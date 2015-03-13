@@ -45,7 +45,7 @@
       <% if @haircuts.empty? %>
         <p>Sorry, no results found</p>
       <% else %>
-        <div class="haircut-items" id="haircuts_wrapper">
+        <div class="haircut-items" id="haircuts_wrapper" data-turbolinks-temporary>
           <%= render @haircuts %>
         </div>
       <% end %>

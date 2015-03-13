@@ -18,14 +18,16 @@
 </section>
 <section class="home-haircuts">
   <div class="container">
-    <% if @haircuts.empty? %>
-      <p class="center-text">No members yet to bid on</p>
-    <% end %>
-    <div class="haircut-items">
-      <% @haircuts.each do |haircut| %>
-        <%= render partial: "/haircuts/haircut", locals: { haircut: haircut } %>
+    <% cache([home_cache_key_for_haircuts]) do %>
+      <% if @haircuts.empty? %>
+        <p class="center-text">No members on yet to bid</p>
       <% end %>
-    </div>
+      <div class="haircut-items">
+        <% @haircuts.each do |haircut| %>
+          <%= render partial: "/haircuts/haircut", locals: { haircut: haircut } %>
+        <% end %>
+      </div>
+    <% end %>
     <div class="button-wrap">
       <%= link_to "See All Members", haircuts_path,
           class: "lg-button button--see-all-members" %>

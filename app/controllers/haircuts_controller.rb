@@ -5,13 +5,15 @@ class HaircutsController < ApplicationController
       current_admin_id: current_admin.present? && current_admin.id
     }
   end
-  before_filter :authenticate_admin!, except: [:index, :show]
 
   PER_PAGE = 20
+
+  before_filter :authenticate_admin!, except: [:index, :show]
 
   def index
     @search = params[:query] || params[:letter] || false
     @page = params[:page]
+    @url = params[:url]
     haircuts = Haircut.includes(:bids)
 
     if params[:query]
@@ -22,7 +24,7 @@ class HaircutsController < ApplicationController
       @haircuts = haircuts.ordered.page(@page).per(PER_PAGE)
     end
 
-    fresh_when(@haircuts.maximum(:updated_at), public: true)
+    fresh_when([Haircut.count, @haircuts.maximum(:updated_at)])
   end
 
   def new
@@ -62,13 +64,13 @@ class HaircutsController < ApplicationController
       end
     end
 
-    fresh_when(@haircut.updated_at, public: true)
+    fresh_when(@haircut.updated_at)
   end
 
   def edit
     @haircut = Haircut.find_by!(url: params[:url])
 
-    fresh_when(@haircut.updated_at, public: true)
+    fresh_when(@haircut.updated_at)
   end
 
   def update
@@ -88,15 +90,16 @@ class HaircutsController < ApplicationController
     redirect_to '/haircuts', turbolinks: true
   end
 
+private
 
-  private
-    def haircut_params
-      params.require(:haircut).permit(:member, :about, :photo, :primary,
-        :photo_original_w, :photo_original_h, :photo_box_w, :photo_crop_x,
-        :photo_crop_y, :photo_crop_w, :photo_crop_h, :photo_aspect)
-    end
+  def haircut_params
+    params.require(:haircut).permit(:member, :about, :photo, :primary,
+      :photo_original_w, :photo_original_h, :photo_box_w, :photo_crop_x,
+      :photo_crop_y, :photo_crop_w, :photo_crop_h, :photo_aspect)
+  end
 
-    def haircut_page(id)
-      page = (Haircut.ordered_ids[id] / PER_PAGE) + 1
-    end
+  def haircut_page(id)
+    page = (Haircut.ordered_ids[id] / PER_PAGE) + 1
+  end
+
 end

@@ -8,7 +8,3 @@ namespace 'CutTheChi', (exports) ->
       imgUrl = "<%= asset_path('haircut_background.jpg') %>"
       $('<img />').attr('src', imgUrl).load =>
         $('.home-bg')[0].classList.add('visible')
-        @slideInContent()
-
-    slideInContent: ->
-      $('.home-banner').find('.container')[0].classList.add('slide-in')

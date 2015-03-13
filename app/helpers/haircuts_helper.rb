@@ -53,6 +53,7 @@ module HaircutsHelper
   end
 
   def highest_bid_for(haircut)
-    haircut.bids.order('amount DESC').first
+    # haircut.bids.order('amount DESC').first
+    Bid.includes(:haircut).where(haircut_id: haircut.id).order('amount DESC').first
   end
 end

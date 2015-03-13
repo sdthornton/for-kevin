@@ -13,7 +13,7 @@ class BidsController < ApplicationController
           "Thanks for your <strong>$#{"%.2f" % @bid.amount}</strong>
           bid on <strong>#{@haircut.member}</strong>. If your bid
           wins we'll email you to let you know. Either way, show
-          up #{@system_config.close_bidding_at.strftime("%B %e")}
+          up #{SystemConfig.close_bidding_at.strftime("%B %e")}
           to the Theta Chi house for a great time!".html_safe
     else
       redirect_to show_haircut_path(@haircut.url, turbolinks: true,
@@ -30,6 +30,7 @@ class BidsController < ApplicationController
   end
 
   def info
+    @time_left = time_left_to_bid
     respond_to :json
   end
 
@@ -37,6 +38,14 @@ private
 
   def bid_params
     params[:bid].permit(:amount)
+  end
+
+  def time_left_to_bid
+    t = Bid.time_left
+    mm, ss = t.divmod(60)
+    hh, mm = mm.divmod(60)
+    dd, hh = hh.divmod(24)
+    { time: t, seconds: ss, minutes: mm, hours: hh, days: dd }
   end
 
 end

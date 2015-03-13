@@ -15,8 +15,14 @@ class SystemConfigController < ApplicationController
     end
   end
 
-  private
-    def system_config_params
-      params.require(:system_config).permit(:close_bidding_at)
-    end
+private
+
+  def system_config_params
+    params.require(:system_config).permit(:close_bidding_at)
+  end
+
+  def set_system_config
+    @system_config ||= SystemConfig.instance
+  end
+
 end

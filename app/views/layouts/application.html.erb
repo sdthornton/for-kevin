@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <%= metamagic title: "Cut the Chi | Theta Chi at University of Arizona" %>
+  <%= metamagic title: "Cut the Chi | Theta Chi at University of Arizona",
+        "csrf-param" => "authenticity_token",
+        "csrf-token" => form_authenticity_token %>
   <meta name="viewport" content="width=768, initial-scale=1">
 
   <script>0>("; "+document.cookie).indexOf("; is_retina=")&&(document.cookie="is_retina= "+(1.25<=window.devicePixelRatio)+";path=/;",1.25<=window.devicePixelRatio&&window.location.reload());</script>
@@ -14,10 +16,9 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-
-  <%= csrf_meta_tags unless response.cache_control[:public] %>
 </head>
 <body class="hover <%= bidding_is_open? ? 'bidding-open' : 'bidding-over' %> <%= current_admin.present? ? 'authenticated-admin' : current_user.present? ? 'authenticated' : 'anonymous' %>">
+  <%# javascript_include_tag "set_csrf_token" %>
   <div class="no-js-warning">
     Hey friend, this site takes full advantage of javascript. We really
     recommend you explore it with <strong>javascript turned on</strong>.

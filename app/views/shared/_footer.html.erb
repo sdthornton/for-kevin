@@ -8,7 +8,8 @@
       <span class="footer-nav__separator">•</span>
       <%= link_to "The Event".html_safe, about_path, class: "footer-nav__link" %>
       <!-- <span class="footer-nav__separator">•</span>
-      <%= link_to "Buy a Shirt".html_safe, "http://thesociallife.com/", target: "_blank", class: "footer-nav__link" %> -->
+      <%= link_to "Buy a Shirt".html_safe, "http://thesociallife.com/",
+            target: "_blank", class: "footer-nav__link" %> -->
       <span class="footer-nav__separator">•</span>
       <%= link_to "The Charity".html_safe, "http://www.ssbtr.org/",
           target: "_blank", class: "footer-nav__link" %>
@@ -34,13 +35,13 @@
       <% end %>
     </nav>
     <small class="copyright" role="contentinfo">
-      &copy; Copyright 2014, Theta Chi - Beta Iota Chapter
+      &copy; Copyright <%= Time.now.year %>, Theta Chi - Beta Iota Chapter
     </small>
   </div>
 </footer>
 
 <% content_for :javascript do %>
   <%= javascript_tag do %>
-    new CutTheChi.BiddingInfo()
+    new CutTheChi.BiddingInfo();
   <% end %>
 <% end %>
